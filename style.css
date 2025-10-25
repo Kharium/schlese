@@ -1,0 +1,207 @@
+
+/* ========== BASISSTYLES (Mobile First) ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', serif;
+    line-height: 1.6;
+}
+
+/* ========== HEADER ========== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+}
+
+/* Flex-Layout für die Navigationsleiste */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+/* Logo-Bild */
+.logo img {
+    max-height: 60px;
+}
+
+/* ========== BURGER-MENÜ ========== */
+.burger-menu {
+    display: block;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Linien im Burger-Menü */
+.burger-menu span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+.burger-menu span:nth-child(1) { top: 0; }
+.burger-menu span:nth-child(2) { top: 10px; }
+.burger-menu span:nth-child(3) { top: 20px; }
+
+/* Animation bei Aktivierung (zum „X“) */
+.burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 10px;
+}
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 10px;
+}
+
+/* ========== NAVIGATION (MOBILE STANDARDZUSTAND) ========== */
+.nav-links {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    width: 100%;
+    flex-direction: column;
+    background-color: white;
+    padding: 0 1rem;
+    border-top: 1px solid #ddd;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+/* Sichtbar bei Aktivierung des Burger-Menüs */
+.nav-links.active {
+    transform: scaleY(1);
+    opacity: 1;
+    pointer-events: auto;
+    padding: 1rem;
+}
+
+/* UL in mobiler Navigation */
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end; /* Rechtsbündig */
+    text-align: right;
+}
+
+/* Einzelne Links */
+.nav-links a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-links a:hover {
+    color: #0077cc;
+}
+
+/* ========== INHALTSSEKTIONEN ========== */
+section {
+    scroll-margin-top: 80px;
+    padding: 2rem 1rem;
+}
+
+/* ========== DESKTOP ANSICHT ========== */
+@media screen and (min-width: 768px) {
+    .burger-menu {
+        display: none;
+    }
+
+    .navbar {
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: block !important;
+        position: static;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        padding: 0;
+        width: auto;
+        border-top: none; /* entfernt Trennlinie im Desktop */
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        margin-left: auto;
+        align-items: center;
+        text-align: left;
+    }
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background-color: #0d3058;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ========== RECHTLICHE ANGABEN ========== */
+.legal-section {
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 0.9rem;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    line-height: 1.5;
+    border-top: 1px solid #ddd;
+}
+
+.legal-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.legal-section a {
+    color: #0d3058;
+    text-decoration: underline;
+}

@@ -1,0 +1,118 @@
+/* ===========================
+   Startseite – Slider & Tiles
+   =========================== */
+
+/* Basis: Section & Container */
+.startseite { overflow: visible; }
+.startseite .container { position: relative; }
+
+/* ---------- Slider ---------- */
+.glide.startseite-slider { position: relative; max-width: 100%; }
+.startseite-slider .glide__track { position: relative; overflow: hidden; }
+.startseite-slider .glide__slide img { width: 100%; height: auto; display: block; }
+
+/* Pfeile mittig über dem Bild */
+.startseite-slider .glide__arrows{
+    position:absolute; top:50%; left:0; right:0; transform:translateY(-50%);
+    display:flex; justify-content:space-between; padding:0 .75rem;
+    pointer-events:none; z-index:10;
+}
+.startseite-slider .glide__arrow{
+    pointer-events:all; background:rgba(0,0,0,.4); color:#fff; border:0;
+    font-size:2rem; line-height:1; padding:.5rem 1rem; cursor:pointer; border-radius:.375rem;
+}
+
+/* ---------- Tiles (überlappen Slider & kein Extra-Abstand) ---------- */
+.tiles{
+    position: relative;
+    z-index: 20;
+
+    /* sichtbare Überlappung: halbe Kachelhöhe ≈ 44px (anpassen nach Wunsch) */
+    --tiles-overlap: 44px;
+    margin-top: calc(-1 * var(--tiles-overlap)); /* echte Overlap, kein transform nötig */
+
+    width: min(960px, 92vw);         /* nicht volle Breite */
+    margin-left: 1.25rem;            /* leicht eingerückt */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,.15));
+    border-radius: 10px;
+    overflow: hidden;                /* runde Ecken greifen */
+    background: transparent;
+}
+
+/* einzelne Kachel */
+.tile{
+    display: grid;
+    grid-template-columns: 53px 1fr 52px;   /* Icon | Label | Chevron */
+    align-items: center;
+    min-height: 72px;
+    background: #f2f2f2;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.tile:last-child{ border-bottom: 0; }
+
+/* linke, orange Icon-Spalte */
+.tile-icon{
+    display:grid; place-items:center; height:100%;
+    background:#DD6226; color:#fff;
+}
+
+/* Material Symbols Größe – passt für Rounded & Outlined */
+.tile-icon .material-symbols-rounded,
+.tile-icon .material-symbols-outlined{
+    font-size: 50px;
+    line-height: 1;
+    font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 34;
+}
+
+/* Label */
+.tile-label{
+    font-weight: 600;
+    font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
+    letter-spacing: .02em;
+    margin-left: 2em;
+    color:#59616b;
+}
+
+/* rechtes Icon (ohne Kreis) */
+.tile-chevron{
+    display:grid; place-items:center; justify-self:center;
+    padding-right: .25rem;   /* etwas Luft rechts */
+    color:#3a3a3a;
+}
+.tile-chevron .material-symbols-rounded,
+.tile-chevron .material-symbols-outlined{
+    font-size: 22px;
+    line-height: 1;
+    font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 22;
+}
+
+/* Hover-Effekt */
+.tile:hover{ background:#ededed; }
+.tile:hover .tile-icon{ background:#DD6226; }
+
+/* KEIN zusätzlicher Abstand unter der Section mehr */
+.startseite .container::after{ content:""; display:block; height: 0; }
+
+/* ---------- Panels fürs Auf-/Zuklappen ---------- */
+.tile-panel{
+    background:#fff;
+    padding: 1rem 1.25rem 1.25rem 1.25rem;
+    border-left: 1px solid rgba(0,0,0,.06);
+    border-right: 1px solid rgba(0,0,0,.06);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.tile.open{ background:#eaeaea; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px){
+    .tiles{
+        --tiles-overlap: 32px;      /* etwas weniger Überlappung mobil */
+        margin-left: .75rem;
+    }
+    .tile{
+        grid-template-columns: 72px 1fr 56px;
+        min-height: 76px;
+    }
+}

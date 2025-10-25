@@ -1,0 +1,132 @@
+/* ========== KONTAKT-BEREICH ========== */
+.kontakt-section {
+    background-color: #f7f7f7;
+    padding: 3rem 1rem;
+}
+
+.kontakt-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.kontakt-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+/* ========== INFO-BOX MIT ICONS ========== */
+.kontakt-box {
+    background-color: #ffffff;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.kontakt-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1.2rem;
+}
+
+.kontakt-item:last-child {
+    border-bottom: none;
+}
+
+.kontakt-item i {
+    font-size: 1.4rem;
+    color: #DD6226;
+    margin-top: 0.2rem;
+    min-width: 24px;
+}
+
+.kontakt-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: #DD6226;
+}
+
+.kontakt-item p {
+    margin: 0;
+}
+
+.kontakt-item a {
+    color: #333;
+    text-decoration: none;
+}
+
+.kontakt-item a:hover {
+    text-decoration: underline;
+}
+
+/* ========== TERMINBUTTON ========== */
+.termin {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.termin-button {
+    display: inline-block;
+    background-color: #DD6226;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.termin-button:hover {
+    background-color: #DD6226;
+}
+
+/* ========== NOTDIENST ========== */
+.notdienst {
+    background-color: #eef3f8;
+    padding: 1.5rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.notdienst h3 {
+    color: #DD6226;
+    margin-bottom: 0.5rem;
+}
+
+.notdienst a {
+    color: #DD6226;
+    text-decoration: underline;
+}
+
+.sprechzeiten-liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sprechzeiten-liste li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.sprechzeiten-liste span:first-child {
+    font-weight: 600;
+    min-width: 120px;
+    color: #333;
+}
+
+.sprechzeiten-liste span:last-child {
+    flex: 1;
+    text-align: right;
+    color: #111;
+}

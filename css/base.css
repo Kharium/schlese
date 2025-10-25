@@ -1,0 +1,22 @@
+/* ========== BASISSTYLES (Mobile First) ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', serif;
+    line-height: 1.6;
+}
+
+/* ========== INHALTSSEKTIONEN (allgemein) ========== */
+section {
+    scroll-margin-top: 80px;
+}
+
+

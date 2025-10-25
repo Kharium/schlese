@@ -1,0 +1,54 @@
+.praxis{
+    padding: 3rem 1rem;
+    background-color: #fff;
+
+}
+
+.praxis.container{
+
+}
+
+.praxis.container h2{
+    margin-bottom: 50.5rem;
+}
+
+/* Slider-Basis */
+.glide.praxis-slider { position: relative; max-width: 100%; }
+
+/* Track ist der Bezugspunkt für absolute Pfeile */
+.praxis-slider .glide__track { position: relative; overflow: hidden; }
+
+/* Bilder */
+.praxis-slider .glide__slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* optional: feste Proportion für die Praxis */
+    /* aspect-ratio: 4/3; object-fit: cover; */
+}
+
+/* Pfeile: Container als Overlay mittig über dem Track */
+.praxis-slider .glide__arrows {
+    position: absolute;
+    top: 50%;
+    left: 0; right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .75rem;
+    pointer-events: none;   /* Container klickt nicht … */
+    z-index: 10;
+}
+
+/* … aber die Buttons schon */
+.praxis-slider .glide__arrow {
+    pointer-events: all;
+    border: 0;
+    background: rgba(0,0,0,.4);
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    border-radius: .375rem;
+}

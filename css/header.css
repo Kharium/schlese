@@ -1,26 +1,48 @@
-/* ========== HEADER ========== */
+/* =========================================================
+   Header & Navigation (Mobile-First)
+   Ziel:
+   - Logo immer links
+   - Mobil: Burger + Overlay-Menü
+   - Desktop (>=1024px): Links rechtsbündig inline, Abstand zwischen Logo & Links
+   Struktur:
+   1) Basis (Mobile)
+   2) Burger-Icon
+   3) Mobile-Overlay-Navigation
+   4) Tablet (optional Feinschliff)
+   5) Desktop (>=1024px) — Logo links, Nav rechts, Spacing
+   6) Wide (optional >=1440px)
+   ========================================================= */
+
+
+/* ========== 1) BASIS (Mobile 0–1023px) ========== */
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: white;
-    border-bottom: 1px solid #ddd;
-    padding: 0.5rem 1rem;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    width: 100%;
 }
 
+/* Eine Zeile: Logo links, rechts Burger */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
+    /* Abstand innerhalb der Zeile + elastischer Lücke */
+    gap: clamp(16px, 4vw, 72px);
+    padding: 1rem;
+    /* zentrierter, begrenzter Inhalt */
+    width: min(100% - 2*var(--container-pad), var(--container-max));
+    margin-inline: auto;
 }
 
-.logo img {
-    max-height: 60px;
-}
+/* Logo schrumpft nicht, bleibt links */
+.logo { flex: 0 0 auto; }
+.logo img { max-height: 60px; width: auto; display: block; }
 
-/* ========== BURGER-MENÜ ========== */
+
+/* ========== 2) BURGER-ICON (nur Mobil sichtbar) ========== */
 .burger-menu {
     display: block;
     width: 30px;
@@ -31,85 +53,123 @@ header {
     cursor: pointer;
     z-index: 1001;
 }
-
 .burger-menu span {
-    display: block;
     position: absolute;
+    left: 0; right: 0;
     height: 3px;
-    width: 100%;
-    background-color: #333;
+    background-color: var(--color-text, #333);
     border-radius: 2px;
-    transition: 0.3s ease;
+    transition: .3s ease;
 }
-
 .burger-menu span:nth-child(1) { top: 0; }
 .burger-menu span:nth-child(2) { top: 10px; }
 .burger-menu span:nth-child(3) { top: 20px; }
 
-.burger-menu.active span:nth-child(1) {
-    transform: rotate(45deg);
-    top: 10px;
-}
-.burger-menu.active span:nth-child(2) {
-    opacity: 0;
-}
-.burger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg);
-    top: 10px;
-}
+/* Burger → X */
+.burger-menu.active span:nth-child(1) { transform: rotate(45deg); top: 10px; }
+.burger-menu.active span:nth-child(2) { opacity: 0; }
+.burger-menu.active span:nth-child(3) { transform: rotate(-45deg); top: 10px; }
 
-/* ========== NAVIGATION (MOBILE) ========== */
-/* Panel statt DropDown */
-.nav-links{
+
+/* ========== 3) NAVIGATION — MOBILE OVERLAY ========== */
+/* Panel fährt von rechts ein; Listeneinträge sind block/100% */
+.nav-links {
     position: fixed;
     top: 0;
     right: 0;
-    height: 100dvh;              /* volle Höhe, unabhängig von Scroll */
-    width: 78vw;                 /* kleiner machen */
-    max-width: 360px;            /* harte Obergrenze */
-    background: #fff;
+    height: 100dvh;
+    width: 78vw;
+    max-width: 360px;
+    background: var(--color-bg, #fff);
     box-shadow: -12px 0 24px rgba(0,0,0,.08);
-    transform: translateX(100%); /* außerhalb parken */
+    transform: translateX(100%);
     transition: transform .28s ease;
     z-index: 1000;
-    padding: 12px 0;
+    padding: 80px 0 12px;  /* Platz unter sticky Header */
     overflow-y: auto;
 }
+.nav-links.active { transform: translateX(0); }
 
-/* geöffnet */
-.nav-links.active{
-    transform: translateX(0);
-}
+body.no-scroll { overflow: hidden; }
 
-/* Body-Scroll sperren wenn Menü offen */
-body.no-scroll{
-    overflow: hidden;
-}
+.nav-links ul { margin: 0; padding: 0; list-style: none; }
+.nav-links li { border-bottom: 1px solid var(--color-border, #eee); }
+.nav-links li:last-child { border-bottom: none; }
 
-/* Liste & Trennlinien */
-.nav-links ul{margin:0; padding:0; list-style:none;}
-.nav-links li{border-bottom:1px solid #eee;}
-.nav-links li:last-child{border-bottom:none;}
-
-/* Ganze Zeile klickbar + States */
-.nav-links a{
-    display: block;              /* volle Breite klickbar */
+.nav-links a {
+    display: block;             /* volle Breite klickbar */
     width: 100%;
     padding: 18px 22px;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .06em;
     font-weight: 700;
-    color: #333;
+    color: var(--color-text, #333);
     transition: background .2s ease, color .2s ease;
 }
-
-.nav-links a:hover{
-    background: #f7f5f3;         /* helles Highlight */
+.nav-links a:hover { background: color-mix(in srgb, var(--color-accent, #2F5E8A) 10%, #fff); }
+.nav-links a.is-current {
+    color: var(--color-accent, #2F5E8A);
+    background: color-mix(in srgb, var(--color-accent, #2F5E8A) 8%, #fff);
 }
 
-.nav-links a.is-current{
-    color: #e56e2d;
-    background: #faf1ea;
+
+/* ========== 4) TABLET (optional >=768px) ========== */
+/* Hier nur Feinschliff – Burger bleibt bis Desktop sichtbar */
+@media (min-width: 768px) {
+    .navbar { padding-inline: var(--container-pad); }
+    /* Bei Bedarf: größere Abstände, aber Navigation bleibt noch Overlay */
 }
 
+
+/* ========== 5) DESKTOP (>=1024px) ========== */
+/* Burger aus, Navigation inline rechts; Abstand zwischen Logo & Links */
+@media (min-width: 1024px) {
+    .burger-menu { display: none; }
+
+    /* Ganz wichtig: Overlay-Styles zurücknehmen & nach rechts schieben */
+    .nav-links {
+        position: static;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+
+        height: auto;
+        width: auto; max-width: none;
+        padding: 0;
+        overflow: visible;
+        background: transparent;
+        box-shadow: none;
+
+        margin-left: auto;            /* schiebt die ganze Nav an den rechten Rand */
+    }
+    /* Falls noch .active vom Mobilzustand gesetzt ist, neutralisieren */
+    .nav-links.active { transform: none; padding: 0; }
+
+    /* Liste horizontal, rechtsbündig, mit flexiblem Gap */
+    .nav-links ul {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;    /* rechtsbündig innerhalb des Nav-Blocks */
+        gap: clamp(16px, 2.4vw, 28px);
+        margin: 0; padding: 0;
+    }
+
+    /* Links dürfen auf Desktop NICHT mehr block/100% sein */
+    .nav-links a {
+        display: inline-block;
+        width: auto;
+        padding: .5rem 1rem;
+        text-transform: none;
+        white-space: nowrap;
+    }
+
+    /* Header-Padding am Desktop über die globalen Container-Pads steuern */
+    .navbar { padding-inline: var(--container-pad); }
+}
+
+
+/* ========== 6) WIDE (optional >=1440px) ========== */
+@media (min-width: 1440px) {
+    .navbar { padding-inline: var(--container-pad); }
+}

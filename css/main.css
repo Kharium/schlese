@@ -1,11 +1,13 @@
+@import url("variables.css");
 @import url("base.css");
+@import url("utilities.css");
 @import url("header.css");
 @import url("footer.css");
-@import url("responsive.css");
-@import url("ueber-mich.css");
-@import url("kontakt.css");
+@import url("startseite.css");
 @import url("leistungen.css");
 @import url("praxis.css");
 @import url("aktuelles.css");
-@import url("startseite.css");
+@import url("ueber-mich.css");
+@import url("kontakt.css");
+@import url("responsive.css");
 

@@ -1,0 +1,20 @@
+/* utilities.css – globale Helfer */
+
+.container {
+  width: min(100% - 2*var(--container-pad), var(--container-max));
+  margin-inline: auto;
+}
+
+.grid { display: grid; gap: var(--grid-gap); }
+.flex { display: flex; gap: var(--grid-gap); }
+
+/* Overflow-Schutz für sehr lange Strings */
+.content, .text, p, li { overflow-wrap: anywhere; word-break: break-word; }
+pre, code { white-space: pre-wrap; overflow-x: auto; }
+
+img { max-width: 100%; height: auto; }
+
+/* Sichtbarkeits-Helfer (optional) */
+.hide-mobile { display: none; }
+@media (min-width: 768px){ .hide-mobile { display: revert; } }
+@media (max-width: 767px){ .hide-tablet-desktop { display: none; } }

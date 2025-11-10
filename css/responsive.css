@@ -1,44 +1,97 @@
-@media screen and (min-width: 768px) {
-    .burger-menu {
-        display: none;
+/*!* ========== BREAKPOINTS ========== *!*/
+/*!* Mobile First - Alles unter 768px ist automatisch Mobile *!*/
+
+/*!* Tablet & Desktop *!*/
+/*@media screen and (min-width: 768px) {*/
+/*    !* Container & Layout *!*/
+/*    .container {*/
+/*        max-width: 1200px;*/
+/*        margin: 0 auto;*/
+/*        padding: 0 2rem;*/
+/*    }*/
+
+/*    !* Grundlegende Grid/Flex Layouts *!*/
+/*    .grid {*/
+/*        display: grid;*/
+/*        grid-template-columns: repeat(2, 1fr);*/
+/*        gap: 2rem;*/
+/*    }*/
+
+/*    .flex-row {*/
+/*        display: flex;*/
+/*        flex-direction: row;*/
+/*        gap: 2rem;*/
+/*    }*/
+
+/*    !* Über mich Sektion *!*/
+/*    .uebermich-container {*/
+/*        flex-direction: row;*/
+/*        align-items: flex-start;*/
+/*    }*/
+
+/*    .uebermich-text {*/
+/*        flex: 2;*/
+/*        padding-left: 2rem;*/
+/*    }*/
+
+/*    .uebermich-bild {*/
+/*        flex: 1;*/
+/*    }*/
+/*}*/
+
+/*!* Desktop *!*/
+/*@media screen and (min-width: 1024px) {*/
+/*    !* Größere Desktop Screens *!*/
+/*    .container {*/
+/*        padding: 0 4rem;*/
+/*    }*/
+
+/*    .grid {*/
+/*        grid-template-columns: repeat(3, 1fr);*/
+/*    }*/
+/*}*/
+
+/*!* Große Screens *!*/
+/*@media screen and (min-width: 1440px) {*/
+/*    .container {*/
+/*        max-width: 1400px;*/
+/*    }*/
+/*}*/
+
+/*!* Print *!*/
+/*@media print {*/
+/*    .no-print {*/
+/*        display: none;*/
+/*    }*/
+/*}*/
+
+
+/* responsive.css – Mobile-First Breakpoints & globale Variable-Tuning */
+
+/* iPad/Tablet (>=768px) */
+@media (min-width: 768px) {
+    :root {
+        --container-pad: 24px;     /* mehr Luft auf Tablet */
+        --grid-gap: 24px;
     }
 
-    .navbar {
-        flex-wrap: nowrap;
-        align-items: center;
+    /* Globale Grid-Helfer (optional) */
+    .grid-2-md { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Desktop (>=1024px) */
+@media (min-width: 1024px) {
+    :root {
+        --container-pad: 32px;     /* Desktop noch etwas weiter */
     }
 
-    .nav-links {
-        display: block !important;
-        position: static;
-        transform: none;
-        opacity: 1;
-        pointer-events: auto;
-        padding: 0;
-        width: auto;
-        border-top: none;
-    }
+    .grid-3-lg { grid-template-columns: repeat(3, 1fr); }
+}
 
-    .nav-links ul {
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-        margin-left: auto;
-        align-items: center;
-        text-align: left;
-    }
-
-    .uebermich-container {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .uebermich-text {
-        flex: 2;
-        padding-left: 2rem;
-    }
-
-    .uebermich-bild {
-        flex: 1;
+/* (Optional) Wide Screens (>=1440px) */
+@media (min-width: 1440px) {
+    :root {
+        --container-max: 1400px;   /* größere Maxbreite auf sehr breiten Screens */
+        --container-pad: 48px;
     }
 }

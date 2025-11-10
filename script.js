@@ -77,17 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }).mount();
     }
 
-    // Startseite-Slider
-    const startseiteSlider = document.querySelector('.glide.startseite-slider');
-    if (startseiteSlider && typeof Glide !== 'undefined') {
-        new Glide(startseiteSlider, {
-            type: 'carousel',
-            perView: 1,
-            gap: 0,
-            swipeThreshold: false,
-            dragThreshold: false
-        }).mount();
-    }
 
     /* =========================
      *  KLASSISCHES AKKORDEON

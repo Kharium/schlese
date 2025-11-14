@@ -1,33 +1,35 @@
 .aktuelles-section{
     padding-left: var(--section-spacing-default);
     padding-right: var(--section-spacing-default);
-
     width: 100%;
     overflow: hidden;
+
 }
 
 .aktuelles-container{
     width: 100%;
-    margin: 0 auto;
-    max-width: 100%
+    max-width: 100%;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+
+
 }
 
 
 .urlaub-card{
+border-radius: 10px;
+padding: var(--space-md);
     background-color: lightgrey;
     margin-bottom: var(--space-xl);
 }
 
 .notdienst-card{
-    background-color: lightgrey;
     border-radius: 10px;
-    color: var(--color-text);
     padding: var(--space-md);
+    background-color: lightgrey;
 }
 .notdienst-card h3 {
-    color: var(--color-primary);
-    margin-bottom: var(--space-md);
-    margin-left: var(--space-md);
+
 }
 
 .notdienst-card p {

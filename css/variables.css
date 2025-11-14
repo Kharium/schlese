@@ -1,27 +1,36 @@
 :root {
   /* Farben */
-  --color-primary: oklch(0.5 0.05 260);    /* Ihre Hauptfarbe (dunkelblau) */
-  --color-secondary: #0077cc;  /* Ihre Sekundärfarbe */
-  --color-text: #333333;       /* Standard Textfarbe */
-  --color-bg: #ffffff; /* Hintergrundfarbe */
-  --color-border: #dddddd;     /* Rahmenfarbe */
+  --color-primary: oklch(0.5 0.05 260);
+  --color-secondary: #0077cc;
+  --color-text: #333333;
+  --color-bg: #ffffff;
+  --color-border: #dddddd;
 
-  /* Schriftarten */
+
+  /* Basis-Abstände */
+  --space-xs: 0.25rem;   /*  4px */
+  --space-sm: 0.5rem;    /*  8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 2rem;      /* 32px */
+  --space-xl: 4rem;      /* 64px */
+
+  /* Section Spacing System */
+  --section-spacing-default: var(--space-lg);
+  --section-spacing-large: var(--space-xl);
+  --section-spacing-compact: var(--space-md);
+
+
+  
+  /* Container & Layout */
+  --container-max: 1200px;
+  --container-pad: var(--space-md);
+  --grid-gap: var(--space-md);
+
+  /* Weitere Variablen bleiben unverändert */
   --font-primary: 'Poppins', serif;
   --radius: 12px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
   --shadow-md: 0 4px 10px rgba(0,0,0,.10);
-
-  /* Layout & Abstände – NEU */
-  --spacing-small: 0.5rem;
-  --spacing-medium: 1rem;
-  --spacing-large: 2rem;
-  --container-max: 1200px;        /* Maxbreite Inhalt */
-  --container-pad: 16px;          /* Innenabstand mobil */
-  --grid-gap: 16px;               /* Standard-Gap mobil */
-
-
-  /* Weitere Variablen */
   --border-radius: 4px;
   --transition-speed: 0.3s;
 }

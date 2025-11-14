@@ -1,62 +1,50 @@
-/* Boxen bleiben wie bei dir */
-.aktuelles-box,
-.aktuelles-notdienst{
-    background-color:#DD6226;
-    color:#fff;
-    border-radius:10px;
-    padding:2rem;
-    max-width:600px;
-    margin:2rem auto;
-    font-size:1rem;
-    line-height:1.6;
-    box-shadow:0 0 10px rgba(0,0,0,.1);
-}
-.aktuelles-notdienst{ background-color:rgba(221,98,38,.73); }
+.aktuelles-section{
+    padding-left: var(--section-spacing-default);
+    padding-right: var(--section-spacing-default);
 
-/* Kopfzeile nur für die Badge */
-.aktuelles-box__head{
-    margin-bottom:.75rem;
+    width: 100%;
+    overflow: hidden;
 }
 
-/* Badge – wie im Figma-Screenshot */
-.badge{
-    display:inline-block;
-    padding:.35rem .75rem;
-    border-radius:9999px;     /* Pillenform */
-    font-weight:800;
-    font-size:.95rem;
-    letter-spacing:.02em;
-    line-height:1;
-    white-space:nowrap;
-}
-.badge--peach{
-    color:#fff;
-    background:rgba(255,255,255,.28); /* halbtransparentes Weiß auf Orange */
-}
-
-/* Links in den Boxen sichtbar machen */
-.aktuelles-box a,
-.aktuelles-notdienst a{
-    color:#fff;
-    text-decoration: underline;
-}
-
-/* Optional: kompakter auf Mobile */
-@media (max-width:640px){
-    .aktuelles-box,
-    .aktuelles-notdienst{ padding:1.25rem; }
-    .badge{ font-size:.9rem; padding:.3rem .65rem; }
+.aktuelles-container{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%
 }
 
 
-.inKueze{
-    display: inline-block;
-    margin-left: .5rem;
-    padding: .15rem .5rem;
-    font-size: .8rem;
-    font-weight: 700;
-    line-height: 1;
-    border-radius: 999px;
-    background: #fff;      /* auf Orange gut sichtbar */
-    color: #DD6226;
+.urlaub-card{
+    background-color: lightgrey;
+    margin-bottom: var(--space-xl);
+}
+
+.notdienst-card{
+    background-color: lightgrey;
+    border-radius: 10px;
+    color: var(--color-text);
+    padding: var(--space-md);
+}
+.notdienst-card h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    margin-left: var(--space-md);
+}
+
+.notdienst-card p {
+    margin-bottom: var(--space-md);
+}
+
+.notdienst-card a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.notdienst-card a:hover {
+    color: var(--color-primary);
+}
+
+/* Telefon-Links speziell stylen */
+.notdienst-card a[href^="tel:"] {
+    font-weight: 500;
 }

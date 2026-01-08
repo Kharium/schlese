@@ -35,9 +35,8 @@
   --tiles-overlap: 44px;
   margin-top: calc(-1 * var(--tiles-overlap));
 
-  width: 100%;
-  margin-left: var(--space-sm);
-  margin-right: var(--space-sm);
+  width: auto; /* wichtig: nicht 100% */
+  margin-inline: var(--space-sm);
 
   filter: drop-shadow(0 10px 20px rgba(0,0,0,.15));
   border-radius: 10px;

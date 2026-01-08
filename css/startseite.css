@@ -21,7 +21,7 @@
     display: block;
 }
 
-/* ---------- Tiles (überlappen Slider & kein Extra-Abstand) ---------- */
+/* ---------- Tiles (überlhappen Slider & kein Extra-Abstand) ---------- */
 .tiles{
     position: relative;
     z-index: 20;

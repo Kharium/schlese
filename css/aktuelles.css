@@ -12,8 +12,9 @@
 
 .notdienst-card {
     border-radius: 10px;
+    border: 1px solid var(--color-primary);
     padding: var(--space-md);
-    background-color: palegoldenrod;
+
 }
 
 .notdienst-card h3 {

@@ -22,8 +22,9 @@
 
   
   /* Container & Layout */
-  --container-max: 1200px;
-  --container-pad: var(--space-md);
+  ---container-max: 100%;
+  --container-pad: 0px; /* oder 0px wenn du wirklich edge-to-edge willst */
+
   --grid-gap: var(--space-md);
 
   /* Weitere Variablen bleiben unverändert */

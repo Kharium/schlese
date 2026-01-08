@@ -1,11 +1,18 @@
 /* ===========================
    Startseite – Slider & Tiles
    =========================== */
-
+.startseite-section{
+    padding-bottom: var(--space-md);
+}
 /* Basis: Section & Container */
 .startseite { overflow: visible; }
 .startseite .container { position: relative; }
 
+.startseite-container {
+
+
+
+}
 
 .single-image {
     position: relative;
@@ -22,19 +29,19 @@
 
 /* ---------- Tiles (überlappen Slider & kein Extra-Abstand) ---------- */
 .tiles{
-    position: relative;
-    z-index: 20;
+  position: relative;
+  z-index: 20;
 
-    /* sichtbare Überlappung: halbe Kachelhöhe ≈ 44px (anpassen nach Wunsch) */
-    --tiles-overlap: 44px;
-    margin-top: calc(-1 * var(--tiles-overlap)); /* echte Overlap, kein transform nötig */
+  --tiles-overlap: 44px;
+  margin-top: calc(-1 * var(--tiles-overlap));
 
-    width: min(960px, 92vw);         /* nicht volle Breite */
-    margin-left: 1.25rem;            /* leicht eingerückt */
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,.15));
-    border-radius: 10px;
-    overflow: hidden;                /* runde Ecken greifen */
-    background: transparent;
+  width: 100%;
+  margin-left: 0;
+
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.15));
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
 }
 
 /* einzelne Kachel */
@@ -52,7 +59,7 @@
 
 /* linke, orange Icon-Spalte */
 .tile-icon{
-    display:grid; place-items:center; height:100%;
+    display:grid; riotplace-items:center; height:100%;
     background:var(--color-primary); color:#fff;
 }
 
@@ -88,10 +95,7 @@
 
 /* Hover-Effekt */
 .tile:hover{ background:#ededed; }
-.tile:hover .tile-icon{ background:#DD6226; }
 
-/* KEIN zusätzlicher Abstand unter der Section mehr */
-.startseite .container::after{ content:""; display:block; height: 0; }
 
 /* ---------- Panels fürs Auf-/Zuklappen ---------- */
 .tile-panel{

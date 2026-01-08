@@ -1,42 +1,11 @@
+.leistungen-section{
+    padding: var(--space-md);
+    margin-top: var(--space-md);
 
-
-.leistungen {
-    padding: 3rem 1rem;
-    background-color: #fff;
 }
 
-.leistungen .container {
-    max-width: 700px;
-    margin: 0 auto;
+.leistungen-container{
+    margin-bottom: var(--space-md);
+
 }
 
-.leistungen h2 {
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: #000;
-}
-
-.leistungen p {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #222;
-    margin-bottom: 2rem;
-}
-
-.leistungen-list .leistung {
-    margin-bottom: 1.8rem;
-}
-
-.leistungen-list h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    color: #111;
-}
-
-.leistungen-list p {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #333;
-}

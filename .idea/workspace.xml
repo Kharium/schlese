@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6e727e6-47dd-4c9d-8b1a-a0cfac511385" name="Changes" comment="aufgeräiumte section thats how u do it">
+    <list default="true" id="a6e727e6-47dd-4c9d-8b1a-a0cfac511385" name="Changes" comment="aufgeräiumte sectiopöpoöpouuon thats how u do it">
+      <change afterPath="$PROJECT_DIR$/assets/praxis/oldenburg2007-02-09oldenburg2007-02-09_dsc9622.1500.0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/aktuelles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/aktuelles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/leistungen.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/leistungen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/praxis.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/praxis.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/startseite.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/startseite.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/ueber-mich.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/ueber-mich.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/variables.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +67,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/praxis" />
+    </key>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a6e727e6-47dd-4c9d-8b1a-a0cfac511385" name="Changes" comment="" />
@@ -71,7 +84,10 @@
       <workItem from="1762796928478" duration="79000" />
       <workItem from="1762797010191" duration="128000" />
       <workItem from="1762797139497" duration="3311000" />
-      <workItem from="1763129952536" duration="7958000" />
+      <workItem from="1763129952536" duration="17120000" />
+      <workItem from="1767266964722" duration="489000" />
+      <workItem from="1767708215764" duration="1969000" />
+      <workItem from="1767777143442" duration="10632000" />
     </task>
     <task id="LOCAL-00001" summary="aufgeräiumte section thats how u do it">
       <option name="closed" value="true" />
@@ -81,7 +97,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763140120319</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="aufgeräiumte sectiopöpoöpouuon thats how u do it">
+      <option name="closed" value="true" />
+      <created>1763141368170</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763141368170</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +113,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="aufgeräiumte section thats how u do it" />
-    <option name="LAST_COMMIT_MESSAGE" value="aufgeräiumte section thats how u do it" />
+    <MESSAGE value="aufgeräiumte sectiopöpoöpouuon thats how u do it" />
+    <option name="LAST_COMMIT_MESSAGE" value="aufgeräiumte sectiopöpoöpouuon thats how u do it" />
   </component>
 </project>

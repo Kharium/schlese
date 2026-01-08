@@ -1,12 +1,9 @@
 /* ========== ÜBER MICH ========== */
 .uebermich-section {
-    background-color: #fff;
-    padding: 3rem 1rem;
+  padding: var(--space-md);
 }
 
 .uebermich-container {
-    max-width: 1000px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 2rem;

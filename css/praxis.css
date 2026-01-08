@@ -1,16 +1,8 @@
-.praxis{
-    padding: 3rem 1rem;
-    background-color: #fff;
-
+.praxis-section{
+    padding: var(--space-md);
 }
 
-.praxis.container{
 
-}
-
-.praxis.container h2{
-    margin-bottom: 50.5rem;
-}
 
 /* Slider-Basis */
 .glide.praxis-slider { position: relative; max-width: 100%; }

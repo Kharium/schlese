@@ -1,33 +1,21 @@
-.aktuelles-section{
-    padding-left: var(--section-spacing-default);
-    padding-right: var(--section-spacing-default);
-    width: 100%;
+.aktuelles-section {
+   padding: var(--space-md);
     overflow: hidden;
-
 }
 
-.aktuelles-container{
-    width: 100%;
-    max-width: 100%;
+.aktuelles-container {
     color: var(--color-primary);
     margin-bottom: var(--space-md);
 
-
 }
 
 
-.urlaub-card{
-border-radius: 10px;
-padding: var(--space-md);
-    background-color: lightgrey;
-    margin-bottom: var(--space-xl);
-}
-
-.notdienst-card{
+.notdienst-card {
     border-radius: 10px;
     padding: var(--space-md);
-    background-color: lightgrey;
+    background-color: palegoldenrod;
 }
+
 .notdienst-card h3 {
 
 }

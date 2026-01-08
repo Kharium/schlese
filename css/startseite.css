@@ -8,11 +8,7 @@
 .startseite { overflow: visible; }
 .startseite .container { position: relative; }
 
-.startseite-container {
-
-
-
-}
+.startseite-container { }
 
 .single-image {
     position: relative;
@@ -25,29 +21,27 @@
     display: block;
 }
 
-
-
 /* ---------- Tiles (überlappen Slider & kein Extra-Abstand) ---------- */
 .tiles{
-  position: relative;
-  z-index: 20;
+    position: relative;
+    z-index: 20;
 
-  --tiles-overlap: 44px;
-  margin-top: calc(-1 * var(--tiles-overlap));
+    --tiles-overlap: 44px;
+    margin-top: calc(-1 * var(--tiles-overlap));
 
-  width: auto; /* wichtig: nicht 100% */
-  margin-inline: var(--space-sm);
+    width: auto; /* wichtig: nicht 100% */
+    margin-inline: var(--space-sm);
 
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,.15));
-  border-radius: 10px;
-  overflow: hidden;
-  background: transparent;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,.15));
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent;
 }
 
 /* einzelne Kachel */
 .tile{
     display: grid;
-    grid-template-columns: 53px 1fr 52px;   /* Icon | Label | Chevron */
+    grid-template-columns: 53px 1fr 52px;   /* Icon | Label | Chevron (mobil) */
     align-items: center;
     min-height: 72px;
     background: #f2f2f2;
@@ -59,8 +53,11 @@
 
 /* linke, orange Icon-Spalte */
 .tile-icon{
-    display:grid; riotplace-items:center; height:100%;
-    background:var(--color-primary); color:#fff;
+    display:grid;
+    place-items:center;
+    height:100%;
+    background:var(--color-primary);
+    color:#fff;
 }
 
 /* Material Symbols Größe – passt für Rounded & Outlined */
@@ -82,7 +79,9 @@
 
 /* rechtes Icon (ohne Kreis) */
 .tile-chevron{
-    display:grid; place-items:center; justify-self:center;
+    display:grid;
+    place-items:center;
+    justify-self:center;
     padding-right: .25rem;   /* etwas Luft rechts */
     color:#3a3a3a;
 }
@@ -95,7 +94,6 @@
 
 /* Hover-Effekt */
 .tile:hover{ background:#ededed; }
-
 
 /* ---------- Panels fürs Auf-/Zuklappen ---------- */
 .tile-panel{
@@ -116,10 +114,16 @@
         padding: 0 1rem;
     }
 
+    /* 2 Spalten: Standort + Sprechzeiten nebeneinander */
     .tiles-wrapper {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+    }
+
+    /* 3. Tile-Group (Termin vereinbaren) volle Breite darunter */
+    .tiles-wrapper > .tile-group:nth-child(3) {
+        grid-column: 1 / -1;
     }
 
     .tile-group {
@@ -133,21 +137,26 @@
         border-bottom: none;
     }
 
-    /* >>> HIER EINFÜGEN: Chevron entfernen + Grid anpassen <<< */
+    /* Chevron auf Desktop ausblenden + Grid der Tile-Zeile anpassen */
     .tile-chevron{
         display: none;
     }
-
     .tile{
         grid-template-columns: 53px 1fr; /* Icon | Label */
     }
 
+    /* Panels auf Desktop immer sichtbar (für Standort/Sprechzeiten) */
     .tile-panel {
         display: block !important;
         height: auto !important;
         max-height: none !important;
         border: none;
         border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* Termin vereinbaren hat keinen Inhalt -> Panel vorsichtshalber aus */
+    .tiles-wrapper > .tile-group:nth-child(3) .tile-panel {
+        display: none !important;
     }
 
     /* Anpassungen für die Panel-Inhalte */

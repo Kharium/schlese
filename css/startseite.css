@@ -159,4 +159,21 @@
 
     .tile-group { display: flex; flex-direction: column; }
     .tile-panel { flex: 1; }
+
+    /* =========================================================
+       Desktop: Standort & Sprechzeiten Labels (Tile-Header) deaktivieren
+       (1. und 2. Tile sollen nicht hoverbar/klickbar sein)
+       Termin vereinbaren (3.) bleibt normal klickbar.
+       ========================================================= */
+    .tiles-wrapper > .tile-group:nth-child(1) > .tile,
+    .tiles-wrapper > .tile-group:nth-child(2) > .tile {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    /* Hover-Effekt für diese beiden Tiles neutralisieren */
+    .tiles-wrapper > .tile-group:nth-child(1) > .tile:hover,
+    .tiles-wrapper > .tile-group:nth-child(2) > .tile:hover {
+        background: #f2f2f2;
+    }
 }

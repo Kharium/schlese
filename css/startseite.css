@@ -133,6 +133,15 @@
         border-bottom: none;
     }
 
+    /* >>> HIER EINFÜGEN: Chevron entfernen + Grid anpassen <<< */
+    .tile-chevron{
+        display: none;
+    }
+
+    .tile{
+        grid-template-columns: 53px 1fr; /* Icon | Label */
+    }
+
     .tile-panel {
         display: block !important;
         height: auto !important;

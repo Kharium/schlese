@@ -114,14 +114,14 @@
         padding: 0 1rem;
     }
 
-    /* 2 Spalten: Standort + Sprechzeiten nebeneinander */
+    /* WICHTIG: 2 Spalten statt 3 */
     .tiles-wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
-    /* 3. Tile-Group (Termin vereinbaren) volle Breite darunter */
+    /* Termin vereinbaren (3. Kachel) über volle Breite darunter */
     .tiles-wrapper > .tile-group:nth-child(3) {
         grid-column: 1 / -1;
     }
@@ -137,15 +137,10 @@
         border-bottom: none;
     }
 
-    /* Chevron auf Desktop ausblenden + Grid der Tile-Zeile anpassen */
-    .tile-chevron{
-        display: none;
-    }
-    .tile{
-        grid-template-columns: 53px 1fr; /* Icon | Label */
-    }
+    /* Chevron auf Desktop ausblenden + Tile-Grid anpassen */
+    .tile-chevron { display: none; }
+    .tile { grid-template-columns: 53px 1fr; }
 
-    /* Panels auf Desktop immer sichtbar (für Standort/Sprechzeiten) */
     .tile-panel {
         display: block !important;
         height: auto !important;
@@ -154,28 +149,14 @@
         border-top: 1px solid rgba(0,0,0,0.06);
     }
 
-    /* Termin vereinbaren hat keinen Inhalt -> Panel vorsichtshalber aus */
+    /* Termin vereinbaren hat keinen Inhalt -> Panel sicher aus */
     .tiles-wrapper > .tile-group:nth-child(3) .tile-panel {
         display: none !important;
     }
 
-    /* Anpassungen für die Panel-Inhalte */
-    .kontakt-item {
-        margin-bottom: 1rem;
-    }
+    .kontakt-item { margin-bottom: 1rem; }
+    .sprechzeiten-liste { margin: 0; padding: 0; }
 
-    .sprechzeiten-liste {
-        margin: 0;
-        padding: 0;
-    }
-
-    /* Optional: Höhenanpassung */
-    .tile-group {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .tile-panel {
-        flex: 1;
-    }
+    .tile-group { display: flex; flex-direction: column; }
+    .tile-panel { flex: 1; }
 }

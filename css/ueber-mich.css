@@ -54,11 +54,18 @@
 }
 
 .accordion-header {
+    appearance: none;
     -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent; /* iOS/iPadOS: blaues Antipp-Highlight aus */
+
+    -webkit-tap-highlight-color: transparent; /* iOS/iPadOS: Tap-Highlight aus */
     touch-action: manipulation;
+
     background: none;
     border: none;
+
+    color: var(--color-text); /* <- wichtig: explizit, damit iOS nicht blau tinted */
+    -webkit-text-fill-color: currentColor; /* Safari/iOS: Textfarbe erzwingen */
+
     width: 100%;
     text-align: left;
     font-weight: 700;
@@ -69,8 +76,16 @@
     align-items: center;
     cursor: pointer;
 }
-.accordion-header:focus {
-    outline: none; /* falls nach Tap ein Fokus-Rand bleibt */
+
+.accordion-title,
+.accordion-icon {
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+}
+
+.accordion-header:focus,
+.accordion-header:active {
+    outline: none;
 }
 
 .accordion-icon {

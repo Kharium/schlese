@@ -1,3 +1,13 @@
+// Scroll-Position beim Reload nicht wiederherstellen (verhindert "Springen")
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// Beim Reload immer ganz nach oben (Startseite)
+window.addEventListener('load', () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+});
+
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
     /* =========================
@@ -77,20 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }).mount();
     }
 
-
     /* =========================
      *  KLASSISCHES AKKORDEON
-     *  (für Elemente mit .accordion-header)
      * ========================= */
     document.querySelectorAll('.accordion-header').forEach(btn => {
         btn.addEventListener('click', () => {
             const item = btn.closest('.accordion-item') || btn.parentElement;
             item?.classList.toggle('open');
 
-            // Optional: internes Icon drehen/wechseln
             const icon = btn.querySelector('.material-symbols-rounded, .material-symbols-outlined');
             if (icon) {
-                // wenn stat_1 / stat_minus_1 genutzt wird:
                 icon.textContent = item.classList.contains('open') ? 'stat_minus_1' : 'stat_1';
             }
         });
@@ -98,8 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* =========================
      *  TILES-AKKORDEON
-     *  <a.tile> gefolgt von <div.tile-panel>
-     *  – klick öffnet Panel & toggelt Icon
      * ========================= */
     document.querySelectorAll('.tiles .tile').forEach(tile => {
         const panel = tile.nextElementSibling;
@@ -107,18 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!hasPanel) return;
 
-        // Startzustand
         panel.hidden = true;
         tile.classList.remove('open');
 
         tile.addEventListener('click', (e) => {
-            // Link-Navigation verhindern – wir nutzen die Tile als Trigger
             e.preventDefault();
 
             const isOpen = tile.classList.toggle('open');
             panel.hidden = !isOpen;
 
-            // Icon tauschen: stat_1 <-> stat_minus_1
             const icon = tile.querySelector('.tile-chevron .material-symbols-rounded, .tile-chevron .material-symbols-outlined');
             if (icon) icon.textContent = isOpen ? 'stat_minus_1' : 'stat_1';
         });

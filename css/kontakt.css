@@ -87,3 +87,61 @@
 .termin-button:hover {
     background-color: var(--color-primary);
 }
+
+/* ===========================
+   Sprechzeiten (Liste in 2 Spalten)
+   =========================== */
+
+/* ul reset + Grundlayout */
+.sprechzeiten-liste{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    gap: var(--space-sm);
+}
+
+/* jede Zeile: Tag links, Zeit rechts */
+.sprechzeiten-liste li{
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 9.5rem) 1fr; /* links fix-ish, rechts flexibel */
+    column-gap: var(--space-md);
+    align-items: start;
+
+    padding: .35rem 0;
+}
+
+/* Tag (1. span) */
+.sprechzeiten-liste li > span:first-child{
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+/* Zeit (2. span) */
+.sprechzeiten-liste li > span:last-child{
+    color: var(--color-text);
+    line-height: 1.35;
+}
+
+/* Optional: feine Trennlinie zwischen den Zeilen (wirkt sehr „geordnet“) */
+.sprechzeiten-liste li + li{
+    border-top: 1px solid rgba(0,0,0,.06);
+    padding-top: .6rem;
+}
+
+/* Spezialzeile "und nach Vereinbarung" (bei leerem linken span) */
+.sprechzeiten-liste li > span:first-child:empty{
+    display: none;
+}
+.sprechzeiten-liste li:has(> span:first-child:empty){
+    grid-template-columns: 1fr; /* dann volle Breite für den Text */
+}
+
+/* Mobile: etwas schmalere linke Spalte */
+@media (max-width: 420px){
+    .sprechzeiten-liste li{
+        grid-template-columns: minmax(6.5rem, 8rem) 1fr;
+    }
+}

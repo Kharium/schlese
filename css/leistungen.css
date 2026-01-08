@@ -1,11 +1,32 @@
 .leistungen-section{
     padding: var(--space-md);
     margin-top: var(--space-md);
-
 }
 
 .leistungen-container{
     margin-bottom: var(--space-md);
-
 }
 
+/* ✅ Einheitliche Abstände im Kopfbereich */
+.leistungen-container > h2{
+    margin: 0 0 var(--space-sm) 0;
+}
+
+.leistungen-container > p{
+    margin: 0 0 var(--space-lg) 0;
+}
+
+/* ✅ Einheitlicher Abstand zwischen den einzelnen Leistungen */
+.leistungen-list{
+    display: grid;
+    gap: var(--space-md);
+}
+
+/* ✅ Abstände innerhalb jeder Leistung */
+.leistung h3{
+    margin: 0 0 var(--space-xs) 0;
+}
+
+.leistung p{
+    margin: 0;
+}

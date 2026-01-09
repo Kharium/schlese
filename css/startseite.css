@@ -40,7 +40,8 @@
 
     /* nur 1 Shadow-Quelle */
     filter: none;
-    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+    box-shadow: none;                 /* <- entfernt die „Umrandung“/Abgrenzung */
+    background: var(--color-bg);      /* <- Gap-Flächen sind exakt wie Section */
 
     border-radius: 10px;
     overflow: hidden;
@@ -138,7 +139,7 @@
         gap: 1rem;
 
         /* wichtig: Gap-Fläche ist weiß */
-        background: transparent;
+        background: var(--color-bg);  /* <- sicherstellen, dass Grid-Gaps weiß sind */
     }
 
     /* Termin vereinbaren (3. Kachel) über volle Breite darunter */

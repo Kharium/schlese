@@ -10,7 +10,7 @@
 }
 
 .aktuelles-container{
-    margin-bottom: var(--space-md);
+    margin-bottom: 0;
 }
 
 /* ---------- Card ---------- */

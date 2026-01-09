@@ -1,8 +1,9 @@
 /* ===========================
    Startseite – Hero & Tiles
-   - Tiles überlappen das Bild
-   - Desktop: Grid-Gaps transparent (Bild/Hintergrund sichtbar)
-   - Kein „Abschneiden“ durch overflow am Tiles-Container
+   - Mobile-first: Akkordeon klappt Panels auf/zu
+   - Jede Tile-Gruppe ist eine „Card“ mit 10px Radius + 1px Primary Border
+   - Keine grauen Trennlinien unten an .tile
+   - Icon-Badges links sind sauber rund (keine eckigen Farbflecken)
    =========================== */
 
 .startseite-section{
@@ -10,7 +11,7 @@
     background: var(--color-bg);
 }
 
-/* (Optional/Altbestand) Wrapper für ein Hero-Bild, falls du später img dort hineinlegst */
+/* Optionaler Wrapper (falls später wieder genutzt) */
 .single-image{
     position: relative;
     max-width: 100%;
@@ -21,115 +22,121 @@
     display: block;
 }
 
-/* ---------- Tiles (mobile first) ---------- */
+/* ---------- Tiles (mobile-first) ---------- */
+
 .tiles{
     position: relative;
     z-index: 20;
 
     --tiles-overlap: 44px;
     margin-top: calc(-1 * var(--tiles-overlap));
-
     margin-inline: var(--space-sm);
-    border-radius: 10px;
 
-    /* Mobile: geschlossene „Box“, keine sichtbaren Gaps */
-    background: var(--color-bg);
-    overflow: hidden;
+    /* kein „Box“-Look um alles, Cards regeln das */
+    background: transparent;
+    overflow: visible;
 
-    /* keine doppelte Schattenlogik */
     filter: none;
     box-shadow: none;
 }
 
-/* Wrapper: mobil als Block-Liste */
 .tiles-wrapper{
-    display: block;
+    display: grid;
+    gap: var(--space-sm);
+}
+
+/* Jede Gruppe ist die Card (Border + Radius) */
+.tile-group{
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+    overflow: hidden;
     background: var(--color-bg);
 }
 
-/* einzelne Kachel (Link-Zeile) */
+/* Click-Zeile */
 .tile{
     display: grid;
-    grid-template-columns: 53px 1fr 52px; /* Icon | Label | Chevron */
+    grid-template-columns: 56px 1fr 44px; /* Icon | Label | Chevron */
     align-items: center;
     min-height: 72px;
-    border: 1px solid var(--color-primary);
-    border-radius: 10px;
+
+    padding-right: .25rem;
+
     background: var(--color-bg);
     text-decoration: none;
     color: inherit;
 
-    border-bottom: 1px solid rgba(0,0,0,.06);
+    /* Wichtig: keine grauen „Einfärbungen/Trenner“ */
+    border: 0;
+    outline: 0;
 }
-.tile:last-child{ border-bottom: 0; }
 
-/* Icon-Spalte */
+/* Icon-Badge links: rund, ohne eckige Farbkanten */
 .tile-icon{
+    width: 40px;
+    height: 40px;
+    margin-left: 12px;
+
     display: grid;
     place-items: center;
-    height: 100%;
+
     background: var(--color-primary);
     color: #fff;
+    border-radius: 999px; /* rund */
 }
 
 /* Material Symbols */
 .tile-icon .material-symbols-rounded,
 .tile-icon .material-symbols-outlined{
-    font-size: 50px;
+    font-size: 24px;
     line-height: 1;
-    font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 34;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-/* Label */
 .tile-label{
     font-weight: 600;
     font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
     letter-spacing: .02em;
-    margin-left: 2em;
     color: #59616b;
 }
 
-/* Chevron (nur mobil) */
+/* Chevron (mobil) */
 .tile-chevron{
     display: grid;
     place-items: center;
-    justify-self: center;
-    padding-right: .25rem;
+    justify-self: end;
     color: #3a3a3a;
 }
 .tile-chevron .material-symbols-rounded,
 .tile-chevron .material-symbols-outlined{
     font-size: 22px;
     line-height: 1;
-    font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 22;
+    font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 22;
 }
 
-/* Hover: neutral */
+/* Hover/Active dezent, ohne graue Trennlinien */
 .tile:hover{ background: var(--color-bg); }
+.tile:active{ background: rgba(0,0,0,.02); }
 
-/* Panel (mobil auf/zu) */
+/* Panel (auf/zu per JS: hidden true/false) */
 .tile-panel{
     background: var(--color-bg);
     padding: 1rem 1.25rem 1.25rem;
-    border-left: 1px solid rgba(0,0,0,.06);
-    border-right: 1px solid rgba(0,0,0,.06);
-    border-bottom: 1px solid rgba(0,0,0,.06);
+
+    /* Trennung innerhalb der Card */
+    border-top: 1px solid rgba(0,0,0,.08);
 }
 
 /* ---------- Desktop ---------- */
 @media (min-width: 768px){
-    /* Wichtig: Container nicht clippen, sonst wirkt das Bild „abgeschnitten“ */
     .tiles{
         overflow: visible;
-        background: transparent; /* damit Grid-Gaps wirklich Bild/Hintergrund zeigen */
+        background: transparent;
     }
 
-    /* Grid-Layout + transparente Gaps */
     .tiles-wrapper{
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-        background: transparent;
     }
 
     /* 3. Kachel volle Breite */
@@ -137,24 +144,11 @@
         grid-column: 1 / -1;
     }
 
-    /* Karten pro Gruppe */
-    .tile-group{
-        background: var(--color-bg);
-        border-radius: 10px;
-        overflow: hidden;
-
-        border: 1px solid var(--color-primary);
-        box-shadow: none;
-
-        display: flex;
-        flex-direction: column;
-    }
-
+    /* Chevron auf Desktop aus */
     .tile{
-        border-bottom: none;
-        grid-template-columns: 53px 1fr; /* Chevron weg */
+        grid-template-columns: 56px 1fr;
+        padding-right: 0;
     }
-
     .tile-chevron{ display: none; }
 
     /* Panels auf Desktop immer sichtbar */
@@ -162,11 +156,7 @@
         display: block !important;
         height: auto !important;
         max-height: none !important;
-
-        border: none;
-        border-top: 1px solid rgba(0,0,0,.06);
-
-        flex: 1;
+        border-top: 1px solid rgba(0,0,0,.08);
     }
 
     /* Termin vereinbaren: kein Panel */
@@ -180,12 +170,8 @@
         pointer-events: none;
         cursor: default;
     }
-    .tiles-wrapper > .tile-group:nth-child(1) > .tile:hover,
-    .tiles-wrapper > .tile-group:nth-child(2) > .tile:hover{
-        background: var(--color-bg);
-    }
 
-    /* kleine Abstände */
+    /* kleine Abstände (wie gehabt) */
     .kontakt-item{ margin-bottom: 1rem; }
     .sprechzeiten-liste{ margin: 0; padding: 0; }
 }

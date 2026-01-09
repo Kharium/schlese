@@ -1,53 +1,52 @@
-.aktuelles-section {
+/* =========================
+   Aktuelles
+   - Notdienst Card + Details/Accordion
+   - "Info:" Label wurde im HTML entfernt (kein CSS dafür nötig)
+   ========================= */
+
+.aktuelles-section{
     padding: var(--space-md);
     overflow: hidden;
 }
 
-.aktuelles-container {
+.aktuelles-container{
     margin-bottom: var(--space-md);
-
 }
 
-.notdienst-card {
-    border-radius: 10px;
+/* ---------- Card ---------- */
+.notdienst-card{
     border: 1px solid var(--color-primary);
+    border-radius: 10px;
     padding: var(--space-md);
+    background: var(--color-bg);
 }
 
-.notdienst-card h3 {
+.notdienst-card p{
+    margin: 0 0 var(--space-md);
+}
+.notdienst-card p:last-child{
+    margin-bottom: 0;
 }
 
-.notdienst-card p {
-    margin-bottom: var(--space-md);
-}
-
-.notdienst-card a {
+.notdienst-card a{
     color: var(--color-secondary);
     text-decoration: none;
     transition: color var(--transition-speed) ease;
 }
-
-.notdienst-card a:hover {
+.notdienst-card a:hover{
     color: var(--color-primary);
 }
-
-/* Telefon-Links speziell stylen */
-.notdienst-card a[href^="tel:"] {
+.notdienst-card a[href^="tel:"]{
     font-weight: 500;
 }
 
-/* =========================
-   Notdienst Info-Accordion
-   (details/summary)
-   ========================= */
-
-/* <details> selbst */
-.notdienst-card .info-accordion {
+/* ---------- Details / Summary Accordion ---------- */
+.notdienst-card .info-accordion{
     border: 0;
 }
 
-/* <summary> als Kopfzeile (klickbar) */
-.notdienst-card .info-summary {
+/* klickbarer Kopf */
+.notdienst-card .info-summary{
     list-style: none;
     cursor: pointer;
 
@@ -56,68 +55,67 @@
     gap: 8px;
 }
 
-/* Standard-Pfeil/Marker von summary entfernen */
-.notdienst-card .info-summary::-webkit-details-marker {
+/* Standard-Marker entfernen */
+.notdienst-card .info-summary::-webkit-details-marker{
     display: none;
 }
 
-/* "Info:" optisch etwas stärker */
-.notdienst-card .info-label {
+/* Titel */
+.notdienst-card .info-title{
     font-weight: 600;
 }
 
-/* Titel ebenfalls kräftig */
-.notdienst-card .info-title {
-    font-weight: 600;
-}
-
-/* Chevron rechts ausrichten + animieren */
-.notdienst-card .info-chevron {
+/* Chevron rechts + Rotation */
+.notdienst-card .info-chevron{
     margin-left: auto;
     transition: transform 200ms ease;
 }
-
-/* Wenn geöffnet: Chevron drehen */
-.notdienst-card .info-accordion[open] .info-chevron {
+.notdienst-card .info-accordion[open] .info-chevron{
     transform: rotate(180deg);
 }
 
-/* Vorschau-Text (nur im geschlossenen Zustand sichtbar) */
-.notdienst-card .info-preview {
+/* Vorschau (nur zugeklappt sichtbar) */
+.notdienst-card .info-preview{
     margin-top: 10px;
-
-    /* zeig "ein bisschen" Text */
-    max-height: 3.8em; /* ~2 Zeilen (abhängig von line-height) */
+    max-height: 3.8em; /* ~2 Zeilen, abhängig von line-height */
     overflow: hidden;
     position: relative;
-
     opacity: 0.95;
 }
 
-/* Fade-Out am Ende der Vorschau */
-.notdienst-card .info-preview::after {
+/* Fade-Out der Vorschau */
+.notdienst-card .info-preview::after{
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     height: 2.2em;
-
-    /* Wenn deine Card nicht weiß ist: diese Farbe anpassen */
     background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
 }
 
 /* Wenn offen: Vorschau ausblenden */
-.notdienst-card .info-accordion[open] .info-preview {
+.notdienst-card .info-accordion[open] .info-preview{
     display: none;
 }
 
-/* Body (Volltext) Abstand nach oben */
-.notdienst-card .info-body {
+/* Volltext */
+.notdienst-card .info-body{
     margin-top: 10px;
 }
-
-/* im aufgeklappten Zustand unten nicht "zu lang" */
-.notdienst-card .info-body p:last-child {
+.notdienst-card .info-body p:last-child{
     margin-bottom: 0;
+}
+
+/* ---------- Mobile Feinschliff (Option A: kompakter, ohne 1-Zeile-Zwang) ---------- */
+@media (max-width: 480px){
+    .notdienst-card .info-summary{
+        gap: 6px;
+    }
+
+    .notdienst-card .info-title{
+        font-weight: 500;
+        font-size: 0.95rem;
+        line-height: 1.2;
+    }
 }

@@ -133,6 +133,23 @@
 
 /* ---------- Desktop ---------- */
 @media screen and (min-width: 768px) {
+  /* Wichtig: nicht den ganzen Tiles-Block clippen, sonst „schneidest“ du die Optik ab */
+  .tiles{
+    overflow: visible;
+    background: transparent; /* der Block selbst soll das Bild nicht übermalen */
+  }
+
+  /* Clipping/Radius gehört auf die einzelnen Karten */
+  .tile-group{
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  /* Optional: damit die Grid-Gaps nicht transparent sind (falls du da weiß willst) */
+  .tiles-wrapper{
+    background: transparent;
+  }
+
     .tiles-wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);

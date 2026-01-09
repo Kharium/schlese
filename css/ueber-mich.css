@@ -27,7 +27,7 @@
 }
 
 .uebermich-text h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-sm);
     color: #444;
     font-weight: normal;
 }

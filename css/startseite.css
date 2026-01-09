@@ -127,7 +127,7 @@
 
 /* „open“ soll ebenfalls nicht grau werden */
 .tile.open{
-    background: transparent;
+    background: var(--color-bg);
 }
 
 /* ---------- Desktop ---------- */
@@ -138,7 +138,7 @@
         gap: 1rem;
 
         /* wichtig: Gap-Fläche ist weiß */
-       background-color: #2F5E8A;
+        background: transparent;
     }
 
     /* Termin vereinbaren (3. Kachel) über volle Breite darunter */

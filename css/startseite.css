@@ -53,7 +53,8 @@
     grid-template-columns: 53px 1fr 52px; /* Icon | Label | Chevron */
     align-items: center;
     min-height: 72px;
-
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
     background: var(--color-bg);
     text-decoration: none;
     color: inherit;

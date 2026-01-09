@@ -1,7 +1,8 @@
 /* ===========================
-   Startseite – Slider & Tiles
-   Ziel: überall konsistenter Hintergrund (var(--color-bg))
-   + saubere Tiles ohne graue Flächen/Gaps
+   Startseite – Hero & Tiles
+   - Tiles überlappen das Bild
+   - Desktop: Grid-Gaps transparent (Bild/Hintergrund sichtbar)
+   - Kein „Abschneiden“ durch overflow am Tiles-Container
    =========================== */
 
 .startseite-section{
@@ -9,25 +10,18 @@
     background: var(--color-bg);
 }
 
-/* Basis: Section & Container */
-.startseite { overflow: visible; }
-.startseite .container { position: relative; }
-
-.startseite-container {}
-
-/* (Falls du später wieder .single-image img nutzt) */
-.single-image {
+/* (Optional/Altbestand) Wrapper für ein Hero-Bild, falls du später img dort hineinlegst */
+.single-image{
     position: relative;
     max-width: 100%;
 }
-
-.single-image img {
+.single-image img{
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* ---------- Tiles (überlappen Hero/Foto) ---------- */
+/* ---------- Tiles (mobile first) ---------- */
 .tiles{
     position: relative;
     z-index: 20;
@@ -35,31 +29,28 @@
     --tiles-overlap: 44px;
     margin-top: calc(-1 * var(--tiles-overlap));
 
-    width: auto;                /* nicht 100% */
     margin-inline: var(--space-sm);
-
-    /* nur 1 Shadow-Quelle */
-    filter: none;
-    box-shadow: none;                 /* <- entfernt die „Umrandung“/Abgrenzung */
-    background: var(--color-bg);      /* <- Gap-Flächen sind exakt wie Section */
-
     border-radius: 10px;
+
+    /* Mobile: geschlossene „Box“, keine sichtbaren Gaps */
+    background: var(--color-bg);
     overflow: hidden;
 
-    /* wichtig: nicht transparent, damit nix „durchscheint“ */
-    background: var(--color-bg);
+    /* keine doppelte Schattenlogik */
+    filter: none;
+    box-shadow: none;
 }
 
-/* Wrapper: mobil/standard als normaler Block (keine Grid-Gaps) */
-.tiles-wrapper {
+/* Wrapper: mobil als Block-Liste */
+.tiles-wrapper{
     display: block;
     background: var(--color-bg);
 }
 
-/* einzelne Kachel */
+/* einzelne Kachel (Link-Zeile) */
 .tile{
     display: grid;
-    grid-template-columns: 53px 1fr 52px;   /* Icon | Label | Chevron (mobil) */
+    grid-template-columns: 53px 1fr 52px; /* Icon | Label | Chevron */
     align-items: center;
     min-height: 72px;
 
@@ -71,16 +62,16 @@
 }
 .tile:last-child{ border-bottom: 0; }
 
-/* linke, farbige Icon-Spalte */
+/* Icon-Spalte */
 .tile-icon{
-    display:grid;
-    place-items:center;
-    height:100%;
+    display: grid;
+    place-items: center;
+    height: 100%;
     background: var(--color-primary);
-    color:#fff;
+    color: #fff;
 }
 
-/* Material Symbols Größe */
+/* Material Symbols */
 .tile-icon .material-symbols-rounded,
 .tile-icon .material-symbols-outlined{
     font-size: 50px;
@@ -94,16 +85,16 @@
     font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
     letter-spacing: .02em;
     margin-left: 2em;
-    color:#59616b;
+    color: #59616b;
 }
 
-/* rechtes Icon */
+/* Chevron (nur mobil) */
 .tile-chevron{
-    display:grid;
-    place-items:center;
-    justify-self:center;
+    display: grid;
+    place-items: center;
+    justify-self: center;
     padding-right: .25rem;
-    color:#3a3a3a;
+    color: #3a3a3a;
 }
 .tile-chevron .material-symbols-rounded,
 .tile-chevron .material-symbols-outlined{
@@ -112,108 +103,88 @@
     font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 22;
 }
 
-/* Hover: nur minimaler „Lift“ statt grauer Fläche */
-.tile:hover{
-    background: var(--color-bg);
-}
+/* Hover: neutral */
+.tile:hover{ background: var(--color-bg); }
 
-/* ---------- Panels fürs Auf-/Zuklappen (mobil) ---------- */
+/* Panel (mobil auf/zu) */
 .tile-panel{
     background: var(--color-bg);
-    padding: 1rem 1.25rem 1.25rem 1.25rem;
+    padding: 1rem 1.25rem 1.25rem;
     border-left: 1px solid rgba(0,0,0,.06);
     border-right: 1px solid rgba(0,0,0,.06);
     border-bottom: 1px solid rgba(0,0,0,.06);
 }
 
-/* „open“ soll ebenfalls nicht grau werden */
-.tile.open{
-    background: var(--color-bg);
-}
-
 /* ---------- Desktop ---------- */
-@media screen and (min-width: 768px) {
-  /* Wichtig: nicht den ganzen Tiles-Block clippen, sonst „schneidest“ du die Optik ab */
-  .tiles{
-    overflow: visible;
-    background: transparent; /* der Block selbst soll das Bild nicht übermalen */
-  }
+@media (min-width: 768px){
+    /* Wichtig: Container nicht clippen, sonst wirkt das Bild „abgeschnitten“ */
+    .tiles{
+        overflow: visible;
+        background: transparent; /* damit Grid-Gaps wirklich Bild/Hintergrund zeigen */
+    }
 
-  /* Clipping/Radius gehört auf die einzelnen Karten */
-  .tile-group{
-    overflow: hidden;
-    background: var(--color-bg);
-  }
-
-  /* Optional: damit die Grid-Gaps nicht transparent sind (falls du da weiß willst) */
-  .tiles-wrapper{
-    background: transparent;
-  }
-
-    .tiles-wrapper {
+    /* Grid-Layout + transparente Gaps */
+    .tiles-wrapper{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-
-        /* wichtig: Gap-Fläche ist weiß */
-        background: var(--color-bg);  /* <- sicherstellen, dass Grid-Gaps weiß sind */
+        background: transparent;
     }
 
-    /* Termin vereinbaren (3. Kachel) über volle Breite darunter */
-    .tiles-wrapper > .tile-group:nth-child(3) {
+    /* 3. Kachel volle Breite */
+    .tiles-wrapper > .tile-group:nth-child(3){
         grid-column: 1 / -1;
     }
 
-    /* Tile-Gruppen: keine graue Fläche, Shadow bleibt nur auf .tiles */
-    .tile-group {
+    /* Karten pro Gruppe */
+    .tile-group{
         background: var(--color-bg);
         border-radius: 10px;
         overflow: hidden;
 
-        box-shadow: none;
         border: 1px solid var(--color-primary);
+        box-shadow: none;
 
         display: flex;
         flex-direction: column;
     }
 
-    .tile {
+    .tile{
         border-bottom: none;
-        grid-template-columns: 53px 1fr;
+        grid-template-columns: 53px 1fr; /* Chevron weg */
     }
 
-    /* Chevron auf Desktop ausblenden */
-    .tile-chevron { display: none; }
+    .tile-chevron{ display: none; }
 
     /* Panels auf Desktop immer sichtbar */
-    .tile-panel {
+    .tile-panel{
         display: block !important;
         height: auto !important;
         max-height: none !important;
 
         border: none;
-        border-top: 1px solid rgba(0,0,0,0.06);
+        border-top: 1px solid rgba(0,0,0,.06);
 
         flex: 1;
     }
 
-    /* Termin vereinbaren hat keinen Inhalt -> Panel sicher aus */
-    .tiles-wrapper > .tile-group:nth-child(3) .tile-panel {
+    /* Termin vereinbaren: kein Panel */
+    .tiles-wrapper > .tile-group:nth-child(3) .tile-panel{
         display: none !important;
     }
 
-    .kontakt-item { margin-bottom: 1rem; }
-    .sprechzeiten-liste { margin: 0; padding: 0; }
-
-    /* Desktop: 1. und 2. Tile nicht klickbar/hoverbar */
+    /* Desktop: 1. und 2. Tile nicht klickbar */
     .tiles-wrapper > .tile-group:nth-child(1) > .tile,
-    .tiles-wrapper > .tile-group:nth-child(2) > .tile {
+    .tiles-wrapper > .tile-group:nth-child(2) > .tile{
         pointer-events: none;
         cursor: default;
     }
-
     .tiles-wrapper > .tile-group:nth-child(1) > .tile:hover,
-    .tiles-wrapper > .tile-group:nth-child(2) > .tile:hover {
+    .tiles-wrapper > .tile-group:nth-child(2) > .tile:hover{
         background: var(--color-bg);
     }
+
+    /* kleine Abstände */
+    .kontakt-item{ margin-bottom: 1rem; }
+    .sprechzeiten-liste{ margin: 0; padding: 0; }
 }

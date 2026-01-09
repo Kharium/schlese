@@ -1,10 +1,12 @@
 /* ===========================
    Startseite – Slider & Tiles
-   (Shadow-Fix: nur 1 Shadow-Quelle -> sauber & konsistent)
+   Ziel: überall konsistenter Hintergrund (var(--color-bg))
+   + saubere Tiles ohne graue Flächen/Gaps
    =========================== */
 
 .startseite-section{
     padding-bottom: var(--space-md);
+    background: var(--color-bg);
 }
 
 /* Basis: Section & Container */
@@ -36,18 +38,21 @@
     width: auto;                /* nicht 100% */
     margin-inline: var(--space-sm);
 
-    /* WICHTIG: drop-shadow raus -> box-shadow stabiler, keine Artefakte */
+    /* nur 1 Shadow-Quelle */
     filter: none;
     box-shadow: 0 10px 20px rgba(0,0,0,.15);
 
     border-radius: 10px;
     overflow: hidden;
-    background: transparent;
+
+    /* wichtig: nicht transparent, damit nix „durchscheint“ */
+    background: var(--color-bg);
 }
 
 /* Wrapper: mobil/standard als normaler Block (keine Grid-Gaps) */
 .tiles-wrapper {
     display: block;
+    background: var(--color-bg);
 }
 
 /* einzelne Kachel */
@@ -57,7 +62,7 @@
     align-items: center;
     min-height: 72px;
 
-    background: #f2f2f2;
+    background: var(--color-bg);
     text-decoration: none;
     color: inherit;
 
@@ -106,26 +111,34 @@
     font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 22;
 }
 
-/* Hover */
-.tile:hover{ background:#ededed; }
+/* Hover: nur minimaler „Lift“ statt grauer Fläche */
+.tile:hover{
+    background: var(--color-bg);
+}
 
 /* ---------- Panels fürs Auf-/Zuklappen (mobil) ---------- */
 .tile-panel{
-    background:#fff;
+    background: var(--color-bg);
     padding: 1rem 1.25rem 1.25rem 1.25rem;
     border-left: 1px solid rgba(0,0,0,.06);
     border-right: 1px solid rgba(0,0,0,.06);
     border-bottom: 1px solid rgba(0,0,0,.06);
 }
-.tile.open{ background:#eaeaea; }
+
+/* „open“ soll ebenfalls nicht grau werden */
+.tile.open{
+    background: var(--color-bg);
+}
 
 /* ---------- Desktop ---------- */
 @media screen and (min-width: 768px) {
-    /* dein HTML nutzt .tiles-wrapper direkt, daher hier: */
     .tiles-wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+
+        /* wichtig: Gap-Fläche ist weiß */
+        background: var(--color-bg);
     }
 
     /* Termin vereinbaren (3. Kachel) über volle Breite darunter */
@@ -133,13 +146,13 @@
         grid-column: 1 / -1;
     }
 
-    /* Tile-Gruppen: KEIN eigener Shadow -> Shadow bleibt nur auf .tiles */
+    /* Tile-Gruppen: keine graue Fläche, Shadow bleibt nur auf .tiles */
     .tile-group {
-        background: #f2f2f2;
+        background: var(--color-bg);
         border-radius: 10px;
         overflow: hidden;
 
-        box-shadow: none; /* wichtig: verhindert „doppelten“ Schatten */
+        box-shadow: none;
         border: 1px solid var(--color-primary);
 
         display: flex;
@@ -183,6 +196,6 @@
 
     .tiles-wrapper > .tile-group:nth-child(1) > .tile:hover,
     .tiles-wrapper > .tile-group:nth-child(2) > .tile:hover {
-        background: #f2f2f2;
+        background: var(--color-bg);
     }
 }

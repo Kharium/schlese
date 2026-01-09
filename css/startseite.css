@@ -127,7 +127,7 @@
 
 /* „open“ soll ebenfalls nicht grau werden */
 .tile.open{
-    background: var(--color-bg);
+    background: transparent;
 }
 
 /* ---------- Desktop ---------- */

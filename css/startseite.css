@@ -2,9 +2,8 @@
    Startseite – Hero & Tiles
    - Mobile-first: Panels werden per JS via [hidden] ein-/ausgeklappt
    - Jede Tile-Gruppe ist eine Card (Radius 10px, Border 1px Primary)
-   - Keine grauen Trennlinien an .tile
    - Icon-Badges links sauber rund
-   - Sprechzeiten: sauber untereinander, Doppelpunkte exakt ausgerichtet
+   - Sprechzeiten: exakte Ausrichtung von ":" sowie ":" und "–" innerhalb der Uhrzeiten
    =========================== */
 
 .startseite-section{
@@ -65,7 +64,6 @@
     color: inherit;
     text-decoration: none;
 
-    /* keine grauen Linien/Outlines */
     border: 0;
     outline: 0;
 }
@@ -73,7 +71,7 @@
 /* Optional: dezentes Feedback */
 .tile:active{ background: rgba(0,0,0,.02); }
 
-/* Fokus sichtbar, aber „schön“ */
+/* Fokus sichtbar, aber dezent */
 .tile:focus-visible{
     outline: 2px solid color-mix(in oklch, var(--color-primary), white 35%);
     outline-offset: 2px;
@@ -94,6 +92,7 @@
     border-radius: 999px;
 }
 
+/* Material Symbols */
 .tile-icon .material-symbols-rounded,
 .tile-icon .material-symbols-outlined{
     font-size: 24px;
@@ -127,13 +126,18 @@
     background: var(--color-bg);
     padding: 1rem 1.25rem 1.25rem;
     border-top: 1px solid rgba(0,0,0,.08);
+
+    /* Zahlen im Panel insgesamt stabiler (optional, aber hilft) */
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-kerning: none;
 }
 
 /* kleine Abstände im Panel */
 .kontakt-item{ margin-bottom: 1rem; }
 .kontakt-item:last-child{ margin-bottom: 0; }
 
-/* ---------- Sprechzeiten: sauber 2-spaltig ---------- */
+/* ---------- Sprechzeiten (neues HTML) ---------- */
 
 .sprechzeiten-liste{
     list-style: none;
@@ -141,44 +145,56 @@
     padding: 0;
 
     display: grid;
-    gap: .5rem; /* Abstand zwischen Tagen */
+    gap: .55rem;
 }
 
+/* Jede Zeile: Tag | Zeiten */
 .sprechzeiten-liste > li{
     display: grid;
-    grid-template-columns: 8.5rem 1fr; /* fixe Tag-Spalte => ":" steht perfekt untereinander */
+    grid-template-columns: 8.5rem 1fr; /* fixe Tag-Spalte => ":" untereinander */
     column-gap: .75rem;
     align-items: start;
 }
 
-.sprechzeiten-liste > li > span:first-child{
+.sprechzeiten-liste .day{
     font-weight: 600;
     color: var(--color-text);
     white-space: nowrap;
 }
 
-.sprechzeiten-liste > li > span:last-child{
+/* rechte Spalte: mehrere Zeitbereiche untereinander */
+.sprechzeiten-liste .times{
+    display: grid;
+    gap: .2rem;
     color: var(--color-text);
-    line-height: 1.35;
 }
 
-/* --- Fix: Zeiten exakt ausrichten (0/1/8 gleich breit) --- */
-/* Tabellarische Ziffern nur dort, wo Zeiten stehen */
-.sprechzeiten-liste > li > span:last-child{
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1; /* Fallback/zusätzliche Sicherheit */
-  white-space: nowrap; /* verhindert unschöne Umbrüche innerhalb der Uhrzeiten */
+/* Exakte Ausrichtung innerhalb einer Zeitzeile:
+   5ch = "08:00" (5 Zeichen). Dadurch steht das ":" immer an gleicher Stelle.
+   Der Separator bekommt eine feste Spalte => "–" steht untereinander. */
+.sprechzeiten-liste .time-range{
+    display: grid;
+    grid-template-columns: 5ch 2ch 5ch; /* Start | Sep | Ende */
+    align-items: baseline;
+
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-kerning: none;
+    letter-spacing: 0;
+    white-space: nowrap;
 }
 
-/* "und nach Vereinbarung" (links leer, rechts bündig wie Zeiten) */
-.sprechzeiten-liste > li:last-child > span:first-child{
-    visibility: hidden; /* behält die Spaltenbreite für saubere Ausrichtung */
+/* Spalten-Alignment */
+.sprechzeiten-liste .t-start{ text-align: left; }
+.sprechzeiten-liste .t-sep{
+    text-align: center;
+    opacity: .9;
 }
+.sprechzeiten-liste .t-end{ text-align: left; }
 
-/* Optional: wenn du auch im restlichen Panel konsistente Zahlen wilkllst */
-.tile-panel{
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1;
+/* "und nach Vereinbarung" bündig wie Zeiten, ohne Tag links */
+.sprechzeiten-liste .sprechzeiten-hint .day{
+    visibility: hidden; /* Platz bleibt, Text unsichtbar */
 }
 
 /* auf sehr kleinen Screens Tag-Spalte etwas schmaler */

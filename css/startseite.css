@@ -175,7 +175,7 @@
     visibility: hidden; /* behält die Spaltenbreite für saubere Ausrichtung */
 }
 
-/* Optional: wenn du auch im restlichen Panel konsistente Zahlen willst */
+/* Optional: wenn du auch im restlichen Panel konsistente Zahlen wilkllst */
 .tile-panel{
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1, "lnum" 1;

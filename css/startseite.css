@@ -162,9 +162,23 @@
     line-height: 1.35;
 }
 
+/* --- Fix: Zeiten exakt ausrichten (0/1/8 gleich breit) --- */
+/* Tabellarische Ziffern nur dort, wo Zeiten stehen */
+.sprechzeiten-liste > li > span:last-child{
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1; /* Fallback/zusätzliche Sicherheit */
+  white-space: nowrap; /* verhindert unschöne Umbrüche innerhalb der Uhrzeiten */
+}
+
 /* "und nach Vereinbarung" (links leer, rechts bündig wie Zeiten) */
 .sprechzeiten-liste > li:last-child > span:first-child{
     visibility: hidden; /* behält die Spaltenbreite für saubere Ausrichtung */
+}
+
+/* Optional: wenn du auch im restlichen Panel konsistente Zahlen willst */
+.tile-panel{
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 /* auf sehr kleinen Screens Tag-Spalte etwas schmaler */

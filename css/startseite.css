@@ -172,11 +172,14 @@
 /* Exakte Ausrichtung innerhalb einer Zeitzeile:
    5ch = "08:00" (5 Zeichen). Dadurch steht das ":" immer an gleicher Stelle.
    Der Separator bekommt eine feste Spalte => "–" steht untereinander. */
+/* Stabilere Ausrichtung der Uhrzeiten als mit ch (proportionale Fonts) */
 .sprechzeiten-liste .time-range{
     display: grid;
-    grid-template-columns: 5ch 2ch 5ch; /* Start | Sep | Ende */
+    /* feste Spalten statt 5ch => keine „3 steht weiter vorne“-Effekte */
+    grid-template-columns: 3.2em 1.2em 3.2em; /* Start | – | Ende */
     align-items: baseline;
 
+    /* tabellarische Ziffern beibehalten */
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1, "lnum" 1;
     font-kerning: none;

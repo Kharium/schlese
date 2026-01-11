@@ -173,3 +173,49 @@ body.no-scroll { overflow: hidden; }
 @media (min-width: 1440px) {
     .navbar { padding-inline: var(--container-pad); }
 }
+
+
+
+/* =========================================================
+   Back-Pfeil (nur Unterseiten) – ersetzt Burger auf has-back
+   ========================================================= */
+
+.has-back .navbar{
+  position: relative; /* Anker für absolute Positionierung rechts */
+}
+
+/* Burger auf Unterseiten ausblenden */
+.has-back .burger-menu{
+  display: none !important;
+}
+
+/* Back-Link rechts (wie Burger-Position) */
+.has-back .nav-back{
+  position: absolute;
+  right: 1rem;          /* passt zu .navbar padding: 1rem; */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.has-back .nav-back:active{
+  background: rgba(0,0,0,.04);
+}
+
+.has-back .nav-back:focus-visible{
+  outline: 2px solid color-mix(in oklch, var(--color-primary), white 35%);
+  outline-offset: 2px;
+}
+
+.has-back .nav-back__icon{
+  width: 26px;
+  height: 26px;
+  display: block;
+}

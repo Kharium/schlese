@@ -219,7 +219,7 @@
 .notdienst-card--tile .info-summary::-webkit-details-marker{ display: none; }
 
 .notdienst-card--tile .info-title{
-    font-weight: 600;
+    font-weight: 200;
     font-size: 0.95rem;
     line-height: 1.1;
 }

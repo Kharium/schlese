@@ -1,0 +1,23 @@
+/* Abstände wie bei deinen anderen Sections */
+.impressum-section {
+  padding: var(--space-md);
+}
+
+/* Optional: etwas mehr Luft oben/unten */
+@media (min-width: 768px) {
+  .impressum-section {
+    padding: var(--space-lg) 0;
+  }
+}
+
+.impressum-container > h2 {
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.impressum-container > p {
+  margin: 0 0 var(--space-md) 0;
+}
+
+.impressum-container > p:last-of-type {
+  margin-bottom: 0;
+}

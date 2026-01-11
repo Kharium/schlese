@@ -17,23 +17,3 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* ========== RECHTLICHE ANGABEN ========== */
-.legal-section {
-    background-color: #f5f5f5;
-    color: rgba(255, 255, 255, 0.35);
-    font-size: 0.9rem;
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-    line-height: 1.5;
-    border-top: 1px solid #ddd;
-}
-
-.legal-section h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.legal-section a {
-    color: #0d3058;
-    text-decoration: underline;
-}

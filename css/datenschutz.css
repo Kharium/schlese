@@ -1,0 +1,39 @@
+/* Datenschutz – Abstände wie bei anderen Sections */
+.datenschutz-section{
+    padding: var(--space-md);
+}
+
+/* Optional: mehr Luft auf Desktop */
+@media (min-width: 768px){
+    .datenschutz-section{
+        padding: var(--space-lg) 0;
+    }
+}
+
+.datenschutz-container > h2{
+    margin: 0 0 var(--space-sm) 0;
+}
+
+/* Fließtext-Abstände */
+.datenschutz-container > p{
+    margin: 0 0 var(--space-md) 0;
+}
+
+.datenschutz-container > p:last-of-type{
+    margin-bottom: 0;
+}
+
+/* Zwischenüberschriften */
+.datenschutz-container > h3{
+    margin: var(--space-lg) 0 var(--space-sm);
+}
+
+/* Listen */
+.datenschutz-container ul{
+    margin: 0 0 var(--space-md) 1.25rem;
+    padding: 0;
+}
+
+.datenschutz-container li{
+    margin: 0 0 var(--space-xs) 0;
+}

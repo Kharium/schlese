@@ -1,47 +1,50 @@
-/* Abstände wie bei deinen anderen Sections */
-.impressum-section {
+/* =========================
+   Impressum / Datenschutz – Content
+   ========================= */
+.impressum-section{
   padding: var(--space-md);
 }
 
-/* Optional: etwas mehr Luft oben/unten */
-@media (min-width: 768px) {
-  .impressum-section {
+@media (min-width: 768px){
+  .impressum-section{
     padding: var(--space-lg) 0;
   }
 }
 
-.impressum-container > h2 {
+.impressum-container > h2{
   margin: 0 0 var(--space-sm) 0;
 }
 
-.impressum-container > p {
+.impressum-container > p{
   margin: 0 0 var(--space-md) 0;
 }
 
-.impressum-container > p:last-of-type {
+.impressum-container > p:last-of-type{
   margin-bottom: 0;
 }
 
-/* Simple Header-Layout nur für Impressum/Datenschutz (Body-Klasse) */
+
+/* =========================
+   Simple Header (Logo links, Back rechts)
+   - nur auf Seiten mit body.has-back
+   - Back-Button größenmäßig wie Burger (30x24 Icon-Anmutung, aber mit 52px Touch-Ziel)
+   ========================= */
 .has-back .navbar.navbar--simple{
   justify-content: space-between;
 }
 
-/* nav-links auf diesen Seiten ist entfernt – aber falls irgendwo noch vorhanden: */
 .has-back .navbar.navbar--simple .nav-links{
   display: none;
 }
 
-/* Back-Button rechts */
-.has-back .navbar.navbar--simple{
-  position: relative;
-}
-
+/* Klickfläche rechts (ähnlich Burger: kompakt, aber gut antippbar) */
 .has-back .navbar.navbar--simple .nav-back{
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+
+  width: 52px;
+  height: 52px;
+
   border-radius: 10px;
   text-decoration: none;
 }
@@ -55,8 +58,23 @@
   outline-offset: 2px;
 }
 
+/* Icon selbst größer */
 .has-back .navbar.navbar--simple .nav-back__icon{
-  width: 26px;
-  height: 26px;
+  width: 34px;
+  height: 34px;
   display: block;
+}
+/* Back-Button rechts – groß wie Burger-Fläche, Icon deutlich größer */
+.has-back .navbar.navbar--simple .nav-back{
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+}
+
+.has-back .navbar.navbar--simple .nav-back__icon{
+  width: 44px;
+  height: 44px;
+  display: block;
+  object-fit: contain;
 }

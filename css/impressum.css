@@ -78,3 +78,27 @@
   display: block;
   object-fit: contain;
 }
+/* Back-Button: gleiche "Startkante" wie Burger-Linien (nicht zentriert) */
+body.has-back .navbar.navbar--simple .nav-back{
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* WICHTIG: diesen Wert an deinen Burger anpassen */
+  padding-left: 14px;
+  padding-right: 10px;
+
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* Pfeilgröße */
+body.has-back .navbar.navbar--simple .nav-back__icon{
+  width: 40px;
+  height: 40px;
+  display: block;
+  object-fit: contain;
+}

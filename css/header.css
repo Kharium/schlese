@@ -198,22 +198,17 @@ body.no-scroll { overflow: hidden; }
 
   width: 44px;
   height: 44px;
-  display: grid;
-  place-items: center;
 
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* statt zentriert: an die rechte Innenkante */
+
+  padding-right: 0;          /* Burger hat auch kein Innenpadding */
   border-radius: 10px;
   text-decoration: none;
 }
 
-.has-back .nav-back:active{
-  background: rgba(0,0,0,.04);
-}
-
-.has-back .nav-back:focus-visible{
-  outline: 2px solid color-mix(in oklch, var(--color-primary), white 35%);
-  outline-offset: 2px;
-}
-
+/* Icon bleibt groß/klein wie du willst */
 .has-back .nav-back__icon{
   width: 26px;
   height: 26px;

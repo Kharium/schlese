@@ -1,6 +1,7 @@
 :root {
   /* Farben */
-  --color-primary: oklch(0.5 0.05 260);
+  --color-primary: #2F5E8A;
+  /*--color-primary: oklch(0.5 0.05 260);*/
   --color-secondary: #0077cc;
   --color-text: #333333;
   --color-bg: #ffffff;

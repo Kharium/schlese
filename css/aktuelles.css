@@ -5,7 +5,6 @@
    ========================= */
 
 .aktuelles-section{
-    padding: var(--space-md);
     overflow: hidden;
 }
 

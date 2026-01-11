@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    font-family: 'Poppins', serif;
+    font-family: var(--font-primary), serif;
     line-height: 1.6;
 }
 

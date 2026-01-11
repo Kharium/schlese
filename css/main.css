@@ -1,3 +1,4 @@
+@import url("fonts.css");
 @import url("variables.css");
 @import url("base.css");
 @import url("utilities.css");
@@ -11,4 +12,3 @@
 @import url("kontakt.css");
 @import url("responsive.css");
 @import url("impressum.css");
-

@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6e727e6-47dd-4c9d-8b1a-a0cfac511385" name="Changes" comment="Kartsenf">
-      <change afterPath="$PROJECT_DIR$/css/impressum.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/poppins/Poppins-Bold.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/poppins/Poppins-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fonts.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/utilities.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/utilities.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/variables.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/impressum.html" beforeDir="false" afterPath="$PROJECT_DIR$/sites/impressum.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +66,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/fonts/poppins" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/assets/praxis" />
     </key>
@@ -89,15 +89,7 @@
       <workItem from="1767777143442" duration="22574000" />
       <workItem from="1767954434729" duration="33000" />
       <workItem from="1767972040752" duration="10565000" />
-      <workItem from="1768138971688" duration="7112000" />
-    </task>
-    <task id="LOCAL-00012" summary="Sktzelles border und backround raus">
-      <option name="closed" value="true" />
-      <created>1767873551182</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1767873551182</updated>
+      <workItem from="1768138971688" duration="8549000" />
     </task>
     <task id="LOCAL-00013" summary="Sktzelles border und backround raus">
       <option name="closed" value="true" />
@@ -483,7 +475,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768145905143</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Kartsenf">
+      <option name="closed" value="true" />
+      <created>1768149370054</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1768149370054</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

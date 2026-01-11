@@ -1,4 +1,5 @@
 .praxis-section{
+    padding-top: var(--space-md);
 }
 
 /* ✅ Gleiche Abstände wie bei Leistungen */

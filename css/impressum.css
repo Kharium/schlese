@@ -21,3 +21,42 @@
 .impressum-container > p:last-of-type {
   margin-bottom: 0;
 }
+
+/* Simple Header-Layout nur für Impressum/Datenschutz (Body-Klasse) */
+.has-back .navbar.navbar--simple{
+  justify-content: space-between;
+}
+
+/* nav-links auf diesen Seiten ist entfernt – aber falls irgendwo noch vorhanden: */
+.has-back .navbar.navbar--simple .nav-links{
+  display: none;
+}
+
+/* Back-Button rechts */
+.has-back .navbar.navbar--simple{
+  position: relative;
+}
+
+.has-back .navbar.navbar--simple .nav-back{
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.has-back .navbar.navbar--simple .nav-back:active{
+  background: rgba(0,0,0,.04);
+}
+
+.has-back .navbar.navbar--simple .nav-back:focus-visible{
+  outline: 2px solid color-mix(in oklch, var(--color-primary), white 35%);
+  outline-offset: 2px;
+}
+
+.has-back .navbar.navbar--simple .nav-back__icon{
+  width: 26px;
+  height: 26px;
+  display: block;
+}

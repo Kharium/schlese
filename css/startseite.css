@@ -250,3 +250,53 @@
         cursor: default;
     }
 }
+
+/* Bereitschaftsdienst-Card innerhalb der Tiles als "4. Kachel" optisch einpassen */
+.notdienst-card--tile{
+    /* tile-group hat bereits Border/Radius/Overflow; Card soll nicht doppelt rahmen */
+    border: 0;
+    border-radius: 0;
+    padding: var(--space-md);
+    background: transparent;
+}
+
+/* Accordion-Kopf fühlt sich wie Tile-Zeile an */
+.notdienst-card--tile .info-summary{
+    list-style: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    min-height: 72px;
+    padding: 0;
+}
+
+/* Standard-Marker entfernen */
+.notdienst-card--tile .info-summary::-webkit-details-marker{
+    display: none;
+}
+
+/* Chevron rechts + Rotation wie gehabt */
+.notdienst-card--tile .info-chevron{
+    margin-left: auto;
+    transition: transform 200ms ease;
+}
+.notdienst-card--tile .info-accordion[open] .info-chevron{
+    transform: rotate(180deg);
+}
+
+/* Vorschau/Body: etwas Abstand wie Panel */
+.notdienst-card--tile .info-preview,
+.notdienst-card--tile .info-body{
+    margin-top: 10px;
+}
+
+/* Desktop: 3. und 4. Kachel volle Breite (Termin + Bereitschaftsdienst) */
+@media (min-width: 768px){
+    .tiles-wrapper > .tile-group:nth-child(3),
+    .tiles-wrapper > .tile-group:nth-child(4){
+        grid-column: 1 / -1;
+    }
+}

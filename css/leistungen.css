@@ -13,6 +13,7 @@
 
 .leistungen-container > p{
     margin: 0 0 var(--space-sm) 0;
+    color: var(--color-text);
 }
 
 /* ✅ Einheitlicher Abstand zwischen den einzelnen Leistungen */

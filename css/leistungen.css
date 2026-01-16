@@ -9,6 +9,7 @@
 /* ✅ Einheitliche Abstände im Kopfbereich */
 .leistungen-container > h2{
     margin: 0 0 var(--space-sm) 0;
+    color: var(--color-text);
 }
 
 .leistungen-container > p{

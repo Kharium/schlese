@@ -124,6 +124,7 @@
 
 .accordion-body li {
     margin-bottom: 1rem;
+    color: var(--color-text);
 }
 
 .accordion-body li strong {

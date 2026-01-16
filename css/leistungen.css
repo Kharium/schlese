@@ -21,6 +21,7 @@
 .leistungen-list{
     display: grid;
     gap: var(--space-md);
+    color: var(--color-text);
 }
 
 /* ✅ Abstände innerhalb jeder Leistung */

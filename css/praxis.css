@@ -10,4 +10,5 @@
 
 .praxis-container > p{
     margin: 0 0 var(--space-lg) 0; /* Abstand zum Bild/Slider darunter */
+    color: var(--color-text);
 }

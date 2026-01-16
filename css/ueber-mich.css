@@ -24,6 +24,7 @@
 
 .uebermich-text h2 {
     margin-bottom: 0.5rem;
+    color: var(--color-text);
 }
 
 .uebermich-text h3 {

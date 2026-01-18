@@ -1,8 +1,8 @@
 /* ===========================
-   Startseite – Hero & Tiles
+   Startseite – Hero & Tiles (aufgeräumt)
    - Mobile-first: Panels werden per JS via [hidden] ein-/ausgeklappt
-   - Jede Tile-Gruppe ist eine Card (Radius 10px, Border 1px Primary)
-   - Bereitschaftsdienst (4. Kachel): deutlich kompakter (ca. halb so hoch)
+   - Jede .tile-group ist eine Card (Radius 10px, Border 1px Primary)
+   - Bereitschaftsdienst: ohne Icon links + Label NIE fett (alle Ansichten)
    =========================== */
 
 .startseite-section{
@@ -51,7 +51,7 @@
     background: var(--color-bg);
 }
 
-/* Click-Zeile (1–3. Kachel) */
+/* Click-Zeile (Tiles) */
 .tile{
     display: grid;
     grid-template-columns: 56px 1fr 44px; /* Icon | Label | Chevron */
@@ -68,7 +68,9 @@
 }
 
 /* Optional: dezentes Feedback */
-.tile:active{ background: rgba(0,0,0,.02); }
+.tile:active{
+    background: rgba(0,0,0,.02);
+}
 
 /* Fokus sichtbar, aber dezent */
 .tile:focus-visible{
@@ -91,14 +93,7 @@
     border-radius: 999px;
 }
 
-/* Material Symbols */
-.tile-icon .material-symbols-rounded,
-.tile-icon .material-symbols-outlined{
-    font-size: 24px;
-    line-height: 1;
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-}
-
+/* Label (Standard) */
 .tile-label{
     font-weight: 600;
     font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
@@ -113,14 +108,8 @@
     justify-self: end;
     color: #3a3a3a;
 }
-.tile-chevron .material-symbols-rounded,
-.tile-chevron .material-symbols-outlined{
-    font-size: 22px;
-    line-height: 1;
-    font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 22;
-}
 
-/* Panel (1–2. Kachel) */
+/* Panel */
 .tile-panel{
     background: var(--color-bg);
     padding: 1rem 1.25rem 1.25rem;
@@ -194,56 +183,19 @@
     }
 }
 
-/* ---------- Bereitschaftsdienst (4. Kachel) ---------- */
-/* Ziel: im zugeklappten Zustand ca. halb so hoch wie die normalen Tiles */
-.notdienst-card.notdienst-card--tile{
-    border: 0;          /* keine Doppel-Umrandung (tile-group hat Border) */
-    border-radius: 0;
-    background: transparent;
-    padding: 0;         /* Höhe kommt aus summary/body */
+/* ---------- Bereitschaftsdienst: ohne Icon + NIE fett ---------- */
+.tile.tile--noicon{
+    grid-template-columns: 1fr 44px; /* Label | Chevron */
 }
 
-/* Head/summary deutlich kompakter */
-.notdienst-card--tile .info-summary{
-    list-style: none;
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    /* "halb so hoch" vs. 72px */
-    min-height: 36px;
-    padding: 0 .75rem;
-}
-.notdienst-card--tile .info-summary::-webkit-details-marker{ display: none; }
-
-.notdienst-card--tile .info-title{
-    font-weight: 200;
-    font-size: 0.95rem;
-    line-height: 1.1;
-}
-.notdienst-card--tile .info-chevron{
-    margin-left: auto;
-    transition: transform 200ms ease;
-}
-.notdienst-card--tile .info-accordion[open] .info-chevron{
-    transform: rotate(180deg);
+.tile.tile--noicon .tile-icon{
+    display: none; /* entfernt den blauen Badge komplett */
 }
 
-/* zugeklappt: Vorschau aus => Kachel bleibt klein */
-.notdienst-card--tile .info-preview{ display: none; }
-
-/* aufgeklappt: Body kompakter als normale Panels */
-.notdienst-card--tile .info-body{
-    margin-top: 0;
-    padding: .75rem 1rem 1rem;
-    border-top: 1px solid rgba(0,0,0,.08);
+/* Wichtig: Label niemals fett, unabhängig von globalen Tile-Regeln */
+.tile.tile--noicon .tile-label{
+    font-weight: 400; /* nie fett */
 }
-.notdienst-card--tile .info-body p{
-    margin: 0 0 .75rem;
-}
-.notdienst-card--tile .info-body p:last-child{ margin-bottom: 0; }
 
 /* ---------- Desktop ---------- */
 @media (min-width: 768px){
@@ -258,12 +210,20 @@
         grid-column: 1 / -1;
     }
 
-    /* Chevron weg */
+    /* Desktop: Chevron standardmäßig weg (wie bisher) */
     .tile{
         grid-template-columns: 56px 1fr;
         padding-right: 0;
     }
     .tile-chevron{ display: none; }
+
+    /* Ausnahme: Bereitschaftsdienst soll den Pfeil weiterhin haben */
+    .tile.tile--noicon{
+        grid-template-columns: 1fr 44px;
+    }
+    .tile.tile--noicon .tile-chevron{
+        display: grid;
+    }
 
     /* Panels auf Desktop immer sichtbar (für tile-panel der 1–2. Kachel) */
     .tile-panel{

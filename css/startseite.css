@@ -180,12 +180,21 @@
 /* Ziel: links kein Badge, nur Label + Pfeil; Label nie fett (auch Desktop). */
 .tile.tile--noicon{
     grid-template-columns: 1fr 44px; /* Label | Chevron */
+
+    /* NEU: Höhe kleiner als Standard (72px) – gilt Mobile + Desktop */
+    min-height: 40px; /* z.B. 36px (halb so hoch) bis 48px testen */
 }
+
 .tile.tile--noicon .tile-icon{
     display: none;
 }
+
 .tile.tile--noicon .tile-label{
     font-weight: 400; /* NIE fett */
+
+    /* optional: damit die clamp-Schrift nicht wieder "Höhe" erzeugt */
+    font-size: 1rem;
+    line-height: 1.1;
 }
 
 /* ---------- Desktop ---------- */

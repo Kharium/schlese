@@ -155,21 +155,19 @@
     margin-bottom: 0;
 }
 
-/* ---------- Vita: Jahr fett + Text eingerückt ---------- */
+/* ---------- Vita: Jahr über Text (untereinander) ---------- */
 .accordion-body .vita-list li{
     display: grid;
-    grid-template-columns: auto 1fr; /* Jahr | Text */
-    column-gap: var(--space-sm);     /* „leicht versetzt“ */
+    grid-template-columns: 1fr;   /* nur 1 Spalte */
+    row-gap: 0.15rem;             /* Abstand zwischen Jahr und Text */
     align-items: start;
 }
 
 .accordion-body .vita-year{
     font-weight: 600;
-    white-space: nowrap;
+    white-space: normal;          /* darf umbrechen, falls nötig */
 }
 
 .accordion-body .vita-text{
-    /* zusätzlicher Mikro-Einzug für den Text (optional):
-       wenn dir column-gap reicht, kannst du das entfernen */
-    padding-left: 0;
+    padding-left: var(--space-sm); /* optional: Text leicht einrücken */
 }

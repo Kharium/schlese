@@ -1,13 +1,14 @@
 /* =========================
-   ÜBER MICH (aufgeräumt)
-   - Accordion nutzt SVG-Chevron (arrow_down.svg) wie Startseite
-   - Panel wird per JS via [hidden] ein-/ausgeblendet
-   - Rotation des Pfeils über .accordion.open (wie bisher)
+   ÜBER MICH
+   - Accordion Panels werden per JS via [hidden] ein-/ausgeblendet
+   - Pfeil-Rotation über .accordion.open
+   - Listen ohne Punkte
+   - Vita: Jahre fett, Text leicht eingerückt (var(--space-sm))
+   - Accordion-Header feste Höhe: 56px
    ========================= */
 
 .uebermich-section{
-    padding-top: var(--space-md);
-    padding-bottom: var(--space-md);
+    padding-block: var(--space-md);
 }
 
 .uebermich-container{
@@ -32,11 +33,10 @@
     margin: 0 0 var(--space-sm) 0;
     color: var(--color-text);
 }
+
 .uebermich-text p:last-of-type{
     margin-bottom: 0;
 }
-
-
 
 /* Bild */
 .uebermich-bild{
@@ -44,13 +44,14 @@
     margin: 1.25rem auto;
     overflow: hidden;
 }
+
 .uebermich-bild img{
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* ---------- Accordion als Card ---------- */
+/* ---------- Accordion (Card) ---------- */
 .accordion{
     border: 1px solid rgba(0,0,0,.12);
     border-radius: 10px;
@@ -59,7 +60,7 @@
     margin-top: var(--space-sm);
 }
 
-/* Header: Titel links, Pfeil rechts */
+/* Header: feste Höhe 56px */
 .accordion-header{
     appearance: none;
     -webkit-appearance: none;
@@ -68,7 +69,10 @@
     touch-action: manipulation;
 
     width: 100%;
+    height: 56px;          /* feste Größe */
+    min-height: 56px;      /* zur Sicherheit */
     border: 0;
+
     background: var(--color-bg);
     color: inherit;
     -webkit-text-fill-color: currentColor;
@@ -80,8 +84,8 @@
     grid-template-columns: 1fr 44px; /* Titel | Chevron */
     align-items: center;
 
-    min-height: 56px;
-    padding: .75rem .75rem;
+    padding-inline: .75rem;
+    padding-block: 0;      /* bei fixer Höhe keine vertikale Padding-Falle */
 }
 
 .accordion-header:active{
@@ -100,7 +104,7 @@
     color: var(--color-text);
 }
 
-/* Icon-Container rechts */
+/* Chevron rechts */
 .accordion-icon{
     display: grid;
     place-items: center;
@@ -109,15 +113,13 @@
     height: 44px;
 }
 
-/* SVG-Pfeil (img.icon aus HTML) */
 .accordion-icon .icon{
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     display: block;
     transition: transform 200ms ease;
 }
 
-/* offen => Pfeil dreht */
 .accordion.open .accordion-icon .icon{
     transform: rotate(180deg);
 }
@@ -138,20 +140,36 @@
     font-kerning: none;
 }
 
-/* Listen im Panel */
+/* ---------- Listen generell im Accordion: keine Punkte ---------- */
 .accordion-body ul{
+    list-style: none;
     margin: 0;
-    padding-left: 1.2rem;
+    padding: 0;
 }
 
 .accordion-body li{
     margin-bottom: .75rem;
 }
+
 .accordion-body li:last-child{
     margin-bottom: 0;
 }
 
-.accordion-body li strong{
-    display: inline-block;
-    margin-bottom: .15rem;
+/* ---------- Vita: Jahr fett + Text eingerückt ---------- */
+.accordion-body .vita-list li{
+    display: grid;
+    grid-template-columns: auto 1fr; /* Jahr | Text */
+    column-gap: var(--space-sm);     /* „leicht versetzt“ */
+    align-items: start;
+}
+
+.accordion-body .vita-year{
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.accordion-body .vita-text{
+    /* zusätzlicher Mikro-Einzug für den Text (optional):
+       wenn dir column-gap reicht, kannst du das entfernen */
+    padding-left: 0;
 }

@@ -89,16 +89,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* =========================
      *  KLASSISCHES AKKORDEON
+     *  - Für .accordion (Über mich)
+     *  - Panel wird per [hidden] ein-/ausgeblendet
      * ========================= */
-    document.querySelectorAll('.accordion-header').forEach(btn => {
+    document.querySelectorAll('.accordion-header').forEach((btn) => {
         btn.addEventListener('click', () => {
-            const item = btn.closest('.accordion-item') || btn.parentElement;
-            item?.classList.toggle('open');
+            const item = btn.closest('.accordion') || btn.parentElement;
+            if (!item) return;
 
-            const icon = btn.querySelector('.material-symbols-rounded, .material-symbols-outlined');
-            if (icon) {
-                icon.textContent = item.classList.contains('open') ? 'stat_minus_1' : 'stat_1';
-            }
+            const body = item.querySelector('.accordion-body');
+            if (!body) return;
+
+            const isOpen = !item.classList.contains('open');
+
+            item.classList.toggle('open', isOpen);
+            body.hidden = !isOpen;
+
+            // a11y
+            btn.setAttribute('aria-expanded', String(isOpen));
         });
     });
 

@@ -19,5 +19,20 @@ section[id] {
     scroll-margin-top: calc(var(--header-height) + var(--anchor-offset));
 }
 
+/* ========== Links (global default wie "Über mich") ========== */
+a{
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
 
+a:hover{
+    color: var(--color-primary);
+}
 
+/* Tastatur-Fokus sichtbar lassen */
+a:focus-visible{
+    outline: 2px solid color-mix(in oklch, var(--color-primary), white 35%);
+    outline-offset: 2px;
+    border-radius: 6px;
+}

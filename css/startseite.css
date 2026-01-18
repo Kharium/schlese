@@ -55,7 +55,7 @@
     display: grid;
     grid-template-columns: 56px 1fr 44px; /* Icon | Label | Chevron */
     align-items: center;
-    min-height: 72px;
+    min-height: 56px;
     padding-right: .25rem;
 
     background: var(--color-bg);
@@ -111,6 +111,7 @@
     font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
     letter-spacing: .02em;
     color: #59616b;
+    text-align: center;
 }
 
 .tile-chevron{

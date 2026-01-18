@@ -2,7 +2,7 @@
    Startseite – Hero & Tiles (aufgeräumt)
    - Mobile-first: Panels werden per JS via [hidden] ein-/ausgeklappt
    - Jede .tile-group ist eine Card (Radius 10px, Border 1px Primary)
-   - Bereitschaftsdienst: ohne Icon links + Label NIE fett (alle Ansichten)
+   - Bereitschaftsdienst: ohne Icon links, Label NIE fett, bleibt auf Desktop einklappbar
    =========================== */
 
 .startseite-section{
@@ -43,7 +43,6 @@
     gap: var(--space-sm);
 }
 
-/* Card pro Gruppe */
 .tile-group{
     border: 1px solid var(--color-primary);
     border-radius: 10px;
@@ -51,7 +50,6 @@
     background: var(--color-bg);
 }
 
-/* Click-Zeile (Tiles) */
 .tile{
     display: grid;
     grid-template-columns: 56px 1fr 44px; /* Icon | Label | Chevron */
@@ -67,12 +65,10 @@
     outline: 0;
 }
 
-/* Optional: dezentes Feedback */
 .tile:active{
     background: rgba(0,0,0,.02);
 }
 
-/* Fokus sichtbar, aber dezent */
 .tile:focus-visible{
     outline: 2px solid color-mix(in oklch, var(--color-primary), white 35%);
     outline-offset: 2px;
@@ -93,7 +89,6 @@
     border-radius: 999px;
 }
 
-/* Label (Standard) */
 .tile-label{
     font-weight: 600;
     font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
@@ -101,7 +96,6 @@
     color: #59616b;
 }
 
-/* Chevron (mobil) */
 .tile-chevron{
     display: grid;
     place-items: center;
@@ -109,7 +103,6 @@
     color: #3a3a3a;
 }
 
-/* Panel */
 .tile-panel{
     background: var(--color-bg);
     padding: 1rem 1.25rem 1.25rem;
@@ -183,18 +176,16 @@
     }
 }
 
-/* ---------- Bereitschaftsdienst: ohne Icon + NIE fett ---------- */
+/* ---------- Bereitschaftsdienst (Tile ohne Icon) ---------- */
+/* Ziel: links kein Badge, nur Label + Pfeil; Label nie fett (auch Desktop). */
 .tile.tile--noicon{
     grid-template-columns: 1fr 44px; /* Label | Chevron */
 }
-
 .tile.tile--noicon .tile-icon{
-    display: none; /* entfernt den blauen Badge komplett */
+    display: none;
 }
-
-/* Wichtig: Label niemals fett, unabhängig von globalen Tile-Regeln */
 .tile.tile--noicon .tile-label{
-    font-weight: 400; /* nie fett */
+    font-weight: 400; /* NIE fett */
 }
 
 /* ---------- Desktop ---------- */
@@ -210,14 +201,16 @@
         grid-column: 1 / -1;
     }
 
-    /* Desktop: Chevron standardmäßig weg (wie bisher) */
+    /* Standard: Chevron ausblenden */
     .tile{
         grid-template-columns: 56px 1fr;
         padding-right: 0;
     }
-    .tile-chevron{ display: none; }
+    .tile-chevron{
+        display: none;
+    }
 
-    /* Ausnahme: Bereitschaftsdienst soll den Pfeil weiterhin haben */
+    /* Ausnahme: Bereitschaftsdienst soll auch auf Desktop den Pfeil zeigen */
     .tile.tile--noicon{
         grid-template-columns: 1fr 44px;
     }
@@ -225,8 +218,9 @@
         display: grid;
     }
 
-    /* Panels auf Desktop immer sichtbar (für tile-panel der 1–2. Kachel) */
-    .tile-panel{
+    /* Panels NUR bei Standort + Sprechzeiten immer offen (Desktop) */
+    .tiles-wrapper > .tile-group:nth-child(1) > .tile-panel,
+    .tiles-wrapper > .tile-group:nth-child(2) > .tile-panel{
         display: block !important;
         height: auto !important;
         max-height: none !important;
@@ -237,7 +231,7 @@
         display: none !important;
     }
 
-    /* Desktop: 1. und 2. Tile nicht klickbar */
+    /* Desktop: Standort + Sprechzeiten nicht klickbar */
     .tiles-wrapper > .tile-group:nth-child(1) > .tile,
     .tiles-wrapper > .tile-group:nth-child(2) > .tile{
         pointer-events: none;

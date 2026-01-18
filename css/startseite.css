@@ -76,19 +76,35 @@
     border-radius: 10px;
 }
 
-/* Icon-Badge links: rund */
+/* Icon links: nicht rund, sondern farbige Fläche über die volle Tile-Höhe */
 .tile-icon{
-    width: 40px;
-    height: 40px;
-    margin-left: 12px;
+    width: 56px;       /* entspricht der linken Grid-Spalte */
+    height: 100%;      /* füllt die Tile-Höhe */
+    margin-left: 0;
 
     display: grid;
     place-items: center;
 
     background: var(--color-primary);
     color: #fff;
-    border-radius: 999px;
+    border-radius: 0;
+
+    /* optional: dezente Trennkante zur Label-Spalte */
+    border-right: 1px solid rgba(255,255,255,.18);
 }
+
+/* Icon im Container sauber zentrieren + Größe */
+.tile-icon .icon{
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+/* Bereitschaftsdienst: keine Icon-Fläche */
+.tile.tile--noicon .tile-icon{
+    display: none;
+}
+
 
 .tile-label{
     font-weight: 600;

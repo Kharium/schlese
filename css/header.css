@@ -27,8 +27,7 @@ header{
     justify-content: space-between;
     gap: clamp(16px, 4vw, 72px);
 
-    margin-left: 12px;
-    margin-right: 12px;
+    padding-inline: 12px;
     padding: 0; /* <- wichtig */
 }
 

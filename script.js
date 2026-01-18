@@ -111,17 +111,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!hasPanel) return;
 
+        const chevronImg = tile.querySelector('.tile-chevron img');
+
+        const ARROW_DOWN = 'assets/icons/arrow_down.svg';
+        const ARROW_UP = 'assets/icons/arrow_up.svg';
+
+        const setOpenState = (isOpen) => {
+            tile.classList.toggle('open', isOpen);
+            panel.hidden = !isOpen;
+
+            // optional, aber gut für Accessibility + CSS-Hooks
+            tile.setAttribute('aria-expanded', String(isOpen));
+
+            if (chevronImg) {
+                chevronImg.src = isOpen ? ARROW_UP : ARROW_DOWN;
+            }
+        };
+
+        // Initialzustand
         panel.hidden = true;
-        tile.classList.remove('open');
+        setOpenState(false);
 
         tile.addEventListener('click', (e) => {
             e.preventDefault();
-
-            const isOpen = tile.classList.toggle('open');
-            panel.hidden = !isOpen;
-
-            const icon = tile.querySelector('.tile-chevron .material-symbols-rounded, .tile-chevron .material-symbols-outlined');
-            if (icon) icon.textContent = isOpen ? 'stat_minus_1' : 'stat_1';
+            const isOpen = !tile.classList.contains('open');
+            setOpenState(isOpen);
         });
     });
 });

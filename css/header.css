@@ -45,6 +45,39 @@ header{
     object-fit: contain;
 }
 
+.brand{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand__icon{
+    width: 44px; /* nur das Icon skalieren */
+    height: auto;
+    display: block;
+}
+
+.brand__text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.brand__name{
+    font-family: "Poppins", system-ui, -apple-system, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem; /* hier machst du den Namen größer */
+}
+
+.brand__sub{
+    font-family: "Poppins", system-ui, -apple-system, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
 /* ========== Burger Button (SVG-Icon) ========== */
 .burger-menu{
     display: inline-flex;

@@ -15,8 +15,9 @@ body {
 }
 
 /* ========== INHALTSSEKTIONEN (allgemein) ========== */
-section {
-    scroll-margin-top: 80px;
+section[id] {
+    scroll-margin-top: calc(var(--header-height) + var(--anchor-offset));
 }
+
 
 

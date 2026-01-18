@@ -27,6 +27,10 @@
 
   --grid-gap: var(--space-md);
 
+  --header-height: 96px;  /* hier deinen Zielwert setzen */
+  --anchor-offset: 12px;  /* kleine Luft unter dem Header */
+
+
   /* Weitere Variablen bleiben unverändert */
   --font-primary: 'Poppins';
   --radius: 12px;

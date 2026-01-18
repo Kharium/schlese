@@ -95,8 +95,8 @@
 
 /* Icon im Container sauber zentrieren + Größe */
 .tile-icon .icon{
-    width: 22px;
-    height: 22px;
+    width: 32px;
+    height: 32px;
     display: block;
 }
 

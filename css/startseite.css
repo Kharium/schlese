@@ -117,8 +117,6 @@
 .tile-chevron{
     display: grid;
     place-items: center;
-    justify-self: end;
-    color: #3a3a3a;
 }
 
 .tile-panel{

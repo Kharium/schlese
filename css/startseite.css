@@ -36,7 +36,7 @@
     overflow: visible;
 
     filter: none;
-    box-shadow: none;
+    box-shadow: var(--shadow-sm);
 }
 
 .tiles-wrapper{

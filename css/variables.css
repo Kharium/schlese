@@ -27,7 +27,7 @@
 
   --grid-gap: var(--space-md);
 
-  --header-height: 96px;  /* hier deinen Zielwert setzen */
+  --header-height: 80px;  /* hier deinen Zielwert setzen */
   --anchor-offset: 12px;  /* kleine Luft unter dem Header */
 
 

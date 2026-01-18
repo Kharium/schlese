@@ -111,6 +111,7 @@
     font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
     letter-spacing: .02em;
     margin-left: var(--space-md);
+    color: var(--color-primary);
 }
 
 .tile-chevron{

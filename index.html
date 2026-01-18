@@ -1,53 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Praxis Dr. Carsten Schlese</title>
-    <!-- FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+            rel="stylesheet"
+    />
 
-     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
-          rel="stylesheet">
-
-    <link rel="stylesheet" href="css/main.css"/>
-
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css" />
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
     <!-- Glide.js CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"/>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+    />
 
-    <!-- FAVICONS -->
-    <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any">                 <!-- ICO (Fallback, multi-size) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <!-- Favicons -->
+    <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
 
-    <!-- Android/Chrome (PWA-Icons) -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png">
-
-    <!-- iOS / iPadOS -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-
-    <!-- Optional, wenn du eine Manifest-Datei hast -->
-    <!-- <link rel="manifest" href="/favicon/site.webmanifest"> -->
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ffffff" />
 </head>
 
-
 <body>
-
-<!-- HEADER -->
+<!-- Header -->
 <header>
     <nav class="navbar">
         <div class="logo">
-            <img src="assets/logo/logo-schlese.svg" alt="Dr. Carsten Schlese - Augenarzt">
+            <img src="assets/logo/logo-schlese.svg" alt="Dr. Carsten Schlese - Augenarzt" />
         </div>
-
 
         <button class="burger-menu" aria-label="Menü öffnen">
             <span></span>
@@ -61,72 +59,69 @@
                 <li><a href="#leistungen">Leistungen</a></li>
                 <li><a href="#praxis">Praxis</a></li>
                 <li><a href="#uebermich">Über mich</a></li>
-
             </ul>
         </div>
     </nav>
+
     <script src="script.js" defer></script>
 </header>
 
-
-<!-- SECTIONS -->
 <main>
-
-
     <!-- ==================== Startseite ==================== -->
-
     <section id="startseite" class="startseite-section">
         <div class="container startseite-container">
-
             <!-- Bild -->
-            <div class="single-image">
-            </div>
+            <div class="single-image"></div>
 
-            <img src="assets/dr.schlese.jpg" alt="Dr. Schlese">
+            <img src="assets/dr.schlese.jpg" alt="Dr. Schlese" />
 
             <nav class="startseite-accordion tiles" aria-label="Schnellzugriff">
                 <div class="tiles-wrapper">
-                    <!-- Standort Tile -->
+                    <!-- Standort -->
                     <div class="tile-group">
                         <a class="tile" href="#standort">
-                            <span class="tile-icon">
-                                <img class="icon" src="assets/icons/location_on_white.svg" alt="" aria-hidden="true">
-                            </span>
+                  <span class="tile-icon">
+                    <img class="icon" src="assets/icons/location_on_white.svg" alt="" aria-hidden="true" />
+                  </span>
                             <span class="tile-label">Standort</span>
                             <span class="tile-chevron">
-                                <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true">
-                            </span>
+                    <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true" />
+                  </span>
                         </a>
+
                         <div class="tile-panel" hidden>
-                            <!-- Ihr bestehender Standort-Panel-Inhalt -->
                             <div class="kontakt-item">
-                                <img class="icon" src="assets/icons/location_on_fill.svg" alt="" aria-hidden="true">
+                                <img class="icon" src="assets/icons/location_on_fill.svg" alt="" aria-hidden="true" />
                                 <div>
                                     <h4>Standortadresse</h4>
                                     <p>
-                                        Neue Donnerschweer Straße 30<br>
+                                        Neue Donnerschweer Straße 30<br />
                                         26123 Oldenburg
                                     </p>
                                 </div>
                             </div>
-                            <!-- Telefon -->
+
                             <div class="kontakt-item">
-                                <img class="icon" src="assets/icons/call_fill.svg" alt="" aria-hidden="true">
+                                <img class="icon" src="assets/icons/call_fill.svg" alt="" aria-hidden="true" />
                                 <div>
                                     <h4>Telefon</h4>
                                     <p>
-                                        <a href="tel:04413611860">0441 / 36 11 860</a><br>
+                                        <a href="tel:04413611860">0441 / 36 11 860</a><br />
                                         Fax: 0441 / 36 11 86 49
                                     </p>
                                 </div>
                             </div>
-                            <!-- E-Mail -->
+
                             <div class="kontakt-item">
-                                <img class="icon" src="assets/icons/mail_fill.svg" alt="" aria-hidden="true">
+                                <img class="icon" src="assets/icons/mail_fill.svg" alt="" aria-hidden="true" />
                                 <div>
                                     <h4>E-Mail</h4>
-                                    <p>bitte nutzen Sie die Online-Rezeption unten rechts auf
-                                        <a href="https://www.realeyes.de/standorte/nord/store/augenzentrum-oldenburg-donnerschwee" target="_blank">
+                                    <p>
+                                        bitte nutzen Sie die Online-Rezeption unten rechts auf
+                                        <a
+                                                href="https://www.realeyes.de/standorte/nord/store/augenzentrum-oldenburg-donnerschwee"
+                                                target="_blank"
+                                        >
                                             REALEYES Oldenburg-Donnerschwee
                                         </a>
                                     </p>
@@ -135,72 +130,88 @@
                         </div>
                     </div>
 
-                    <!-- Sprechzeiten Tile -->
+                    <!-- Sprechzeiten -->
                     <div class="tile-group">
                         <a class="tile" href="#sprechzeiten">
-                            <span class="tile-icon">
-                               <img class="icon" src="assets/icons/schedule_white.svg" alt="" aria-hidden="true">
-                            </span>
+                  <span class="tile-icon">
+                    <img class="icon" src="assets/icons/schedule_white.svg" alt="" aria-hidden="true" />
+                  </span>
                             <span class="tile-label">Sprechzeiten</span>
                             <span class="tile-chevron">
-                                <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true">
-                            </span>
+                    <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true" />
+                  </span>
                         </a>
+
                         <div class="tile-panel" hidden>
                             <div class="kontakt-item">
-                                <img class="icon" src="assets/icons/schedule_fill.svg" alt="" aria-hidden="true">
+                                <img class="icon" src="assets/icons/schedule_fill.svg" alt="" aria-hidden="true" />
                                 <div>
                                     <h4>Sprechzeiten</h4>
+
                                     <ul class="sprechzeiten-liste">
                                         <li>
                                             <span class="day">Montag:</span>
                                             <span class="times">
-            <span class="time-range">
-                <span class="t-start">08:00</span><span class="t-sep">–</span><span class="t-end">12:00</span>
-            </span>
-            <span class="time-range">
-                <span class="t-start">13:30</span><span class="t-sep">–</span><span class="t-end">17:00</span>
-            </span>
-        </span>
+                            <span class="time-range">
+                              <span class="t-start">08:00</span>
+                              <span class="t-sep">–</span>
+                              <span class="t-end">12:00</span>
+                            </span>
+                            <span class="time-range">
+                              <span class="t-start">13:30</span>
+                              <span class="t-sep">–</span>
+                              <span class="t-end">17:00</span>
+                            </span>
+                          </span>
                                         </li>
 
                                         <li>
                                             <span class="day">Dienstag:</span>
                                             <span class="times">
-            <span class="time-range">
-                <span class="t-start">12:00</span><span class="t-sep">–</span><span class="t-end">18:30</span>
-            </span>
-        </span>
+                            <span class="time-range">
+                              <span class="t-start">12:00</span>
+                              <span class="t-sep">–</span>
+                              <span class="t-end">18:30</span>
+                            </span>
+                          </span>
                                         </li>
 
                                         <li>
                                             <span class="day">Mittwoch:</span>
                                             <span class="times">
-            <span class="time-range">
-                <span class="t-start">08:00</span><span class="t-sep">–</span><span class="t-end">12:00</span>
-            </span>
-            <span class="time-range">
-                <span class="t-start">13:30</span><span class="t-sep">–</span><span class="t-end">17:00</span>
-            </span>
-        </span>
+                            <span class="time-range">
+                              <span class="t-start">08:00</span>
+                              <span class="t-sep">–</span>
+                              <span class="t-end">12:00</span>
+                            </span>
+                            <span class="time-range">
+                              <span class="t-start">13:30</span>
+                              <span class="t-sep">–</span>
+                              <span class="t-end">17:00</span>
+                            </span>
+                          </span>
                                         </li>
 
                                         <li>
                                             <span class="day">Donnerstag:</span>
                                             <span class="times">
-            <span class="time-range">
-                <span class="t-start">08:00</span><span class="t-sep">–</span><span class="t-end">14:30</span>
-            </span>
-        </span>
+                            <span class="time-range">
+                              <span class="t-start">08:00</span>
+                              <span class="t-sep">–</span>
+                              <span class="t-end">14:30</span>
+                            </span>
+                          </span>
                                         </li>
 
                                         <li>
                                             <span class="day">Freitag:</span>
                                             <span class="times">
-            <span class="time-range">
-                <span class="t-start">08:00</span><span class="t-sep">–</span><span class="t-end">12:30</span>
-            </span>
-        </span>
+                            <span class="time-range">
+                              <span class="t-start">08:00</span>
+                              <span class="t-sep">–</span>
+                              <span class="t-end">12:30</span>
+                            </span>
+                          </span>
                                         </li>
 
                                         <li class="sprechzeiten-hint">
@@ -208,60 +219,64 @@
                                             <span class="times">und nach Vereinbarung</span>
                                         </li>
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Termin Tile -->
+                    <!-- Termin -->
                     <div class="tile-group">
-                        <a class="tile" href="https://www.realeyes.de/standorte/nord/store/augenzentrum-oldenburg-donnerschwee">
-                            <span class="tile-icon">
-                                <img class="icon" src="assets/icons/calendar_month_white.svg" alt="" aria-hidden="true">
-                            </span>
+                        <a
+                                class="tile"
+                                href="https://www.realeyes.de/standorte/nord/store/augenzentrum-oldenburg-donnerschwee"
+                        >
+                  <span class="tile-icon">
+                    <img class="icon" src="assets/icons/calendar_month_white.svg" alt="" aria-hidden="true" />
+                  </span>
                             <span class="tile-label">Termin vereinbaren</span>
                         </a>
                     </div>
 
-                    <!-- Bereitschaftsdienst (4. Kachel, unter "Termin vereinbaren") -->
+                    <!-- Bereitschaftsdienst (als Tile wie die anderen) -->
                     <div class="tile-group">
-                        <div class="notdienst-card notdienst-card--tile">
-                            <details class="info-accordion">
-                                <summary class="info-summary">
-                                    <span class="info-title">Bereitschaftsdienst</span>
-                                    <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true">
-                                </summary>
+                        <a class="tile" href="#bereitschaftsdienst">
+                            <span class="tile-label">Bereitschaftsdienst</span>
+                            <span class="tile-chevron">
+                    <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true" />
+                  </span>
+                        </a>
 
-                                <div class="info-preview" aria-hidden="true">
-                                    Für Patienten, die außerhalb der regulären Sprechzeiten, an Wochenenden oder Feiertagen
-                                    ambulante ärztliche Hilfe benötigen, ist der allgemeine ärztliche Bereitschaftsdienst verantwortlich …
-                                </div>
+                        <div class="tile-panel" hidden>
+                            <div class="info-preview" aria-hidden="true">
+                                Für Patienten, die außerhalb der regulären Sprechzeiten, an Wochenenden oder Feiertagen ambulante
+                                ärztliche Hilfe benötigen, ist der allgemeine ärztliche Bereitschaftsdienst verantwortlich …
+                            </div>
 
-                                <div class="info-body">
-                                    <p>
-                                        Für Patienten, die außerhalb der regulären Sprechzeiten, an Wochenenden oder Feiertagen
-                                        ambulante ärztliche Hilfe benötigen, ist der allgemein ärztlicher Bereitschaftsdienst verantwortlich,
-                                        der durch die Kassenäztliche Vereinigung organisiert wird und von niedergelassenen Ärzten
-                                        durchgeführt wird.
-                                    </p>
+                            <div class="info-body">
+                                <p>
+                                    Für Patienten, die außerhalb der regulären Sprechzeiten, an Wochenenden oder Feiertagen ambulante
+                                    ärztliche Hilfe benötigen, ist der allgemein ärztlicher Bereitschaftsdienst verantwortlich, der
+                                    durch die Kassenäztliche Vereinigung organisiert wird und von niedergelassenen Ärzten durchgeführt
+                                    wird.
+                                </p>
 
-                                    <p>
-                                        Den augenärztlichen Bereitschaftsdienst erreichen sie unter<br>
-                                        Telefon: <a href="tel:044121006-45">0441 21006-45</a>
-                                    </p>
+                                <p>
+                                    Den augenärztlichen Bereitschaftsdienst erreichen sie unter<br />
+                                    Telefon: <a href="tel:044121006-45">0441 21006-45</a>
+                                </p>
 
-                                    <p>
-                                        <a href="https://www.arztauskunft-niedersachsen.de" target="_blank" rel="noopener">www.arztauskunft-niedersachsen.de</a>
-                                    </p>
+                                <p>
+                                    <a href="https://www.arztauskunft-niedersachsen.de" target="_blank" rel="noopener"
+                                    >www.arztauskunft-niedersachsen.de</a
+                                    >
+                                </p>
 
-                                    <p>
-                                        Außerhalb der Sprechzeiten des augenärztlichen Bereitschaftsdienstes wenden Sie sich bitte an
-                                        den allgemein ärztlichen Bereitschaftsdienst der Kassenärztlichen Vereinigung<br>
-                                        Telefon: <a href="tel:116117">116 117</a>
-                                    </p>
-                                </div>
-                            </details>
+                                <p>
+                                    Außerhalb der Sprechzeiten des augenärztlichen Bereitschaftsdienstes wenden Sie sich bitte an den
+                                    allgemein ärztlichen Bereitschaftsdienst der Kassenärztlichen Vereinigung<br />
+                                    Telefon: <a href="tel:116117">116 117</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -269,20 +284,19 @@
         </div>
     </section>
 
-    <!--     =================== Aktuelles ====================-->
+    <!-- =================== Aktuelles ==================== -->
     <section id="aktuelles" class="aktuelles-section" hidden aria-hidden="true">
         <div class="container aktuelles-container"></div>
     </section>
 
-
-    <!-- ==================== Leistungen Neu ==================== -->
+    <!-- ==================== Leistungen ==================== -->
     <section id="leistungen" class="leistungen-section">
         <div class="container leistungen-container">
             <h2>Leistungen</h2>
             <p>
-                In unserer Praxis bieten wir umfassende augenärztliche Diagnostik und Behandlung – modern,
-                präzise und individuell abgestimmt. Das Spektrum reicht von Vorsorgeuntersuchungen bis hin zu
-                therapeutischen Eingriffen.
+                In unserer Praxis bieten wir umfassende augenärztliche Diagnostik und Behandlung – modern, präzise und
+                individuell abgestimmt. Das Spektrum reicht von Vorsorgeuntersuchungen bis hin zu therapeutischen
+                Eingriffen.
             </p>
 
             <div class="leistungen-list">
@@ -292,7 +306,7 @@
                 </div>
 
                 <div class="leistung">
-                    <h3>Kinderaugenheilkunde & Sehschule</h3>
+                    <h3>Kinderaugenheilkunde &amp; Sehschule</h3>
                     <p>Sehschule mit Kindersprechstunde und Schielbehandlung sowie Anpassung von Prismenbrillen</p>
                 </div>
 
@@ -308,7 +322,7 @@
 
                 <div class="leistung">
                     <h3>Spezialdiagnostik</h3>
-                    <p>OCT, Angiographie, Fundusfotografie (Netzhaut) </p>
+                    <p>OCT, Angiographie, Fundusfotografie (Netzhaut)</p>
                 </div>
 
                 <div class="leistung">
@@ -324,83 +338,86 @@
         </div>
     </section>
 
-    <!-- ==================== PRAXIS   ==================== -->
+    <!-- ==================== Praxis ==================== -->
     <section id="praxis" class="praxis-section">
         <div class="container praxis-container">
             <h2>Unsere Praxis in Oldenburg-Donnerschwee</h2>
-            <!-- Bildslider (Platzhalter) -->
-            <p>Die augenärztliche Praxis von Dr. Schlese ist in Teil von
-                <a href="https://www.realeyes.de/standorte/nord/store/augenzentrum-oldenburg-donnerschwee" target="_blank">
+            <p>
+                Die augenärztliche Praxis von Dr. Schlese ist in Teil von
+                <a
+                        href="https://www.realeyes.de/standorte/nord/store/augenzentrum-oldenburg-donnerschwee"
+                        target="_blank"
+                >
                     REALEYES Oldenburg-Donnerschwee
                 </a>
-                . Seine Praxis befindet sich in einem modernen Ärztehaus, in dem Fachärztinnen und Fachärzte verschiedener Fachrichtungen unter einem Dach zusammenarbeiten – für kurze Wege und eine optimale Versorgung. Die Praxisräume sind hell, freundlich und barrierefrei gestaltet. Mit moderner Technik und persönlicher Betreuung schaffen wir eine Atmosphäre, in der Sie sich gut aufgehoben fühlen können.
+                . Seine Praxis befindet sich in einem modernen Ärztehaus, in dem Fachärztinnen und Fachärzte verschiedener
+                Fachrichtungen unter einem Dach zusammenarbeiten – für kurze Wege und eine optimale Versorgung. Die
+                Praxisräume sind hell, freundlich und barrierefrei gestaltet. Mit moderner Technik und persönlicher
+                Betreuung schaffen wir eine Atmosphäre, in der Sie sich gut aufgehoben fühlen können.
             </p>
 
             <div class="praxis-bild">
-                <img src="assets/praxis/Praxis_Oldenburg_062024_06.JPG"
-                     alt="Praxis Donnerschwee">
+                <img src="assets/praxis/Praxis_Oldenburg_062024_06.JPG" alt="Praxis Donnerschwee" />
             </div>
         </div>
     </section>
 
-
-    <!-- ==================== ÜBER MICH ==================== -->
+    <!-- ==================== Über mich ==================== -->
     <section id="uebermich" class="uebermich-section">
         <div class="container uebermich-container">
-
-
             <div class="uebermich-text">
                 <h2>Dr. med. Carsten Schlese</h2>
                 <h3>Facharzt für Augenheilkunde</h3>
 
                 <p>
-                    Doktor Carsten Schlese ist Teil des augenärztlichen Teams der  überörtlichen Berufsausübungsgemeinschaft (ÜBAG)
-                    <a href="https://www.realeyes.de/" target="_blank">
-                        REALEYES Nord GbR
-                    </a>
-                    .
+                    Doktor Carsten Schlese ist Teil des augenärztlichen Teams der überörtlichen Berufsausübungsgemeinschaft
+                    (ÜBAG)
+                    <a href="https://www.realeyes.de/" target="_blank">REALEYES Nord GbR</a>.
                 </p>
+
                 <p>
-                    Mit langjähriger Erfahrung in Klinik und Praxis bietet er ein breites Spektrum moderner
-                    augenärztlicher Leistungen – kompetent, patientenorientiert und interdisziplinär vernetzt.
+                    Mit langjähriger Erfahrung in Klinik und Praxis bietet er ein breites Spektrum moderner augenärztlicher
+                    Leistungen – kompetent, patientenorientiert und interdisziplinär vernetzt.
                 </p>
+
                 <div class="uebermich-bild">
-                    <img src="assets/dr.schlese1.jpg" alt="Dr. med. Carsten Schlese">
+                    <img src="assets/dr.schlese1.jpg" alt="Dr. med. Carsten Schlese" />
                 </div>
 
                 <div class="accordion">
-                    <button class="accordion-header">
+                    <button class="accordion-header" type="button">
                         <span class="accordion-title">Vita</span>
                         <span class="accordion-icon">⌃</span>
                     </button>
+
                     <div class="accordion-body">
                         <ul>
-                            <li><strong>1991</strong><br>Abitur am Lessing-Gymnasium Uelzen</li>
-                            <li><strong>1991–1992</strong><br>Zivildienst an der Medizinischen Hochschule Hannover (MHH)
-                            </li>
-                            <li><strong>1992–1999</strong><br>Studium der Humanmedizin an der MHH</li>
-                            <li><strong>1999–2003</strong><br>Assistenzarzt in der Augenklinik der MHH</li>
-                            <li><strong>2000</strong><br>
-                                Dissertation
-                                Titel: Langzeiteffekte von Silikonöl intraokuläre Tamponade in der vitreoretinalen
+                            <li><strong>1991</strong><br />Abitur am Lessing-Gymnasium Uelzen</li>
+                            <li><strong>1991–1992</strong><br />Zivildienst an der Medizinischen Hochschule Hannover (MHH)</li>
+                            <li><strong>1992–1999</strong><br />Studium der Humanmedizin an der MHH</li>
+                            <li><strong>1999–2003</strong><br />Assistenzarzt in der Augenklinik der MHH</li>
+                            <li>
+                                <strong>2000</strong><br />
+                                Dissertation Titel: Langzeiteffekte von Silikonöl intraokuläre Tamponade in der vitreoretinalen
                                 Chirurgie (MHH)
                             </li>
-                            <li><strong>2003–2005</strong><br>Assistenzarzt Gemeinschaftspraxis Dres. Breuer/Knecht,
-                                Westerstede
+                            <li>
+                                <strong>2003–2005</strong><br />
+                                Assistenzarzt Gemeinschaftspraxis Dres. Breuer/Knecht, Westerstede
                             </li>
-
-                            <li><strong>2004</strong><br>Facharztanerkennung</li>
-                            <li><strong>2005</strong><br>Niederlassung als Augenarzt in Oldenburg</li>
-                            <li><strong>Seit 2007</strong><br>Tätigkeit im Zentrum Gesundheit Oldenburg</li>
+                            <li><strong>2004</strong><br />Facharztanerkennung</li>
+                            <li><strong>2005</strong><br />Niederlassung als Augenarzt in Oldenburg</li>
+                            <li><strong>Seit 2007</strong><br />Tätigkeit im Zentrum Gesundheit Oldenburg</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="accordion">
-                    <button class="accordion-header">
+                    <button class="accordion-header" type="button">
                         <span class="accordion-title">Mitgliedschaften</span>
                         <span class="accordion-icon">⌃</span>
                     </button>
+
                     <div class="accordion-body">
                         <ul>
                             <li>Deutsche Ophthalmologische Gesellschaft (DOG)</li>
@@ -409,24 +426,17 @@
                         </ul>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
-
-
 </main>
 
-
-<!-- FOOTER -->
+<!-- Footer -->
 <footer>
     <p>
-        <a href="sites/impressum.html">Impressum</a> |
-        <a href="sites/datenschutz.html">Datenschutz</a>
+        <a href="sites/impressum.html">Impressum</a> | <a href="sites/datenschutz.html">Datenschutz</a>
     </p>
 </footer>
-
 
 <!-- Glide.js -->
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
@@ -435,7 +445,7 @@
         type: 'carousel',
         perView: 1,
         autoplay: 4000,
-        gap: 16
+        gap: 16,
     }).mount();
 </script>
 </body>

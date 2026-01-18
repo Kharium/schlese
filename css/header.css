@@ -1,12 +1,14 @@
 /* =========================================================
-   Header & Navigation (Mobile-first)
-   - Sticky Header mit fixer Höhe via --header-height
+   Header & Navigation (aufgeräumt)
+   Ziel:
+   - KEIN automatisches 20px Margin links/rechts an der Navbar
+   - Breite/Padding kommt ausschließlich aus .container-pad
    - Mobile: Burger + Off-Canvas Menü (rechts)
    - Desktop (>=1024px): Inline-Navigation rechts
    - Unterseiten (.has-back): Burger aus, Back-Icon rechts
    ========================================================= */
 
-/* ========== Header / Shell ========== */
+/* Header Shell */
 header{
     position: sticky;
     top: 0;
@@ -16,33 +18,28 @@ header{
     border-bottom: 1px solid var(--color-border);
 }
 
-/* ========== Navbar Layout ========== */
+/* Navbar Layout: 100% breit, ohne margin */
 .navbar,
 .navbar--simple{
+    box-sizing: border-box;
     height: var(--header-height);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: clamp(16px, 4vw, 72px);
 
-    /* Wichtig: keine vertikalen Paddings, sonst wächst die effektive Headerhöhe */
+    /* Nur internes Padding – kein margin links/rechts */
     padding-block: 0;
-    padding-inline: 1rem;
+    padding-inline: var(--container-pad);
 
-    width: min(100% - 2 * var(--container-pad), var(--container-max));
-    margin-inline: auto;
+    width: 100%;
+    margin: 0;
 }
 
-/* ========== Logo ========== */
+/* Logo / Brand */
 .logo{
     flex: 0 0 auto;
-}
-
-.logo img{
-    display: block;
-    width: auto;
-    max-height: calc(var(--header-height) - 24px); /* 12px oben + 12px unten */
-    object-fit: contain;
 }
 
 .brand{
@@ -54,7 +51,7 @@ header{
 }
 
 .brand__icon{
-    width: 44px; /* nur das Icon skalieren */
+    width: 44px;
     height: auto;
     display: block;
 }
@@ -68,7 +65,7 @@ header{
 .brand__name{
     font-family: "Poppins", system-ui, -apple-system, Arial, sans-serif;
     font-weight: 400;
-    font-size: 1.15rem; /* hier machst du den Namen größer */
+    font-size: 1.15rem;
     color: var(--color-text);
 }
 
@@ -80,7 +77,7 @@ header{
     color: var(--color-text);
 }
 
-/* ========== Burger Button (SVG-Icon) ========== */
+/* Burger Button */
 .burger-menu{
     display: inline-flex;
     align-items: center;
@@ -94,7 +91,6 @@ header{
     border-radius: 10px;
     cursor: pointer;
 
-    /* über dem Panel, damit immer klickbar */
     z-index: 1001;
 
     -webkit-tap-highlight-color: transparent;
@@ -112,7 +108,7 @@ header{
     display: block;
 }
 
-/* ========== Mobile Menü (Off-Canvas Panel) ========== */
+/* Mobile Menü (Off-Canvas Panel) */
 .nav-links{
     position: fixed;
     top: 0;
@@ -124,13 +120,13 @@ header{
 
     background: var(--color-bg);
     border-left: 1px solid color-mix(in srgb, var(--color-border), transparent 50%);
-    box-shadow: -12px 0 24px rgba(0, 0, 0, 0.08);
+    box-shadow: -12px 0 24px rgba(0,0,0,.08);
 
     transform: translateX(100%);
     transition: transform 0.28s ease;
     z-index: 1000;
 
-    /* Platz unter dem Sticky-Header: nutzt jetzt die echte Header-Höhe */
+    /* Platz unter dem Sticky-Header */
     padding: calc(var(--header-height) + 8px) 0 12px;
     overflow-y: auto;
 }
@@ -156,10 +152,9 @@ header{
 .nav-links a{
     display: block;
     width: 100%;
-
     padding: 18px 22px;
-    text-decoration: none;
 
+    text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 700;
@@ -177,7 +172,7 @@ header{
     background: color-mix(in srgb, var(--color-primary) 8%, white);
 }
 
-/* ========== Desktop: Navigation inline ========== */
+/* Desktop: Navigation inline */
 @media (min-width: 1024px){
     .burger-menu{
         display: none;
@@ -224,9 +219,7 @@ header{
     }
 }
 
-/* =========================================================
-   Unterseiten: Back-Icon statt Burger (.has-back)
-   ========================================================= */
+/* Unterseiten: Back-Icon statt Burger (.has-back) */
 .has-back .navbar{
     position: relative;
 }
@@ -237,7 +230,7 @@ header{
 
 .has-back .nav-back{
     position: absolute;
-    right: 1rem; /* passt zu .navbar padding-inline */
+    right: var(--container-pad); /* passt zum navbar padding */
     top: 50%;
     transform: translateY(-50%);
 

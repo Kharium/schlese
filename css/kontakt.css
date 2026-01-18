@@ -1,23 +1,29 @@
-/* ========== KONTAKT-BEREICH ========== */
-.kontakt-section {
+/* ========== KONTAKT-BEREICH ==========
+   Aufgeräumt + scoped:
+   - Styles wirken nur innerhalb .kontakt-section
+   - Keine Link-Farben/Decorations -> base.css regelt alle <a>
+*/
+
+/* Section */
+.kontakt-section{
     background-color: #f7f7f7;
     padding: 3rem 1rem;
 }
 
-.kontakt-container {
+.kontakt-section .kontakt-container{
     max-width: 800px;
     margin: 0 auto;
 }
 
-.kontakt-container h2 {
+.kontakt-section .kontakt-container h2{
     text-align: center;
     margin-bottom: 2rem;
     font-size: 2rem;
 }
 
-/* ========== INFO-BOX MIT ICONS ========== */
-.kontakt-box {
-    background-color: #ffffff;
+/* Box */
+.kontakt-section .kontakt-box{
+    background-color: #fff;
     padding: 2rem 1.5rem;
     border-radius: 8px;
     box-shadow: 0 0 6px rgba(0,0,0,0.05);
@@ -27,7 +33,8 @@
     margin-bottom: 2rem;
 }
 
-.kontakt-item {
+/* Item */
+.kontakt-section .kontakt-item{
     display: flex;
     align-items: flex-start;
     gap: 1rem;
@@ -35,65 +42,52 @@
     padding-bottom: 1.2rem;
 }
 
-.kontakt-item:last-child {
+.kontakt-section .kontakt-item:last-child{
     border-bottom: none;
 }
 
-.kontakt-item i {
+.kontakt-section .kontakt-item i{
     font-size: 1.4rem;
     color: var(--color-primary);
     margin-top: 0.2rem;
     min-width: 24px;
 }
 
-.kontakt-item h4 {
+.kontakt-section .kontakt-item h4{
     font-size: 1.1rem;
     margin-bottom: 0.3rem;
     color: var(--color-primary);
 }
 
-.kontakt-item p {
+.kontakt-section .kontakt-item p{
     margin: 0;
     color: var(--color-text);
 }
 
-.kontakt-item a {
-    color: var(--color-text);
-    text-decoration: none;
-}
-
-.kontakt-item a:hover {
-    text-decoration: underline;
-}
-
 /* ========== TERMINBUTTON ========== */
-.termin {
+.kontakt-section .termin{
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.termin-button {
+.kontakt-section .termin-button{
     display: inline-block;
     background-color: var(--color-primary);
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 6px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1rem;
     transition: background-color 0.3s ease;
 }
 
-.termin-button:hover {
+.kontakt-section .termin-button:hover{
     background-color: var(--color-primary);
 }
 
-/* ===========================
-   Sprechzeiten (Liste in 2 Spalten)
-   =========================== */
-
-/* ul reset + Grundlayout */
-.sprechzeiten-liste{
+/* ========== SPRECHZEITEN (Liste in 2 Spalten) ========== */
+.kontakt-section .sprechzeiten-liste{
     list-style: none;
     margin: 0;
     padding: 0;
@@ -102,46 +96,41 @@
     gap: var(--space-sm);
 }
 
-/* jede Zeile: Tag links, Zeit rechts */
-.sprechzeiten-liste li{
+.kontakt-section .sprechzeiten-liste li{
     display: grid;
-    grid-template-columns: minmax(7.5rem, 9.5rem) 1fr; /* links fix-ish, rechts flexibel */
+    grid-template-columns: minmax(7.5rem, 9.5rem) 1fr;
     column-gap: var(--space-md);
     align-items: start;
 
-    padding: .35rem 0;
+    padding: 0.35rem 0;
 }
 
-/* Tag (1. span) */
-.sprechzeiten-liste li > span:first-child{
+.kontakt-section .sprechzeiten-liste li > span:first-child{
     font-weight: 600;
     color: var(--color-text);
     white-space: nowrap;
 }
 
-/* Zeit (2. span) */
-.sprechzeiten-liste li > span:last-child{
+.kontakt-section .sprechzeiten-liste li > span:last-child{
     color: var(--color-text);
     line-height: 1.35;
 }
 
-/* Optional: feine Trennlinie zwischen den Zeilen (wirkt sehr „geordnet“) */
-.sprechzeiten-liste li + li{
-    border-top: 1px solid rgba(0,0,0,.06);
-    padding-top: .6rem;
+.kontakt-section .sprechzeiten-liste li + li{
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding-top: 0.6rem;
 }
 
-/* Spezialzeile "und nach Vereinbarung" (bei leerem linken span) */
-.sprechzeiten-liste li > span:first-child:empty{
+.kontakt-section .sprechzeiten-liste li > span:first-child:empty{
     display: none;
 }
-.sprechzeiten-liste li:has(> span:first-child:empty){
-    grid-template-columns: 1fr; /* dann volle Breite für den Text */
+
+.kontakt-section .sprechzeiten-liste li:has(> span:first-child:empty){
+    grid-template-columns: 1fr;
 }
 
-/* Mobile: etwas schmalere linke Spalte */
 @media (max-width: 420px){
-    .sprechzeiten-liste li{
+    .kontakt-section .sprechzeiten-liste li{
         grid-template-columns: minmax(6.5rem, 8rem) 1fr;
     }
 }

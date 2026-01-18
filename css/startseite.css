@@ -123,7 +123,8 @@
     background: var(--color-bg);
     padding: 1rem 1.25rem 1.25rem;
     border-top: 1px solid rgba(0,0,0,.08);
-
+    color: var(--color-text);
+    font-size: 0.95rem;
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1, "lnum" 1;
     font-kerning: none;

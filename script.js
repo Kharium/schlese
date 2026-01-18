@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const burgerIcon = burger?.querySelector('.burger-menu__icon');
 
     // WICHTIG: auf Unterseiten funktionieren relative Pfade oft nicht zuverlässig -> Root-Pfade nutzen
-    const ICON_BURGER = '/assets/icons/burger.svg';
+    const ICON_BURGER = '/assets/icons/menu.svg';
     const ICON_CLOSE = '/assets/icons/close.svg';
 
     const setMenuOpen = (open) => {

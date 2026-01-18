@@ -1,14 +1,11 @@
 /* =========================================================
    Header & Navigation (aufgeräumt)
-   Ziel:
-   - KEIN automatisches 20px Margin links/rechts an der Navbar
-   - Breite/Padding kommt ausschließlich aus .container-pad
+   - Navbar: padding links/rechts = 0 (nur Navbar, nicht .container)
    - Mobile: Burger + Off-Canvas Menü (rechts)
    - Desktop (>=1024px): Inline-Navigation rechts
    - Unterseiten (.has-back): Burger aus, Back-Icon rechts
    ========================================================= */
 
-/* Header Shell */
 header{
     position: sticky;
     top: 0;
@@ -18,10 +15,11 @@ header{
     border-bottom: 1px solid var(--color-border);
 }
 
-/* Navbar Layout: 100% breit, ohne margin */
+/* Navbar: KEIN seitliches Padding */
 .navbar,
 .navbar--simple{
     box-sizing: border-box;
+    width: 100%;
     height: var(--header-height);
 
     display: flex;
@@ -29,13 +27,12 @@ header{
     justify-content: space-between;
     gap: clamp(16px, 4vw, 72px);
 
-    /* Nur internes Padding – kein margin links/rechts */
-    padding-block: 0;
-    padding-inline: var(--container-pad);
-
-    width: 100%;
     margin: 0;
+    padding: 0; /* <- wichtig */
 }
+
+/* Optional: wenn du minimalen Innenabstand nur für Inhalte willst,
+   setz ihn hier über child-wrapper. Da du aber 0 willst, bleibt das weg. */
 
 /* Logo / Brand */
 .logo{
@@ -77,7 +74,7 @@ header{
     color: var(--color-text);
 }
 
-/* Burger Button */
+/* Burger */
 .burger-menu{
     display: inline-flex;
     align-items: center;
@@ -108,7 +105,7 @@ header{
     display: block;
 }
 
-/* Mobile Menü (Off-Canvas Panel) */
+/* Mobile Menü (Off-Canvas) */
 .nav-links{
     position: fixed;
     top: 0;
@@ -126,7 +123,6 @@ header{
     transition: transform 0.28s ease;
     z-index: 1000;
 
-    /* Platz unter dem Sticky-Header */
     padding: calc(var(--header-height) + 8px) 0 12px;
     overflow-y: auto;
 }
@@ -219,7 +215,7 @@ header{
     }
 }
 
-/* Unterseiten: Back-Icon statt Burger (.has-back) */
+/* Unterseiten: Back-Icon statt Burger */
 .has-back .navbar{
     position: relative;
 }
@@ -230,7 +226,7 @@ header{
 
 .has-back .nav-back{
     position: absolute;
-    right: var(--container-pad); /* passt zum navbar padding */
+    right: 0; /* passt, weil navbar padding 0 ist */
     top: 50%;
     transform: translateY(-50%);
 

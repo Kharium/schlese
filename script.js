@@ -93,19 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* =========================
-     *  SLIDER (Glide.js)
-     * ========================= */
-    const praxisSlider = document.querySelector('.glide.praxis-slider');
-    if (praxisSlider && typeof Glide !== 'undefined') {
-        new Glide(praxisSlider, {
-            type: 'carousel',
-            perView: 1,
-            gap: 0,
-            swipeThreshold: false,
-            dragThreshold: false,
-        }).mount();
-    }
 
     /* =========================
      *  KLASSISCHES AKKORDEON

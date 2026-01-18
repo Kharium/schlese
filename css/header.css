@@ -69,6 +69,7 @@ header{
     font-family: "Poppins", system-ui, -apple-system, Arial, sans-serif;
     font-weight: 400;
     font-size: 1.15rem; /* hier machst du den Namen größer */
+    color: var(--color-text);
 }
 
 .brand__sub{
@@ -76,6 +77,7 @@ header{
     font-weight: 300;
     font-size: 0.9rem;
     opacity: 0.85;
+    color: var(--color-text);
 }
 
 /* ========== Burger Button (SVG-Icon) ========== */

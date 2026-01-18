@@ -13,6 +13,7 @@ header{
     width: 100%;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
+    padding-inline: 12px;
 }
 
 /* Navbar: KEIN seitliches Padding */
@@ -27,8 +28,7 @@ header{
     justify-content: space-between;
     gap: clamp(16px, 4vw, 72px);
 
-    padding-inline: 12px;
-    padding: 0; /* <- wichtig */
+
 }
 
 /* Optional: wenn du minimalen Innenabstand nur für Inhalte willst,

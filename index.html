@@ -40,20 +40,19 @@
 </head>
 
 <body>
-<!-- Header -->
+
+
 <header>
     <nav class="navbar">
         <div class="logo">
-            <img src="assets/logo/logo-schlese.svg" alt="Dr. Carsten Schlese - Augenarzt" />
+            <img src="/assets/logo/logo-schlese.svg" alt="Dr. Carsten Schlese - Augenarzt" />
         </div>
 
-        <button class="burger-menu" aria-label="Menü öffnen">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="burger-menu" type="button" aria-label="Menü öffnen" aria-expanded="false">
+            <img class="burger-menu__icon" src="/assets/icons/menu.svg" alt="" aria-hidden="true" />
         </button>
 
-        <div class="nav-links">
+        <div class="nav-links" id="primary-nav">
             <ul>
                 <li><a href="#startseite">Kontakt</a></li>
                 <li><a href="#leistungen">Leistungen</a></li>
@@ -65,6 +64,7 @@
 
     <script src="script.js" defer></script>
 </header>
+
 
 <main>
 

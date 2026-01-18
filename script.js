@@ -8,66 +8,87 @@ window.addEventListener('load', () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 });
 
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
     /* =========================
-     *  NAV / BURGER-MENÜ
+     *  NAV / BURGER-MENÜ (SVG-Icon swap)
      * ========================= */
     const burger = document.querySelector('.burger-menu');
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links a');
+    const burgerIcon = burger?.querySelector('.burger-menu__icon');
 
-    // Burger toggeln
+    // WICHTIG: auf Unterseiten funktionieren relative Pfade oft nicht zuverlässig -> Root-Pfade nutzen
+    const ICON_BURGER = '/assets/icons/burger.svg';
+    const ICON_CLOSE = '/assets/icons/close.svg';
+
+    const setMenuOpen = (open) => {
+        if (!burger || !nav) return;
+
+        burger.classList.toggle('active', open);
+        nav.classList.toggle('active', open);
+
+        burger.setAttribute('aria-expanded', String(open));
+        burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+
+        if (burgerIcon) {
+            burgerIcon.src = open ? ICON_CLOSE : ICON_BURGER;
+        }
+    };
+
     if (burger && nav) {
+        // Initialzustand sicher setzen (falls CSS/HTML mal abweicht)
+        setMenuOpen(false);
+
+        // Button klick => toggle
         burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            nav.classList.toggle('active');
+            const open = !nav.classList.contains('active');
+            setMenuOpen(open);
         });
 
         // Links klicken -> Menü auf Mobil schließen
-        navLinks.forEach(link => {
+        navLinks.forEach((link) => {
             link.addEventListener('click', () => {
-                if (window.innerWidth < 768) {
-                    burger.classList.remove('active');
-                    nav.classList.remove('active');
-                }
+                if (window.innerWidth < 768) setMenuOpen(false);
             });
         });
 
         // Outside-Click schließt Menü
         document.addEventListener('click', (e) => {
-            const clickedInsideMenu = nav.contains(e.target);
-            const clickedBurger = burger.contains(e.target);
+            const target = e.target;
+            if (!(target instanceof Node)) return;
+
+            const clickedInsideMenu = nav.contains(target);
+            const clickedBurger = burger.contains(target);
+
             if (!clickedInsideMenu && !clickedBurger && nav.classList.contains('active')) {
-                burger.classList.remove('active');
-                nav.classList.remove('active');
+                setMenuOpen(false);
             }
         });
 
         // ESC schließt Menü
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && nav.classList.contains('active')) {
-                burger.classList.remove('active');
-                nav.classList.remove('active');
+                setMenuOpen(false);
             }
         });
     }
 
     /* Aktiven Nav-Link anhand der aktuellen URL markieren
-       (funktioniert auch auf Unterseiten wie /seite/impressum.html) */
+       (funktioniert auch auf Unterseiten wie /sites/impressum.html) */
     const currentPath = location.pathname.replace(/\/+$/, '');
-    navLinks.forEach(a => {
+    navLinks.forEach((a) => {
         const href = a.getAttribute('href');
         if (!href) return;
+
         const absPath = new URL(href, location.origin).pathname.replace(/\/+$/, '');
         if (absPath === currentPath) a.classList.add('is-current');
         else a.classList.remove('is-current');
     });
 
     // Fallback: Klick-Markierung (falls du auf derselben Seite bleibst)
-    navLinks.forEach(a => {
+    navLinks.forEach((a) => {
         a.addEventListener('click', () => {
-            navLinks.forEach(x => x.classList.remove('is-current'));
+            navLinks.forEach((x) => x.classList.remove('is-current'));
             a.classList.add('is-current');
         });
     });
@@ -75,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================
      *  SLIDER (Glide.js)
      * ========================= */
-    // Praxis-Slider
     const praxisSlider = document.querySelector('.glide.praxis-slider');
     if (praxisSlider && typeof Glide !== 'undefined') {
         new Glide(praxisSlider, {
@@ -83,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             perView: 1,
             gap: 0,
             swipeThreshold: false,
-            dragThreshold: false
+            dragThreshold: false,
         }).mount();
     }
 
@@ -113,14 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================
      *  TILES-AKKORDEON
      * ========================= */
-    document.querySelectorAll('.tiles .tile').forEach(tile => {
+    document.querySelectorAll('.tiles .tile').forEach((tile) => {
         const panel = tile.nextElementSibling;
         const hasPanel = panel && panel.classList.contains('tile-panel');
-
         if (!hasPanel) return;
 
         const chevronImg = tile.querySelector('.tile-chevron img');
 
+        // Hinweis: deine Tiles nutzen aktuell relative Pfade in HTML.
+        // Für Unterseiten wäre /assets/... ebenfalls robuster, aber hier lassen wir es wie gehabt.
         const ARROW_DOWN = 'assets/icons/arrow_down.svg';
         const ARROW_UP = 'assets/icons/arrow_up.svg';
 
@@ -128,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.classList.toggle('open', isOpen);
             panel.hidden = !isOpen;
 
-            // optional, aber gut für Accessibility + CSS-Hooks
             tile.setAttribute('aria-expanded', String(isOpen));
 
             if (chevronImg) {

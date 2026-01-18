@@ -59,7 +59,7 @@
     padding-right: .25rem;
 
     background: var(--color-bg);
-    color: inherit;
+    color: var(--color-primary);
     text-decoration: none;
 
     border: 0;

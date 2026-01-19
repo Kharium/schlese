@@ -1,39 +1,69 @@
-/* Datenschutz – Abstände wie bei anderen Sections */
-.datenschutz-section{
+/* Datenschutz – orientiert sich an Impressum (legal-list / legal-item) */
+
+.datenschutz-section {
     padding: var(--space-md);
 }
 
-/* Optional: mehr Luft auf Desktop */
-@media (min-width: 768px){
-    .datenschutz-section{
+@media (min-width: 768px) {
+    .datenschutz-section {
         padding: var(--space-lg) 0;
     }
 }
 
-.datenschutz-container > h2{
+.datenschutz-container > h2 {
     margin: 0 0 var(--space-sm) 0;
 }
 
-/* Fließtext-Abstände */
-.datenschutz-container > p{
-    margin: 0 0 var(--space-md) 0;
-}
-
-.datenschutz-container > p:last-of-type{
-    margin-bottom: 0;
-}
-
-/* Zwischenüberschriften */
-.datenschutz-container > h3{
-    margin: var(--space-lg) 0 var(--space-sm);
-}
-
-/* Listen */
-.datenschutz-container ul{
-    margin: 0 0 var(--space-md) 1.25rem;
+/* Legal-List: gleiche Struktur wie im Impressum (falls impressum.css das nicht global abdeckt) */
+.datenschutz-container .legal-list {
+    margin: 0;
     padding: 0;
 }
 
-.datenschutz-container li{
+.datenschutz-container .legal-item {
+    margin: 0 0 var(--space-md) 0;
+}
+
+.datenschutz-container .legal-item:last-child {
+    margin-bottom: 0;
+}
+
+.datenschutz-container dt {
+    font-weight: 700;
     margin: 0 0 var(--space-xs) 0;
+}
+
+.datenschutz-container dd {
+    margin: 0;
+}
+
+/* Fließtext in dd */
+.datenschutz-container dd p {
+    margin: 0 0 var(--space-sm) 0;
+}
+
+.datenschutz-container dd p:last-child {
+    margin-bottom: 0;
+}
+
+/* Listen in dd */
+.datenschutz-container dd ul,
+.datenschutz-container dd ol {
+    margin: 0 0 var(--space-sm) 1.25rem;
+    padding: 0;
+}
+
+.datenschutz-container dd li {
+    margin: 0 0 var(--space-xs) 0;
+}
+
+/* Address-Block wie im Impressum */
+.datenschutz-container .legal-address {
+    font-style: normal;
+    margin: 0;
+}
+
+.datenschutz-container .legal-meta {
+    margin: 0;
+    padding-left: 1.25rem;
 }

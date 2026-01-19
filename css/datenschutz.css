@@ -1,7 +1,7 @@
 /* Datenschutz – orientiert sich an Impressum (legal-list / legal-item) */
 
 .datenschutz-section {
-    padding: var(--space-md);
+    padding: var(--space-sm);
 }
 
 @media (min-width: 768px) {

@@ -65,5 +65,5 @@
 
 .datenschutz-container .legal-meta {
     margin: 0;
-    padding-left: 1.25rem;
+   padding-left: var(--space-sm);
 }

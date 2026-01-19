@@ -6,46 +6,29 @@
   <title>Impressum – Praxis Dr. Carsten Schlese</title>
 
   <link rel="stylesheet" href="/css/main.css" />
-  <script src="/script.js" defer></script>
-
 </head>
 
 <body class="has-back">
-
-
 <header>
   <nav class="navbar">
     <div class="logo">
-      <a class="brand" href="#startseite" aria-label="Zur Startseite">
+      <a class="brand" href="/#startseite" aria-label="Zur Startseite">
         <img class="brand__icon" src="/assets/logo/logo.svg" alt="" aria-hidden="true" />
         <span class="brand__text">
-        <span class="brand__name">Dr. Carsten Schlese</span>
-          <span class="brand__sub">Facharzt für Augenheilkunde</span>
-      </span>
+            <span class="brand__name">Dr. Carsten Schlese</span>
+            <span class="brand__sub">Facharzt für Augenheilkunde</span>
+          </span>
       </a>
     </div>
 
-
-    <button class="burger-menu" type="button" aria-label="Menü öffnen" aria-expanded="false">
-      <img class="burger-menu__icon" src="/assets/icons/menu.svg" alt="" aria-hidden="true" />
-    </button>
-
-    <div class="nav-links" id="primary-nav">
-      <ul>
-        <li><a href="#startseite">Kontakt</a></li>
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li><a href="#praxis">Praxis</a></li>
-        <li><a href="#uebermich">Über mich</a></li>
-      </ul>
-    </div>
+    <!-- Back-Button statt Burger/Navigation -->
+    <a class="nav-back" href="/#startseite" aria-label="Zurück zur Hauptseite">
+      <img class="nav-back__icon" src="/assets/icons/arrow_back.svg" alt="" aria-hidden="true" />
+    </a>
   </nav>
-
-  <script src="script.js" defer></script>
 </header>
 
-
 <main>
-  <!-- ==================== Impressum ==================== -->
   <section id="impressum" class="impressum-section" aria-labelledby="impressum-title">
     <div class="container impressum-container">
       <h2 id="impressum-title">Impressum</h2>
@@ -64,7 +47,7 @@
         <strong>Kontakt:</strong><br />
         Telefon: 0441 / 36 11 860<br />
         Fax: 0441 / 36 11 86 49<br />
-        E-Mail: praxis-oldenburg-donnerschwee@realeyes.de
+        E-Mail: [bitte-e-mail-eintragen]
       </p>
 
       <p>
@@ -94,7 +77,7 @@
 
       <p>
         <strong>Medizinproduktesicherheit:</strong><br />
-        E-Mail: [bitte E-Mail eintragen]
+        E-Mail: [bitte-e-mail-eintragen]
       </p>
 
       <p>
@@ -113,9 +96,9 @@
 </main>
 
 <footer>
-  <div class="container">
-    <p><a href="/index.html">Zurück zur Startseite</a></p>
-  </div>
+  <p>
+    <a href="/sites/impressum.html">Impressum</a> | <a href="/sites/datenschutz.html">Datenschutz</a>
+  </p>
 </footer>
 </body>
 </html>

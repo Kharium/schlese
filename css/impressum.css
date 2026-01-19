@@ -1,0 +1,92 @@
+/* =========================
+   IMPRESSUM (strukturierte Legal-Blocks)
+   Nutzt: .legal-list, .legal-item, .legal-address, .legal-meta
+   ========================= */
+
+.impressum-section{
+    padding-block: var(--space-md);
+}
+
+.impressum-container > h2{
+    margin: 0 0 var(--space-md) 0;
+    color: var(--color-text);
+}
+
+/* DL reset + Layout als „Cards“ */
+.legal-list{
+    margin: 0;
+    padding: 0;
+}
+
+.legal-item{
+    margin: 0 0 var(--space-sm) 0;
+    padding: var(--space-sm);
+
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+
+    background: color-mix(in srgb, var(--color-bg) 92%, white);
+    box-shadow: 0 6px 18px rgba(0,0,0,.04);
+}
+
+.legal-item:last-child{
+    margin-bottom: 0;
+}
+
+/* Überschrift (dt) */
+.legal-item dt{
+    margin: 0 0 var(--space-xs) 0;
+
+    font-weight: 700;
+    color: var(--color-text);
+
+    /* lange Überschriften sollen sauber umbrechen */
+    overflow-wrap: anywhere;
+}
+
+/* Text (dd) */
+.legal-item dd{
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* Adresse ohne kursiv + ohne Default-Margins */
+.legal-address{
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+}
+
+/* Key/Value-Liste z.B. Telefon/Fax/E-Mail */
+.legal-meta{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+}
+
+/* Etiketten etwas ruhiger und konsistent */
+.legal-meta strong{
+    font-weight: 600;
+}
+
+/* Wenn ein dd nur Text ist, geben wir ihm etwas Abstand nach oben,
+   aber nur, wenn davor eine Adresse steht (optional schön) */
+.legal-address + .legal-meta{
+    margin-top: var(--space-xs);
+}
+
+/* Desktop: mehr Luft */
+@media (min-width: 768px){
+    .impressum-section{
+        padding-block: var(--space-lg);
+    }
+
+    .legal-item{
+        padding: var(--space-md);
+    }
+}

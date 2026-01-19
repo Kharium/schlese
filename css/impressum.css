@@ -22,11 +22,10 @@
     margin: 0 0 var(--space-sm) 0;
     padding: var(--space-sm);
 
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
 
-    background: color-mix(in srgb, var(--color-bg) 92%, white);
-    box-shadow: 0 6px 18px rgba(0,0,0,.04);
+
+
+
 }
 
 .legal-item:last-child{

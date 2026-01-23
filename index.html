@@ -59,34 +59,33 @@
 
     <!-- ==================== Startseite ==================== -->
     <section id="startseite" class="startseite-section">
-        <div class="container startseite-container">
-            <!-- Bild -->
-            <div class="single-image"></div>
+  <div class="container startseite-container">
+    <!-- Bild -->
+    <div class="single-image"></div>
 
-            <img src="assets/dr.schlese.jpg" alt="Dr. Schlese"/>
+    <img src="assets/dr.schlese.jpg" alt="Dr. Schlese" />
 
-            <nav class="startseite-accordion tiles" aria-label="Schnellzugriff">
-                <div class="tiles-wrapper">
+    <nav class="startseite-accordion tiles" aria-label="Schnellzugriff">
+      <div class="tiles-wrapper">
+        <!-- Standort -->
+        <div class="tile-group">
+          <button
+            class="tile"
+            type="button"
+            aria-expanded="false"
+            aria-controls="tile-panel-standort"
+          >
+            <span class="tile-icon">
+              <img class="icon" src="assets/icons/location_on_white.svg" alt="" aria-hidden="true" />
+            </span>
+            <span class="tile-label">Standort</span>
+            <span class="tile-chevron">
+              <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true" />
+            </span>
+          </button>
 
-                    <!-- Standort -->
-                    <div class="tile-group">
-                        <button
-                                class="tile"
-                                type="button"
-                                aria-expanded="false"
-                                aria-controls="tile-panel-standort"
-                        >
-    <span class="tile-icon">
-      <img class="icon" src="assets/icons/location_on_white.svg" alt="" aria-hidden="true"/>
-    </span>
-                            <span class="tile-label">Standort</span>
-                            <span class="tile-chevron">
-      <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true"/>
-    </span>
-                        </button>
-
-                        <div class="tile-panel" id="tile-panel-standort" hidden>
-                            <div class="kontakt-item">
+          <div class="tile-panel" id="tile-panel-standort" hidden>
+            <div class="kontakt-item">
                                 <img class="icon" src="assets/icons/location_on_fill.svg" alt="" aria-hidden="true"/>
                                 <div>
                                     <h4>Adresse</h4>
@@ -124,24 +123,28 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+          </div>
+        </div>
 
-
-                    <!-- Sprechzeiten -->
-                    <div class="tile-group">
-                        <a class="tile" href="#sprechzeiten">
+        <!-- Sprechzeiten -->
+        <div class="tile-group">
+          <button
+            class="tile"
+            type="button"
+            aria-expanded="false"
+            aria-controls="tile-panel-sprechzeiten"
+          >
             <span class="tile-icon">
-              <img class="icon" src="assets/icons/schedule_white.svg" alt="" aria-hidden="true"/>
+              <img class="icon" src="assets/icons/schedule_white.svg" alt="" aria-hidden="true" />
             </span>
-                            <span class="tile-label">Sprechzeiten</span>
-                            <span class="tile-chevron">
-              <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true"/>
+            <span class="tile-label">Sprechzeiten</span>
+            <span class="tile-chevron">
+              <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true" />
             </span>
-                        </a>
+          </button>
 
-                        <div class="tile-panel" hidden>
-                            <div class="kontakt-item">
+          <div class="tile-panel" id="tile-panel-sprechzeiten" hidden>
+            <div class="kontakt-item">
                                 <img class="icon" src="assets/icons/schedule_fill.svg" alt="" aria-hidden="true"/>
                                 <div>
                                     <h4>Sprechzeiten</h4>
@@ -219,32 +222,41 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+          </div>
+        </div>
 
-                    <!-- Termin -->
-                    <div class="tile-group">
-                        <a class="tile"
-                           href="https://www.realeyes.de/standorte/nord/store/augenzentrum-oldenburg-donnerschwee">
+        <!-- Termin vereinbaren (Link bleibt Link) -->
+        <div class="tile-group">
+          <a
+            class="tile"
+            href="https://www.realeyes.de/standorte/nord/store/augenzentrum-oldenburg-donnerschwee"
+            target="_blank"
+            rel="noopener"
+          >
             <span class="tile-icon">
-              <img class="icon" src="assets/icons/calendar_month_white.svg" alt="" aria-hidden="true"/>
+              <img class="icon" src="assets/icons/calendar_month_white.svg" alt="" aria-hidden="true" />
             </span>
-                            <span class="tile-label">Termin vereinbaren</span>
-                        </a>
-                    </div>
+            <span class="tile-label">Termin vereinbaren</span>
+          </a>
+        </div>
 
-                    <!-- Bereitschaftsdienst (wie Tile, ohne Icon links) -->
-                    <div class="tile-group">
-                        <a class="tile tile--noicon" href="#bereitschaftsdienst">
-                            <span class="tile-icon" aria-hidden="true"></span>
-                            <span class="tile-label">Bereitschaftsdienst</span>
-                            <span class="tile-chevron">
-              <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true"/>
+        <!-- Bereitschaftsdienst -->
+        <div class="tile-group">
+          <button
+            class="tile tile--noicon"
+            type="button"
+            aria-expanded="false"
+            aria-controls="tile-panel-bereitschaftsdienst"
+          >
+            <span class="tile-icon" aria-hidden="true"></span>
+            <span class="tile-label">Bereitschaftsdienst</span>
+            <span class="tile-chevron">
+              <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true" />
             </span>
-                        </a>
+          </button>
 
-                        <div class="tile-panel" hidden>
-
+          <div class="tile-panel" id="tile-panel-bereitschaftsdienst" hidden>
+            
                             <div class="info-body">
                                 <p>
                                     Für Patienten, die außerhalb der regulären Sprechzeiten, an Wochenenden oder
@@ -274,12 +286,12 @@
                                     Telefon: <a href="tel:116117">116 117</a>
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+          </div>
         </div>
-    </section>
+      </div>
+    </nav>
+  </div>
+</section>
 
 
     <!-- =================== Aktuelles ==================== -->

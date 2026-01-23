@@ -206,6 +206,54 @@ button.tile{
 
 /* ---------- Sprechzeiten ---------- */
 
+/* ---------- Sprechzeiten: sauber ausrichten ---------- */
+
+/* optional: Day-Spalte minimal stabiler */
+.sprechzeiten-liste > li{
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  column-gap: .75rem;
+  align-items: start;
+}
+
+/* rechte Spalte: Zeitblöcke untereinander */
+.sprechzeiten-liste .times{
+  display: grid;
+  gap: .25rem;
+}
+
+/* ein Zeitblock = 3 Spalten (Start | – | Ende) */
+.sprechzeiten-liste .time-range{
+  display: grid;
+
+  /* Start/Ende: feste "Ziffern-Spalte" über ch (0-Zeichenbreite) */
+  grid-template-columns: 5ch 1.2ch 5ch;
+
+  align-items: baseline;
+  white-space: nowrap;
+
+  /* Ziffern überall gleich breit (falls Font es unterstützt) */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* wichtig: Zahlen rechtsbündig, damit 08:00 und 12:00 gleich starten */
+.sprechzeiten-liste .t-start,
+.sprechzeiten-liste .t-end{
+  text-align: right;
+}
+
+/* Trenner bleibt mittig */
+.sprechzeiten-liste .t-sep{
+  text-align: center;
+  opacity: .9;
+}
+
+/* Hint-Zeile bleibt wie gehabt */
+.sprechzeiten-liste .sprechzeiten-hint .day{
+  visibility: hidden;
+}
+
 .sprechzeiten-liste{
     list-style: none;
     margin: 0;

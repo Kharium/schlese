@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     /* =========================
-     *  NAV / BURGER-MENÜ ...
-     *  (bleibt wie bei dir)
+     *  NAV / BURGER-MENÜ
      * ========================= */
     const burger = document.querySelector('.burger-menu');
     const nav = document.querySelector('.nav-links');
@@ -27,8 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setMenuOpen(false);
 
         burger.addEventListener('click', () => {
-            const open = !nav.classList.contains('active');
-            setMenuOpen(open);
+            setMenuOpen(!nav.classList.contains('active'));
         });
 
         navLinks.forEach((link) => {
@@ -50,20 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && nav.classList.contains('active')) {
-                setMenuOpen(false);
-            }
+            if (e.key === 'Escape' && nav.classList.contains('active')) setMenuOpen(false);
         });
     }
 
+    // Aktuellen Menüpunkt markieren (nur pathname-basiert; Hash bleibt frei)
     const currentPath = location.pathname.replace(/\/+$/, '');
     navLinks.forEach((a) => {
         const href = a.getAttribute('href');
         if (!href) return;
 
         const absPath = new URL(href, location.origin).pathname.replace(/\/+$/, '');
-        if (absPath === currentPath) a.classList.add('is-current');
-        else a.classList.remove('is-current');
+        a.classList.toggle('is-current', absPath === currentPath);
     });
 
     navLinks.forEach((a) => {
@@ -74,66 +70,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* =========================
-     *  ACCORDION-HELPER (shared)
+     *  ACCORDION-HELPER (clean)
      * ========================= */
     const initAccordion = ({
+                               root = document,
                                triggerSelector,
                                itemSelector,
-                               panelSelector,
                                openClass = 'open',
                                closeOthers = false,
-                               getPanel = null, // optional: (trigger, item) => panel
+                               getPanel, // (trigger, item) => HTMLElement|null
                            }) => {
-        const triggers = Array.from(document.querySelectorAll(triggerSelector));
+        const triggers = Array.from(root.querySelectorAll(triggerSelector));
         if (triggers.length === 0) return;
 
         const resolveItem = (trigger) =>
             (itemSelector ? trigger.closest(itemSelector) : null) || trigger.parentElement;
 
         const resolvePanel = (trigger, item) => {
-            if (typeof getPanel === 'function') return getPanel(trigger, item);
-            return item?.querySelector(panelSelector) || null;
+            const panel = getPanel?.(trigger, item);
+            return panel instanceof HTMLElement ? panel : null;
         };
 
-        const setOpen = (trigger, item, panel, isOpen) => {
-            if (!item || !panel) return;
-
-            item.classList.toggle(openClass, isOpen);
-            panel.hidden = !isOpen;
-            trigger.setAttribute('aria-expanded', String(isOpen));
+        const setOpen = (trigger, item, panel, open) => {
+            item.classList.toggle(openClass, open);
+            panel.hidden = !open;
+            trigger.setAttribute('aria-expanded', String(open));
         };
 
-        // Initial: alles zu (Panels hidden)
+        // Initialzustand: alles zu (ARIA + hidden konsistent)
         triggers.forEach((trigger) => {
             const item = resolveItem(trigger);
+            if (!item) return;
             const panel = resolvePanel(trigger, item);
-            if (!item || !panel) return;
+            if (!panel) return;
+
             setOpen(trigger, item, panel, false);
         });
 
-        // Click
+        const closeAllExcept = (exceptTrigger) => {
+            if (!closeOthers) return;
+
+            triggers.forEach((t) => {
+                if (t === exceptTrigger) return;
+                const item = resolveItem(t);
+                if (!item) return;
+                const panel = resolvePanel(t, item);
+                if (!panel) return;
+
+                setOpen(t, item, panel, false);
+            });
+        };
+
         triggers.forEach((trigger) => {
             trigger.addEventListener('click', (e) => {
-                // nur für <a> nötig; <button> ist ok
-                if (trigger instanceof HTMLAnchorElement) e.preventDefault();
-
                 const item = resolveItem(trigger);
+                if (!item) return;
+
                 const panel = resolvePanel(trigger, item);
-                if (!item || !panel) return;
 
-                const isOpenNext = !item.classList.contains(openClass);
+                // WICHTIG:
+                // Wenn kein Panel existiert, ist es kein Accordion-Trigger.
+                // Dann NICHT preventDefault() -> Links (z.B. "Termin vereinbaren") funktionieren normal.
+                if (!panel) return;
 
-                if (closeOthers) {
-                    triggers.forEach((other) => {
-                        if (other === trigger) return;
-                        const otherItem = resolveItem(other);
-                        const otherPanel = resolvePanel(other, otherItem);
-                        if (!otherItem || !otherPanel) return;
-                        setOpen(other, otherItem, otherPanel, false);
-                    });
-                }
+                // Für echte Accordion-Trigger Klickverhalten übernehmen
+                e.preventDefault();
 
-                setOpen(trigger, item, panel, isOpenNext);
+                const nextOpen = !item.classList.contains(openClass);
+                closeAllExcept(trigger);
+                setOpen(trigger, item, panel, nextOpen);
             });
         });
     };
@@ -144,21 +149,21 @@ document.addEventListener('DOMContentLoaded', () => {
     initAccordion({
         triggerSelector: '.accordion-header',
         itemSelector: '.accordion',
-        panelSelector: '.accordion-body',
         openClass: 'open',
         closeOthers: false,
+        getPanel: (_trigger, item) => item?.querySelector('.accordion-body') || null,
     });
 
     /* =========================
      *  STARTSEITE (Tiles)
-     *  Erwartet: .tile (button) direkt vor .tile-panel
+     *  - Accordion nur auf Buttons, nicht auf Links
+     *  - "Termin vereinbaren" bleibt <a> und navigiert normal
      * ========================= */
     initAccordion({
-        triggerSelector: '.tiles .tile',
+        triggerSelector: '.tiles button.tile',
         itemSelector: '.tile-group',
-        panelSelector: '.tile-panel',
         openClass: 'open',
         closeOthers: false,
-        getPanel: (trigger) => trigger.nextElementSibling, // wichtig: Panel ist direkt daneben
+        getPanel: (trigger) => trigger.nextElementSibling, // Panel ist direkt nach dem Button
     });
 });

@@ -67,19 +67,25 @@
 
             <nav class="startseite-accordion tiles" aria-label="Schnellzugriff">
                 <div class="tiles-wrapper">
+
                     <!-- Standort -->
                     <div class="tile-group">
-                        <a class="tile" href="#standort">
-            <span class="tile-icon">
-              <img class="icon" src="assets/icons/location_on_white.svg" alt="" aria-hidden="true" />
-            </span>
+                        <button
+                                class="tile"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="tile-panel-standort"
+                        >
+    <span class="tile-icon">
+      <img class="icon" src="assets/icons/location_on_white.svg" alt="" aria-hidden="true" />
+    </span>
                             <span class="tile-label">Standort</span>
                             <span class="tile-chevron">
-              <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true" />
-            </span>
-                        </a>
+      <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true" />
+    </span>
+                        </button>
 
-                        <div class="tile-panel" hidden>
+                        <div class="tile-panel" id="tile-panel-standort" hidden>
                             <div class="kontakt-item">
                                 <img class="icon" src="assets/icons/location_on_fill.svg" alt="" aria-hidden="true" />
                                 <div>
@@ -120,6 +126,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <!-- Sprechzeiten -->
                     <div class="tile-group">
@@ -282,7 +289,7 @@
             <p>
                 In unserer Praxis bieten wir umfassende augenärztliche Diagnostik und Behandlung – modern, präzise und
                 individuell abgestimmt. Das Spektrum reicht von Vorsorgeuntersuchungen bis hin zu therapeutischen
-                Eingriffen: 
+                Eingriffen:
             </p>
 
             <div class="leistungen-list">

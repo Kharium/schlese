@@ -1,23 +1,13 @@
-// Scroll-Position beim Reload nicht wiederherstellen (verhindert "Springen")
-if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-}
-
-// Beim Reload immer ganz nach oben (Startseite)
-window.addEventListener('load', () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     /* =========================
-     *  NAV / BURGER-MENÜ (SVG-Icon swap)
+     *  NAV / BURGER-MENÜ ...
+     *  (bleibt wie bei dir)
      * ========================= */
     const burger = document.querySelector('.burger-menu');
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links a');
     const burgerIcon = burger?.querySelector('.burger-menu__icon');
 
-    // WICHTIG: auf Unterseiten funktionieren relative Pfade oft nicht zuverlässig -> Root-Pfade nutzen
     const ICON_BURGER = '/assets/icons/menu.svg';
     const ICON_CLOSE = '/assets/icons/close.svg';
 
@@ -30,29 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
         burger.setAttribute('aria-expanded', String(open));
         burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
 
-        if (burgerIcon) {
-            burgerIcon.src = open ? ICON_CLOSE : ICON_BURGER;
-        }
+        if (burgerIcon) burgerIcon.src = open ? ICON_CLOSE : ICON_BURGER;
     };
 
     if (burger && nav) {
-        // Initialzustand sicher setzen (falls CSS/HTML mal abweicht)
         setMenuOpen(false);
 
-        // Button klick => toggle
         burger.addEventListener('click', () => {
             const open = !nav.classList.contains('active');
             setMenuOpen(open);
         });
 
-        // Links klicken -> Menü auf Mobil schließen
         navLinks.forEach((link) => {
             link.addEventListener('click', () => {
                 if (window.innerWidth < 768) setMenuOpen(false);
             });
         });
 
-        // Outside-Click schließt Menü
         document.addEventListener('click', (e) => {
             const target = e.target;
             if (!(target instanceof Node)) return;
@@ -65,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // ESC schließt Menü
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && nav.classList.contains('active')) {
                 setMenuOpen(false);
@@ -73,8 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* Aktiven Nav-Link anhand der aktuellen URL markieren
-       (funktioniert auch auf Unterseiten wie /sites/impressum.html) */
     const currentPath = location.pathname.replace(/\/+$/, '');
     navLinks.forEach((a) => {
         const href = a.getAttribute('href');
@@ -85,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         else a.classList.remove('is-current');
     });
 
-    // Fallback: Klick-Markierung (falls du auf derselben Seite bleibst)
     navLinks.forEach((a) => {
         a.addEventListener('click', () => {
             navLinks.forEach((x) => x.classList.remove('is-current'));
@@ -93,64 +73,92 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* =========================
+     *  ACCORDION-HELPER (shared)
+     * ========================= */
+    const initAccordion = ({
+                               triggerSelector,
+                               itemSelector,
+                               panelSelector,
+                               openClass = 'open',
+                               closeOthers = false,
+                               getPanel = null, // optional: (trigger, item) => panel
+                           }) => {
+        const triggers = Array.from(document.querySelectorAll(triggerSelector));
+        if (triggers.length === 0) return;
+
+        const resolveItem = (trigger) =>
+            (itemSelector ? trigger.closest(itemSelector) : null) || trigger.parentElement;
+
+        const resolvePanel = (trigger, item) => {
+            if (typeof getPanel === 'function') return getPanel(trigger, item);
+            return item?.querySelector(panelSelector) || null;
+        };
+
+        const setOpen = (trigger, item, panel, isOpen) => {
+            if (!item || !panel) return;
+
+            item.classList.toggle(openClass, isOpen);
+            panel.hidden = !isOpen;
+            trigger.setAttribute('aria-expanded', String(isOpen));
+        };
+
+        // Initial: alles zu (Panels hidden)
+        triggers.forEach((trigger) => {
+            const item = resolveItem(trigger);
+            const panel = resolvePanel(trigger, item);
+            if (!item || !panel) return;
+            setOpen(trigger, item, panel, false);
+        });
+
+        // Click
+        triggers.forEach((trigger) => {
+            trigger.addEventListener('click', (e) => {
+                // nur für <a> nötig; <button> ist ok
+                if (trigger instanceof HTMLAnchorElement) e.preventDefault();
+
+                const item = resolveItem(trigger);
+                const panel = resolvePanel(trigger, item);
+                if (!item || !panel) return;
+
+                const isOpenNext = !item.classList.contains(openClass);
+
+                if (closeOthers) {
+                    triggers.forEach((other) => {
+                        if (other === trigger) return;
+                        const otherItem = resolveItem(other);
+                        const otherPanel = resolvePanel(other, otherItem);
+                        if (!otherItem || !otherPanel) return;
+                        setOpen(other, otherItem, otherPanel, false);
+                    });
+                }
+
+                setOpen(trigger, item, panel, isOpenNext);
+            });
+        });
+    };
 
     /* =========================
-     *  KLASSISCHES AKKORDEON
-     *  - Für .accordion (Über mich)
-     *  - Panel wird per [hidden] ein-/ausgeblendet
+     *  ÜBER MICH (Accordion)
      * ========================= */
-    document.querySelectorAll('.accordion-header').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const item = btn.closest('.accordion') || btn.parentElement;
-            if (!item) return;
-
-            const body = item.querySelector('.accordion-body');
-            if (!body) return;
-
-            const isOpen = !item.classList.contains('open');
-
-            item.classList.toggle('open', isOpen);
-            body.hidden = !isOpen;
-
-            // a11y
-            btn.setAttribute('aria-expanded', String(isOpen));
-        });
+    initAccordion({
+        triggerSelector: '.accordion-header',
+        itemSelector: '.accordion',
+        panelSelector: '.accordion-body',
+        openClass: 'open',
+        closeOthers: false,
     });
 
     /* =========================
-     *  TILES-AKKORDEON
+     *  STARTSEITE (Tiles)
+     *  Erwartet: .tile (button) direkt vor .tile-panel
      * ========================= */
-    document.querySelectorAll('.tiles .tile').forEach((tile) => {
-        const panel = tile.nextElementSibling;
-        const hasPanel = panel && panel.classList.contains('tile-panel');
-        if (!hasPanel) return;
-
-        const chevronImg = tile.querySelector('.tile-chevron img');
-
-        // Hinweis: deine Tiles nutzen aktuell relative Pfade in HTML.
-        // Für Unterseiten wäre /assets/... ebenfalls robuster, aber hier lassen wir es wie gehabt.
-        const ARROW_DOWN = 'assets/icons/arrow_down.svg';
-        const ARROW_UP = 'assets/icons/arrow_up.svg';
-
-        const setOpenState = (isOpen) => {
-            tile.classList.toggle('open', isOpen);
-            panel.hidden = !isOpen;
-
-            tile.setAttribute('aria-expanded', String(isOpen));
-
-            if (chevronImg) {
-                chevronImg.src = isOpen ? ARROW_UP : ARROW_DOWN;
-            }
-        };
-
-        // Initialzustand
-        panel.hidden = true;
-        setOpenState(false);
-
-        tile.addEventListener('click', (e) => {
-            e.preventDefault();
-            const isOpen = !tile.classList.contains('open');
-            setOpenState(isOpen);
-        });
+    initAccordion({
+        triggerSelector: '.tiles .tile',
+        itemSelector: '.tile-group',
+        panelSelector: '.tile-panel',
+        openClass: 'open',
+        closeOthers: false,
+        getPanel: (trigger) => trigger.nextElementSibling, // wichtig: Panel ist direkt daneben
     });
 });

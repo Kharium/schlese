@@ -129,6 +129,37 @@
     font-feature-settings: "tnum" 1, "lnum" 1;
     font-kerning: none;
 }
+/* Damit <button class="tile"> genauso aussieht wie <a class="tile"> */
+button.tile{
+    appearance: none;
+    -webkit-appearance: none;
+
+    font: inherit;
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+
+    width: 100%;
+    text-align: left;
+
+    /* Browser-Defaults entfernen */
+    padding: 0;          /* wichtig: sonst kommt extra Button-Padding dazu */
+    margin: 0;
+    background: transparent; /* .tile setzt sowieso background, aber safe */
+    border: 0;
+
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Chevron-Rotation über .tile-group.open (passt zu deinem JS mit .open auf der Gruppe) */
+.tile-chevron .icon{
+    transition: transform 200ms ease;
+}
+
+.tile-group.open .tile-chevron .icon{
+    transform: rotate(180deg);
+}
 
 /* ---------- Kontakt-Layout im Panel (aus kontakt.css übernommen, aber scoped) ---------- */
 /* Ziel: Icon + Textblock nebeneinander; Trennlinie; saubere Abstände.

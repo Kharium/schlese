@@ -1,9 +1,9 @@
 /* ===========================
    Startseite – Hero & Tiles (aufgeräumt)
-   - Mobile-first: Panels werden per JS via [hidden] ein-/ausgeklappt
-   - Jede .tile-group ist eine Card (Radius 10px, Border 1px Primary)
-   - Kontakt-Panel-Layout (Icon + Text in einer Zeile) ist hier drin
-   - WICHTIG: Keine Link-Regeln hier, Links sollen aus base.css kommen
+   Ziele:
+   - Bild liegt unter den Tiles (kein "durchscheinender" Button)
+   - .tile (Button + Link) hat weißen Hintergrund: var(--color-bg)
+   - Panels via JS [hidden] ein/aus; .tile-group.open rotiert Chevron
    =========================== */
 
 .startseite-section{
@@ -11,22 +11,25 @@
     background: var(--color-bg);
 }
 
-/* Optionaler Wrapper (falls später wieder genutzt) */
-.single-image{
-    position: relative;
-    max-width: 100%;
-}
-.single-image img{
-    width: 100%;
-    height: auto;
-    display: block;
+.startseite-container{
+    position: relative; /* Stacking-Context */
 }
 
-/* ---------- Tiles (mobile-first) ---------- */
+/* Hero-Bild unter die Tiles */
+.startseite-container > img,
+.startseite-container .single-image{
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ---------- Tiles Layout ---------- */
 
 .tiles{
     position: relative;
-    z-index: 20;
+    z-index: 10;
 
     --tiles-overlap: 44px;
     margin-top: calc(-1 * var(--tiles-overlap));
@@ -34,9 +37,6 @@
 
     background: transparent;
     overflow: visible;
-
-    filter: none;
-    box-shadow: var(--shadow-sm);
 }
 
 .tiles-wrapper{
@@ -45,29 +45,33 @@
 }
 
 .tile-group{
+    position: relative;
+    z-index: 11;
+
     border: 1px solid var(--color-primary);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
 }
 
+/* WICHTIG: .tile gilt für <button> UND <a> */
 .tile{
     display: grid;
     grid-template-columns: 56px 1fr 44px; /* Icon | Label | Chevron */
     align-items: center;
     min-height: 56px;
-    padding-right: .25rem;
 
-    background-color: var(--color-bg);
+    background-color: var(--color-bg); /* <- weiß */
     color: inherit;
     text-decoration: none;
-    box-shadow: var(--shadow-sm);
+
     border: 0;
     outline: 0;
+    padding: 0; /* wird über Grid/Child-Abstände gesteuert */
 }
 
 .tile:active{
-    background: rgba(0,0,0,.02);
+    background-color: rgba(0,0,0,.02);
 }
 
 .tile:focus-visible{
@@ -76,84 +80,54 @@
     border-radius: 10px;
 }
 
-/* Icon links: nicht rund, sondern farbige Fläche über die volle Tile-Höhe */
-.tile-icon{
-    width: 56px;       /* entspricht der linken Grid-Spalte */
-    height: 100%;      /* füllt die Tile-Höhe */
-    margin-left: 0;
-
-    display: grid;
-    place-items: center;
-
-    background: var(--color-primary);
-    color: #fff;
-    border-radius: 0;
-
-    /* optional: dezente Trennkante zur Label-Spalte */
-    border-right: 1px solid rgba(255,255,255,.18);
-}
-
-/* Icon im Container sauber zentrieren + Größe */
-.tile-icon .icon{
-    width: 32px;
-    height: 32px;
-    display: block;
-}
-
-/* Bereitschaftsdienst: keine Icon-Fläche */
-.tile.tile--noicon .tile-icon{
-    display: none;
-}
-
-
-.tile-label{
-    font-weight: 600;
-    font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
-    letter-spacing: .02em;
-    margin-left: var(--space-md);
-    color: var(--color-primary-dark);
-    background-color: var(--color-bg);
-}
-
-.tile-chevron{
-    display: grid;
-    place-items: center;
-}
-
-.tile-panel{
-    background: var(--color-bg);
-    padding: 1rem 1.25rem 1.25rem;
-    border-top: 1px solid rgba(0,0,0,.08);
-    color: var(--color-text);
-    font-size: 0.95rem;
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum" 1, "lnum" 1;
-    font-kerning: none;
-}
-/* Damit <button class="tile"> genauso aussieht wie <a class="tile"> */
+/* Button-Reset: damit <button.tile> wie <a.tile> aussieht */
 button.tile{
     appearance: none;
     -webkit-appearance: none;
-
     font: inherit;
-    color: inherit;
     -webkit-text-fill-color: currentColor;
 
     width: 100%;
     text-align: left;
-
-    /* Browser-Defaults entfernen */
-    padding: 0;          /* wichtig: sonst kommt extra Button-Padding dazu */
     margin: 0;
-    background: transparent; /* .tile setzt sowieso background, aber safe */
-    border: 0;
 
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
 }
 
-/* Chevron-Rotation über .tile-group.open (passt zu deinem JS mit .open auf der Gruppe) */
+/* Icon links (farbige Leiste) */
+.tile-icon{
+    width: 56px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+    background: var(--color-primary);
+    border-right: 1px solid rgba(255,255,255,.18);
+}
+
+.tile-icon .icon{
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+/* Label */
+.tile-label{
+    font-weight: 600;
+    font-size: clamp(1.05rem, 1.2vw + .7rem, 1.4rem);
+    letter-spacing: .02em;
+    margin-left: var(--space-md);
+    color: var(--color-primary-dark);
+}
+
+/* Chevron */
+.tile-chevron{
+    display: grid;
+    place-items: center;
+}
+
 .tile-chevron .icon{
     transition: transform 200ms ease;
 }
@@ -162,9 +136,22 @@ button.tile{
     transform: rotate(180deg);
 }
 
-/* ---------- Kontakt-Layout im Panel (aus kontakt.css übernommen, aber scoped) ---------- */
-/* Ziel: Icon + Textblock nebeneinander; Trennlinie; saubere Abstände.
-   Keine a{} Regeln, damit base.css Links gestaltet. */
+/* Panel */
+.tile-panel{
+    position: relative;
+    z-index: 11;
+
+    background-color: var(--color-bg);
+    padding: 1rem 1.25rem 1.25rem;
+    border-top: 1px solid rgba(0,0,0,.08);
+
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* ---------- Kontakt-Layout im Panel ---------- */
 
 .startseite-section .tile-panel .kontakt-item{
     display: flex;
@@ -189,8 +176,6 @@ button.tile{
     height: 24px;
     flex: 0 0 24px;
     margin-top: 0.15rem;
-    /* falls deine SVGs keine Farbe übernehmen, weglassen;
-       ansonsten kann das helfen, wenn sie currentColor nutzen */
     color: var(--color-primary);
 }
 
@@ -207,59 +192,10 @@ button.tile{
 
 /* ---------- Sprechzeiten ---------- */
 
-/* ---------- Sprechzeiten: sauber ausrichten ---------- */
-
-/* optional: Day-Spalte minimal stabiler */
-.sprechzeiten-liste > li{
-  display: grid;
-  grid-template-columns: 8.5rem 1fr;
-  column-gap: .75rem;
-  align-items: start;
-}
-
-/* rechte Spalte: Zeitblöcke untereinander */
-.sprechzeiten-liste .times{
-  display: grid;
-  gap: .25rem;
-}
-
-/* ein Zeitblock = 3 Spalten (Start | – | Ende) */
-.sprechzeiten-liste .time-range{
-  display: grid;
-
-  /* Start/Ende: feste "Ziffern-Spalte" über ch (0-Zeichenbreite) */
-  grid-template-columns: 5ch 1.2ch 5ch;
-
-  align-items: baseline;
-  white-space: nowrap;
-
-  /* Ziffern überall gleich breit (falls Font es unterstützt) */
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1;
-}
-
-/* wichtig: Zahlen rechtsbündig, damit 08:00 und 12:00 gleich starten */
-.sprechzeiten-liste .t-start,
-.sprechzeiten-liste .t-end{
-  text-align: right;
-}
-
-/* Trenner bleibt mittig */
-.sprechzeiten-liste .t-sep{
-  text-align: center;
-  opacity: .9;
-}
-
-/* Hint-Zeile bleibt wie gehabt */
-.sprechzeiten-liste .sprechzeiten-hint .day{
-  visibility: hidden;
-}
-
 .sprechzeiten-liste{
     list-style: none;
     margin: 0;
     padding: 0;
-
     display: grid;
     gap: .55rem;
 }
@@ -279,28 +215,28 @@ button.tile{
 
 .sprechzeiten-liste .times{
     display: grid;
-    gap: .2rem;
+    gap: .25rem;
     color: var(--color-text);
 }
 
 .sprechzeiten-liste .time-range{
     display: grid;
-    grid-template-columns: 3.2em 1.2em 3.2em;
+    grid-template-columns: 5ch 1.2ch 5ch;
     align-items: baseline;
-
+    white-space: nowrap;
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1, "lnum" 1;
-    font-kerning: none;
-    letter-spacing: 0;
-    white-space: nowrap;
 }
 
-.sprechzeiten-liste .t-start{ text-align: left; }
+.sprechzeiten-liste .t-start,
+.sprechzeiten-liste .t-end{
+    text-align: right;
+}
+
 .sprechzeiten-liste .t-sep{
     text-align: center;
     opacity: .9;
 }
-.sprechzeiten-liste .t-end{ text-align: left; }
 
 .sprechzeiten-liste .sprechzeiten-hint .day{
     visibility: hidden;
@@ -312,10 +248,10 @@ button.tile{
     }
 }
 
-/* ---------- Bereitschaftsdienst (Tile ohne Icon) ---------- */
-/* Ziel: links kein Badge, nur Label + Pfeil; Label nie fett (auch Desktop). */
+/* ---------- Bereitschaftsdienst (ohne Icon) ---------- */
+
 .tile.tile--noicon{
-    grid-template-columns: 1fr 44px; /* Label | Chevron */
+    grid-template-columns: 1fr 44px;
     min-height: 40px;
 }
 
@@ -330,13 +266,13 @@ button.tile{
 }
 
 /* ---------- Desktop ---------- */
+
 @media (min-width: 768px){
     .tiles-wrapper{
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
-    /* 3. + 4. Kachel volle Breite */
     .tiles-wrapper > .tile-group:nth-child(3),
     .tiles-wrapper > .tile-group:nth-child(4){
         grid-column: 1 / -1;
@@ -345,13 +281,12 @@ button.tile{
     /* Standard: Chevron ausblenden */
     .tile{
         grid-template-columns: 56px 1fr;
-        padding-right: 0;
     }
     .tile-chevron{
         display: none;
     }
 
-    /* Ausnahme: Bereitschaftsdienst soll auch auf Desktop den Pfeil zeigen */
+    /* Ausnahme: Bereitschaftsdienst mit Chevron */
     .tile.tile--noicon{
         grid-template-columns: 1fr 44px;
     }
@@ -359,17 +294,12 @@ button.tile{
         display: grid;
     }
 
-    /* Panels NUR bei Standort + Sprechzeiten immer offen (Desktop) */
+    /* Panels: Standort + Sprechzeiten auf Desktop immer sichtbar */
     .tiles-wrapper > .tile-group:nth-child(1) > .tile-panel,
     .tiles-wrapper > .tile-group:nth-child(2) > .tile-panel{
         display: block !important;
         height: auto !important;
         max-height: none !important;
-    }
-
-    /* Termin vereinbaren: kein Panel */
-    .tiles-wrapper > .tile-group:nth-child(3) .tile-panel{
-        display: none !important;
     }
 
     /* Desktop: Standort + Sprechzeiten nicht klickbar */

@@ -70,8 +70,24 @@
     padding: 0; /* wird über Grid/Child-Abstände gesteuert */
 }
 
+/* --- Fix: "Bild blitzt durch" beim Tap (Mobile Rendering) --- */
+.tile{
+  /* eigener Layer -> verhindert kurzes Durchscheinen/Redraw über dem Bild */
+  transform: translateZ(0);
+  will-change: transform;
+
+  /* iOS/Android Tap-Highlight aus */
+  -webkit-tap-highlight-color: transparent;
+
+  /* wichtig: Hintergrund bleibt auch während Interaction deckend */
+  background-color: var(--color-bg);
+  background-clip: padding-box;
+}
+
+/* falls der Active-State bei dir zu "transparent" wirkt: */
 .tile:active{
-    background-color: rgba(0,0,0,.02);
+  /* KEIN transparentes Background, sondern leichtes Grau auf Weiß */
+  background-color: color-mix(in srgb, var(--color-bg) 92%, #000 8%);
 }
 
 .tile:focus-visible{
@@ -94,6 +110,12 @@ button.tile{
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+}
+
+/* Extra-Schutz speziell für iOS/Safari Buttons */
+button.tile{
+  background-color: var(--color-bg);
+  -webkit-appearance: none;
 }
 
 /* Icon links (farbige Leiste) */

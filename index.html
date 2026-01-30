@@ -136,94 +136,93 @@
                                 aria-expanded="false"
                                 aria-controls="tile-panel-sprechzeiten"
                         >
-            <span class="tile-icon">
-              <img class="icon" src="assets/icons/schedule_white.svg" alt="" aria-hidden="true"/>
-            </span>
+        <span class="tile-icon">
+            <img class="icon" src="assets/icons/schedule_white.svg" alt="" aria-hidden="true"/>
+        </span>
                             <span class="tile-label">Sprechzeiten</span>
                             <span class="tile-chevron">
-              <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true"/>
-            </span>
+            <img class="icon" src="assets/icons/arrow_down.svg" alt="" aria-hidden="true"/>
+        </span>
                         </button>
 
                         <div class="tile-panel" id="tile-panel-sprechzeiten" hidden>
-                            <div class="kontakt-item">
-                                <img class="icon" src="assets/icons/schedule_fill.svg" alt="" aria-hidden="true"/>
-                                <div>
-
-                                    <h4></h4>
-                                    <ul class="sprechzeiten-liste">
-                                        <li>
-                                            <span class="day">Montag:</span>
-                                            <span class="times">
-                      <span class="time-range">
-                        <span class="t-start">08:00</span>
-                        <span class="t-sep">–</span>
-                        <span class="t-end">12:00</span>
-                      </span>
-                      <span class="time-range">
-                        <span class="t-start">13:30</span>
-                        <span class="t-sep">–</span>
-                        <span class="t-end">17:00</span>
-                      </span>
-                    </span>
-                                        </li>
-
-                                        <li>
-                                            <span class="day">Dienstag:</span>
-                                            <span class="times">
-                      <span class="time-range">
-                        <span class="t-start">12:00</span>
-                        <span class="t-sep">–</span>
-                        <span class="t-end">18:30</span>
-                      </span>
-                    </span>
-                                        </li>
-
-                                        <li>
-                                            <span class="day">Mittwoch:</span>
-                                            <span class="times">
-                      <span class="time-range">
-                        <span class="t-start">08:00</span>
-                        <span class="t-sep">–</span>
-                        <span class="t-end">12:00</span>
-                      </span>
-                      <span class="time-range">
-                        <span class="t-start">13:30</span>
-                        <span class="t-sep">–</span>
-                        <span class="t-end">17:00</span>
-                      </span>
-                    </span>
-                                        </li>
-
-                                        <li>
-                                            <span class="day">Donnerstag:</span>
-                                            <span class="times">
-                      <span class="time-range">
-                        <span class="t-start">08:00</span>
-                        <span class="t-sep">–</span>
-                        <span class="t-end">14:30</span>
-                      </span>
-                    </span>
-                                        </li>
-
-                                        <li>
-                                            <span class="day">Freitag:</span>
-                                            <span class="times">
-                      <span class="time-range">
-                        <span class="t-start">08:00</span>
-                        <span class="t-sep">–</span>
-                        <span class="t-end">12:30</span>
-                      </span>
-                    </span>
-                                        </li>
-
-                                        <li class="sprechzeiten-hint">
-                                            <span class="day"></span>
-                                            <span class="times">und nach Vereinbarung</span>
-                                        </li>
-                                    </ul>
+                            <section class="sprechzeiten" aria-label="Sprechzeiten">
+                                <div class="sprechzeiten-head" aria-hidden="true">
+                                    <img class="sprechzeiten-head__icon" src="assets/icons/schedule_fill.svg" alt=""/>
                                 </div>
-                            </div>
+
+                                <ul class="sprechzeiten-liste">
+                                    <li class="sprechzeiten-row">
+                                        <span class="day">Montag</span>
+                                        <span class="times">
+                        <span class="time-range">
+                            <span class="t-start">08:00</span>
+                            <span class="t-sep">–</span>
+                            <span class="t-end">12:00</span>
+                        </span>
+                        <span class="time-range">
+                            <span class="t-start">13:30</span>
+                            <span class="t-sep">–</span>
+                            <span class="t-end">17:00</span>
+                        </span>
+                    </span>
+                                    </li>
+
+                                    <li class="sprechzeiten-row">
+                                        <span class="day">Dienstag</span>
+                                        <span class="times">
+                        <span class="time-range">
+                            <span class="t-start">12:00</span>
+                            <span class="t-sep">–</span>
+                            <span class="t-end">18:30</span>
+                        </span>
+                    </span>
+                                    </li>
+
+                                    <li class="sprechzeiten-row">
+                                        <span class="day">Mittwoch</span>
+                                        <span class="times">
+                        <span class="time-range">
+                            <span class="t-start">08:00</span>
+                            <span class="t-sep">–</span>
+                            <span class="t-end">12:00</span>
+                        </span>
+                        <span class="time-range">
+                            <span class="t-start">13:30</span>
+                            <span class="t-sep">–</span>
+                            <span class="t-end">17:00</span>
+                        </span>
+                    </span>
+                                    </li>
+
+                                    <li class="sprechzeiten-row">
+                                        <span class="day">Donnerstag</span>
+                                        <span class="times">
+                        <span class="time-range">
+                            <span class="t-start">08:00</span>
+                            <span class="t-sep">–</span>
+                            <span class="t-end">14:30</span>
+                        </span>
+                    </span>
+                                    </li>
+
+                                    <li class="sprechzeiten-row">
+                                        <span class="day">Freitag</span>
+                                        <span class="times">
+                        <span class="time-range">
+                            <span class="t-start">08:00</span>
+                            <span class="t-sep">–</span>
+                            <span class="t-end">12:30</span>
+                        </span>
+                    </span>
+                                    </li>
+
+                                    <li class="sprechzeiten-row sprechzeiten-hint">
+                                        <span class="day"></span>
+                                        <span class="times">und nach Vereinbarung</span>
+                                    </li>
+                                </ul>
+                            </section>
                         </div>
                     </div>
 

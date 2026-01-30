@@ -175,23 +175,45 @@ button.tile{
 }
 
 /* =========================================================
-   SPRECHZEITEN (sauber, mehr Platz, Ziffern ausgerichtet)
-   Lösung ohne HTML-Änderung:
-   - "Icon + Tag" links wird über :before ins Day-Element gesetzt
-   - Zeiten werden über feste ch-Spalten + tabular-nums + right-align ausgerichtet
-   Hinweis: Wenn deine Schriftart KEINE tabular figures hat, bleibt ein Rest-Unschärfe.
+   SPRECHZEITEN (neue HTML-Struktur)
+   - 1. Zeile: nur Icon (.sprechzeiten-head)
+   - darunter: Wochentag + Zeiten (2 Spalten)
    ========================================================= */
 
-/* Im Sprechzeiten-Panel die Kontakt-Zeile ohne Trennlinie/Spacing wie normale Kontakt-Items */
+/* Panel: Kontakt-Standardlayout für Sprechzeiten neutralisieren */
 #tile-panel-sprechzeiten .kontakt-item{
     border-bottom: 0;
     padding-bottom: 0;
-    gap: 0; /* wir layouten innen in der Liste */
+    gap: 0;
 }
 
-/* Das große linke Icon in diesem Panel ausblenden (wir setzen pro Tag ein Icon) */
+/* Falls du den alten Kontakt-Wrapper noch drin hast: Icon/leer-Überschrift ausblenden */
 #tile-panel-sprechzeiten .kontakt-item > .icon{
     display: none;
+}
+#tile-panel-sprechzeiten .kontakt-item h4{
+    display: none;
+    margin: 0;
+}
+
+/* Neuer Wrapper */
+#tile-panel-sprechzeiten .sprechzeiten{
+    display: grid;
+    gap: .9rem;
+}
+
+/* Erste Zeile: nur Icon */
+#tile-panel-sprechzeiten .sprechzeiten-head{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* falls du zentrieren willst: center */
+}
+
+#tile-panel-sprechzeiten .sprechzeiten-head__icon{
+    width: 24px;
+    height: 24px;
+    display: block;
+    opacity: .95;
 }
 
 /* Liste */
@@ -204,80 +226,61 @@ button.tile{
     gap: .7rem;
 }
 
-/* Pro Tag: links Icon+Tag (2 Zeilen), rechts Zeiten */
-#tile-panel-sprechzeiten .sprechzeiten-liste > li{
+/* Eintrag: 2 Spalten (Tag | Zeiten) */
+#tile-panel-sprechzeiten .sprechzeiten-row{
     display: grid;
-    grid-template-columns: 6.8rem 1fr; /* links kompakt */
+    grid-template-columns: 6.8rem 1fr;
     column-gap: .9rem;
     align-items: start;
 }
 
-/* Linke Spalte: wir machen aus .day einen 2-Zeilen-Block */
-#tile-panel-sprechzeiten .sprechzeiten-liste .day{
-    display: grid;
-    grid-template-rows: auto auto; /* Icon-Zeile + Text-Zeile */
-    row-gap: .35rem;              /* <- das ist dein gewünschter Zeilenabstand */
-    justify-items: start;
-
+/* Tag */
+#tile-panel-sprechzeiten .sprechzeiten-row .day{
     font-weight: 600;
     color: var(--color-text);
     line-height: 1.1;
     white-space: nowrap;
+    margin-left: var(--space-sm);
 }
 
-/* Icon oberhalb des Tages (ohne HTML ändern) */
-#tile-panel-sprechzeiten .sprechzeiten-liste .day::before{
-    content: "";
-    width: 20px;
-    height: 20px;
-    display: block;
-    background: url("/assets/icons/schedule_fill.svg") no-repeat center / contain;
-    opacity: .95;
-}
-
-/* Rechte Spalte: Zeitblöcke untereinander */
-#tile-panel-sprechzeiten .sprechzeiten-liste .times{
+/* Zeiten: untereinander */
+#tile-panel-sprechzeiten .sprechzeiten-row .times{
     display: grid;
     gap: .25rem;
+    margin-left: var(--space-sm);
 }
 
-/* Ein Zeitblock (Start – Ende) sauber in Spalten */
-#tile-panel-sprechzeiten .sprechzeiten-liste .time-range{
+/* Zeitspanne: Spalten für saubere Ausrichtung */
+#tile-panel-sprechzeiten .sprechzeiten-row .time-range{
     display: grid;
     grid-template-columns: 5ch 1.2ch 5ch;
     column-gap: .25rem;
     align-items: baseline;
     white-space: nowrap;
 
-    /* so gut es geht gleiche Ziffernbreite */
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1;
     letter-spacing: 0;
 }
 
-/* entscheidend für saubere Kanten: rechtsbündig */
-#tile-panel-sprechzeiten .sprechzeiten-liste .t-start,
-#tile-panel-sprechzeiten .sprechzeiten-liste .t-end{
+#tile-panel-sprechzeiten .sprechzeiten-row .t-start,
+#tile-panel-sprechzeiten .sprechzeiten-row .t-end{
     text-align: right;
 }
 
-/* Trenner mittig */
-#tile-panel-sprechzeiten .sprechzeiten-liste .t-sep{
+#tile-panel-sprechzeiten .sprechzeiten-row .t-sep{
     text-align: center;
     opacity: .85;
 }
 
-/* Hint-Zeile */
-#tile-panel-sprechzeiten .sprechzeiten-liste .sprechzeiten-hint .day{
+/* Hinweis-Zeile: Tag-Spalte ausblenden, Text bleibt in Zeiten-Spalte */
+#tile-panel-sprechzeiten .sprechzeiten-row.sprechzeiten-hint .day{
     visibility: hidden;
 }
 
-#tile-panel-sprechzeiten .sprechzeiten-liste .sprechzeiten-hint .day::before{
-    display: none;
-}
-
+/* Kleine Screens: Tag-Spalte etwas schmaler */
 @media (max-width: 360px){
-    #tile-panel-sprechzeiten .sprechzeiten-liste > li{
+    #tile-panel-sprechzeiten .sprechzeiten-row{
         grid-template-columns: 6.2rem 1fr;
         column-gap: .75rem;
     }

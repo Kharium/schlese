@@ -245,9 +245,9 @@ button.tile{
 
 /* Zeiten: mehrere ranges untereinander, als Block rechts ausrichten */
 #tile-panel-sprechzeiten .sprechzeiten-row .times{
-    font-family: "Poppins", sans-serif;
-    font-feature-settings: "tnum" 1;
-    font-variant-numeric: tabular-nums;
+    font-family: "Poppins", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
     display: flex;
     flex-direction: column;
     align-items: flex-end; /* wichtig: rechter Block */

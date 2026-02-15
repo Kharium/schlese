@@ -249,21 +249,18 @@ button.tile{
     flex-direction: column;
     align-items: flex-end; /* wichtig: rechter Block */
     gap: .35rem;           /* Abstand zwischen 08-12 und 13:30-17 */
-    margin-left: var(--space-sm);
+
 }
 
 /* Zeitspanne: Start | Sep | Ende — Sep spacing via padding-inline */
 #tile-panel-sprechzeiten .sprechzeiten-row .time-range{
-    display: grid;
-    grid-template-columns: 4.6em auto 4.6em; /* FIX: nicht ch */
-    column-gap: 0;
+    display: inline-flex;
     align-items: center;
     white-space: nowrap;
 }
 
 #tile-panel-sprechzeiten .sprechzeiten-row .t-sep{
     padding-inline: .55em; /* FIX: auch nicht ch */
-    text-align: center;
     opacity: .85;
 }
 

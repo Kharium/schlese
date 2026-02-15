@@ -252,28 +252,30 @@ button.tile{
 
 }
 
-/* Zeitspanne: Start | Sep | Ende — Sep spacing via padding-inline */
+/* Zeitspanne: Start | Sep | Ende
+   -> Start bekommt feste Breite, damit 08:00 und 13:30 exakt untereinander stehen
+   -> Ende bleibt auto (kein riesiger Spacer) */
 #tile-panel-sprechzeiten .sprechzeiten-row .time-range{
-    display: inline-flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 5ch auto auto; /* Start fix, Sep, Ende */
+    align-items: baseline;
     white-space: nowrap;
 }
 
-#tile-panel-sprechzeiten .sprechzeiten-row .t-sep{
-    padding-inline: .55em; /* FIX: auch nicht ch */
-    opacity: .85;
-}
-
-#tile-panel-sprechzeiten .sprechzeiten-row .t-start,
-#tile-panel-sprechzeiten .sprechzeiten-row .t-end{
+#tile-panel-sprechzeiten .sprechzeiten-row .t-start{
     text-align: right;
 }
 
-/* SAUBERES "08:00 – 12:00" */
+/* Sauberes "08:00 – 12:00" */
 #tile-panel-sprechzeiten .sprechzeiten-row .t-sep{
-    padding-inline: .55ch; /* Abstand links/rechts vom Gedankenstrich */
+    padding-inline: .55ch;
     text-align: center;
     opacity: .85;
+}
+
+/* Ende normal laufen lassen */
+#tile-panel-sprechzeiten .sprechzeiten-row .t-end{
+    text-align: left;
 }
 
 /* Hinweis-Zeile: Tag-Spalte ausblenden, Text bleibt in Zeiten-Spalte */

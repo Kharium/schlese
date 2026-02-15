@@ -255,15 +255,16 @@ button.tile{
 /* Zeitspanne: Start | Sep | Ende — Sep spacing via padding-inline */
 #tile-panel-sprechzeiten .sprechzeiten-row .time-range{
     display: grid;
-    grid-template-columns: 5ch auto 5ch; /* Sep nicht fix */
-    column-gap: 0;                       /* kein column-gap */
-    align-items: center;                 /* ruhiger als baseline */
+    grid-template-columns: 4.6em auto 4.6em; /* FIX: nicht ch */
+    column-gap: 0;
+    align-items: center;
     white-space: nowrap;
+}
 
-    /* numeric settings kannst du später anpassen – fürs Spacing egal */
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum" 1;
-    letter-spacing: 0;
+#tile-panel-sprechzeiten .sprechzeiten-row .t-sep{
+    padding-inline: .55em; /* FIX: auch nicht ch */
+    text-align: center;
+    opacity: .85;
 }
 
 #tile-panel-sprechzeiten .sprechzeiten-row .t-start,

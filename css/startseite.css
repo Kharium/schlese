@@ -243,21 +243,24 @@ button.tile{
     margin-left: var(--space-sm);
 }
 
-/* Zeiten: untereinander */
+/* Zeiten: mehrere ranges untereinander, als Block rechts ausrichten */
 #tile-panel-sprechzeiten .sprechzeiten-row .times{
-    display: grid;
-    gap: .25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* wichtig: rechter Block */
+    gap: .35rem;           /* Abstand zwischen 08-12 und 13:30-17 */
     margin-left: var(--space-sm);
 }
 
-/* Zeitspanne: Spalten für saubere Ausrichtung */
+/* Zeitspanne: Start | Sep | Ende — Sep spacing via padding-inline */
 #tile-panel-sprechzeiten .sprechzeiten-row .time-range{
     display: grid;
-    grid-template-columns: 5ch 1.2ch 5ch;
-    column-gap: .25rem;
-    align-items: baseline;
+    grid-template-columns: 5ch auto 5ch; /* Sep nicht fix */
+    column-gap: 0;                       /* kein column-gap */
+    align-items: center;                 /* ruhiger als baseline */
     white-space: nowrap;
 
+    /* numeric settings kannst du später anpassen – fürs Spacing egal */
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1;
     letter-spacing: 0;
@@ -268,7 +271,9 @@ button.tile{
     text-align: right;
 }
 
+/* SAUBERES "08:00 – 12:00" */
 #tile-panel-sprechzeiten .sprechzeiten-row .t-sep{
+    padding-inline: .55ch; /* Abstand links/rechts vom Gedankenstrich */
     text-align: center;
     opacity: .85;
 }
@@ -276,6 +281,11 @@ button.tile{
 /* Hinweis-Zeile: Tag-Spalte ausblenden, Text bleibt in Zeiten-Spalte */
 #tile-panel-sprechzeiten .sprechzeiten-row.sprechzeiten-hint .day{
     visibility: hidden;
+}
+
+/* Hint-Text rechts nicht „kleben“ lassen, sondern normal lesen */
+#tile-panel-sprechzeiten .sprechzeiten-row.sprechzeiten-hint .times{
+    align-items: flex-start; /* "und nach Vereinbarung" links im Times-Bereich */
 }
 
 /* Kleine Screens: Tag-Spalte etwas schmaler */

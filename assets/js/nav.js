@@ -81,7 +81,11 @@ export function initNav() {
 
     navLinks.forEach((link) => {
         link.addEventListener('click', (e) => {
-            if (isMobile()) setMenuOpen(false);
+            // ALT:
+            // if (isMobile()) setMenuOpen(false);
+
+            // NEU: schließt, wenn das Menü offen ist (unabhängig von innerWidth)
+            if (nav.classList.contains('active')) setMenuOpen(false);
 
             const href = link.getAttribute('href') || '';
             const isKontakt = href === '#startseite' || href.endsWith('/#startseite');
@@ -91,6 +95,7 @@ export function initNav() {
             }
         });
     });
+
 
     document.addEventListener('click', (e) => {
         const target = e.target;

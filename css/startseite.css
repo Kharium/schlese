@@ -253,7 +253,7 @@ button.tile{
 }
 
 /* Zeitspanne: Start | Sep | Ende
-   -> Start bekommt feste Breite, damit 08:00 und 13:30 exakt untereinander stehen
+   -> Start bekommt dfeste Breite, damit 08:00 und 13:30 exakt untereinander stehen
    -> Ende bleibt auto (kein riesiger Spacer) */
 #tile-panel-sprechzeiten .sprechzeiten-row .time-range{
     display: grid;
